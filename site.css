@@ -86,14 +86,16 @@ h5 {
 }
 
 .details-image-container {
-    width: 40%;
+    width: 30%;
+    min-width: 30%;
     max-width: 620px;
     height: auto;
 }
 
-@media screen and (max-width: 1550px) {
+@media screen and (min-width: 1550px) {
     .details-image-container {
-      max-width: 40%;
+      max-width: 30%;
+      min-width: 620px;
       width: 620px;
     }
   }
@@ -108,6 +110,10 @@ h5 {
     font-weight: bolder;
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+pre {
+    display: inline;
 }
 
 #scrolling-box {
