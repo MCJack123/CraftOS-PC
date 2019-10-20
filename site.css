@@ -1,0 +1,190 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.after-scrolling {
+    position: relative;
+    top: 50%;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+h1 {
+    font-size: 64pt;
+    margin-bottom: 24px;
+    margin-top: 24px;
+}
+
+a {
+    text-decoration: none;
+    color: #444444;
+}
+
+img {
+    height: auto;
+}
+
+#main {
+    width: 100%;
+    height: 100%;
+}
+
+.title-box {
+    width: 100%;
+    display: flex;
+}
+
+.title-content {
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.download-button {
+    background-color: #dede6c;
+    padding: 15px;
+    color: #ffffff;
+    display: inline-flex;
+}
+
+#download-content {
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+}
+
+.download-text {
+    font-size: 16pt;
+    margin-bottom: 0px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.download-icon {
+    font-size: 24pt;
+}
+
+h5 {
+    margin-top: 20px;
+}
+
+.details-entry {
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.details-content {
+    margin-left: 25px;
+}
+
+.details-image-container {
+    width: 40%;
+    max-width: 620px;
+    height: auto;
+}
+
+@media screen and (max-width: 1550px) {
+    .details-image-container {
+      max-width: 40%;
+      width: 620px;
+    }
+  }
+
+.details-image {
+    width: 100%;
+    height: auto;
+}
+
+.details-title {
+    font-size: 24pt;
+    font-weight: bolder;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#scrolling-box {
+    width: 100%;
+    height: 50%;
+    background-color: #191919;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+    filter: brightness(50%);
+    position: fixed;
+}
+
+#scrolling-content {
+    animation: moveSlideshow 60s linear infinite;
+    float: none;
+    vertical-align: top;
+    height: 100%;
+    overflow: visible;
+    transform: translate3d(0, 0, 0);
+    display: flex;
+    flex-direction: row;
+}
+
+.scrolling-image {
+    height: 100%;
+    float: none;
+    vertical-align: top;
+}
+
+.footer-box {
+    background-color: #eeeeee;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    align-items: center;
+}
+
+.footer-box > * {
+    padding: 10px;
+}
+
+@keyframes moveSlideshow {
+    100% { 
+        transform: translateX(-50%);  
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #eeeeee;
+        background-color: #191919;
+    }
+
+    a {
+        color: #aaaaaa;
+    }
+
+    .after-scrolling {
+        top: 50%;
+        background-color: #191919;
+    }
+
+    .download-button {
+        background-color: #b3b358;
+        color: #eeeeee;
+    }
+
+    #scrolling-box {
+        filter: brightness(90%);
+    }
+
+    .footer-box {
+        background-color: #222222;
+    }
+}
