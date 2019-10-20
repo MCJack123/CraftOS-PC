@@ -7,7 +7,7 @@ var details = [
     {
         "image": "peripherals.png",
         "title": "Full Peripheral Support with Directory Mounting",
-        "text": "CraftOS-PC supports many of the peripherals available in ComputerCraft, including monitors, printers, disk drives, modems, and more. You can connect and disconnect peripherals using the attach and detach commands from the shell. The <pre>periphemu</pre> API can also be used to manipulate peripherals from Lua."
+        "text": "CraftOS-PC supports many of the peripherals available in ComputerCraft, including monitors, printers, disk drives, modems, and more. You can connect and disconnect peripherals using the attach and detach commands from the shell. The <pre>periphemu</pre> API can also be used to manipulate peripherals from Lua. In addition, the mount and unmount commands and the <pre>mounter</pre> API allow mounting real directories inside the CraftOS environment."
     },
     {
         "image": "multicomputer.png",
