@@ -13,7 +13,7 @@ body {
     width: 100%;
 }
 
-h1 {
+.title-title {
     font-size: 64pt;
     margin-bottom: 24px;
     margin-top: 24px;
@@ -71,7 +71,7 @@ img {
     font-size: 24pt;
 }
 
-h5 {
+#download-source {
     margin-top: 20px;
 }
 
@@ -98,7 +98,25 @@ h5 {
       min-width: 620px;
       width: 620px;
     }
-  }
+}
+
+@media screen and (max-width: 800px) {
+    .details-entry {
+        flex-direction: column;
+    }
+    .details-image-container {
+        width: 100%;
+    }
+    .details-content {
+        margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .title-title {
+        font-size: 56px;
+    }
+}
 
 .details-image {
     width: 100%;
@@ -160,6 +178,37 @@ pre {
     padding: 10px;
 }
 
+.docs-header {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    background-color: #eeeeee;
+    align-content: center;
+    align-items: center;
+}
+
+.docs-header > * {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.docs-box {
+    display: flex;
+    flex-direction: row;
+    min-height: calc(100% - 100px);
+}
+
+#docs-sidebar {
+    width: 25%;
+    max-width: 300px;
+    background-color: #dddddd;
+    padding: 25px;
+}
+
+#docs-content {
+    padding: 25px;
+}
+
 @keyframes moveSlideshow {
     100% { 
         transform: translateX(-50%);  
@@ -192,5 +241,13 @@ pre {
 
     .footer-box {
         background-color: #222222;
+    }
+
+    .docs-header {
+        background-color: #222222;
+    }
+
+    #docs-sidebar {
+        background-color: #333333;
     }
 }
