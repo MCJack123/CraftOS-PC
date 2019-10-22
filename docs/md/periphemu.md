@@ -19,4 +19,5 @@ The `periphemu` API provides low-level access to the peripheral emulation layer.
 ## Special peripherals
 Some peripherals have special options that can be specified as the third argument to "attach" or `periphemu.create`.
 * drive peripherals accept a third argument that sets the initial mounted path in the drive. This can be either a global path to a folder or audio file, a number specifying a disk ID, or a treasure path in the form `treasure:<path>`.
+  * There is a new method on the drive called `insertDisk` that allows you to change the mount without reattaching the peripheral. This method is also exported through the `disk` API.
 * printer peripherals require a third argument specifying where the printed output will be stored. This should be a full path to a PDF file (if using a build supporting PDF) or a directory.

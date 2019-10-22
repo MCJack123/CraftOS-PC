@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>CraftOS-PC - Documentation - Graphics Mode</title>
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../site.css" type="text/css">
+        <script src="../dist/marked.min.js"></script>
+    </head>
+    <body>
+        <div id="main">
+            <div class="docs-header">
+                <a href="../index.html"><h2>CraftOS-PC</h2></a>
+                <a href="getting-started.html"><h4>Getting Started</h4></a>
+                <a href="api-reference.html"><h4>API Reference</h4></a>
+            </div>
+            <div class="docs-box">
+                <div id="docs-sidebar"></div>
+                <div id="docs-content"></div>
+            </div>
+            <div class="footer-box">
+                <span>&copy; 2019 JackMacWindows</span>
+                <a href="./">Documentation</a>
+                <a href="https://github.com/MCJack123/craftos2/">GitHub</a>
+            </div>
+        </div>
+        <script>
+            var xhr = new XMLHttpRequest();
+            xhr.addEventListener("load", function() {document.getElementById("docs-content").innerHTML = marked(this.responseText);});
+            xhr.open("GET", "md/" + location.href.replace(".html", ".md").split("/").reverse()[0]);
+            xhr.send();
+            var xhr2 = new XMLHttpRequest();
+            xhr2.addEventListener("load", function() {document.getElementById("docs-sidebar").innerHTML = marked(this.responseText);});
+            xhr2.open("GET", "md/sidebar.md");
+            xhr2.send();
+        </script>
+    </body>
+</html>

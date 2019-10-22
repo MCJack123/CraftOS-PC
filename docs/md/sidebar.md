@@ -13,10 +13,10 @@
 * [HTTP Server](http-server.html)
 * [CC: Tweaked Features](cctweaked.html)
 * [Auto-Updater](autoupdate.html)
+* [CLI Mode & Flags](cli.html)
 * [Plugin System](plugins.html)
-* [CLI mode & flags](cli.html)
 
 ### API Reference
 * [CraftOS APIs (Official Wiki)](http://www.computercraft.info/wiki/Category:APIs)
 * [CC: Tweaked APIs](javascript:alert())
-* [CraftOS-PC APIs](reference.html)
+* [CraftOS-PC APIs](https://github.com/MCJack123/craftos2/blob/master/DOCUMENTATION.md)
