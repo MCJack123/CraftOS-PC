@@ -19,7 +19,7 @@ body {
     margin-top: 24px;
 }
 
-a {
+a[href] {
     text-decoration: none;
     color: #444444;
 }
@@ -207,6 +207,14 @@ pre {
 
 #docs-content {
     padding: 25px;
+    width: 75%;
+    min-width: calc(100% - 300px);
+    overflow: hidden;
+}
+
+#docs-content img {
+    max-width: 100%;
+    height: auto;
 }
 
 @keyframes moveSlideshow {
@@ -221,7 +229,7 @@ pre {
         background-color: #191919;
     }
 
-    a {
+    a[href] {
         color: #aaaaaa;
     }
 
