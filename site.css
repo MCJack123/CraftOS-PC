@@ -185,6 +185,7 @@ pre {
     background-color: #eeeeee;
     align-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .docs-header > * {
@@ -215,6 +216,57 @@ pre {
 #docs-content img {
     max-width: 100%;
     height: auto;
+}
+
+.hotdog {
+    display: none;
+}
+
+@media screen and (max-width: 480px) {
+    #docs-sidebar {
+        position: fixed;
+        transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transition: ease-out .25s;
+        z-index: 5;
+        width: 200px;
+        height: calc(100% - 100px);
+        overflow: scroll;
+    }
+
+    #docs-sidebar.open {
+        transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+    }
+
+    #docs-content {
+        transition: ease-out .25s;
+        padding-top: 0px;
+    }
+
+    #docs-content.gray {
+        filter: brightness(50%);
+    }
+
+    .docs-header {
+        position: fixed;
+        top: 0px;
+        z-index: 10;
+    }
+
+    .docs-header h4 {
+        display: none;
+    }
+
+    .docs-box {
+        margin-top: 50px;
+    }
+
+    .hotdog {
+        display: inline;
+    }
 }
 
 @keyframes moveSlideshow {
