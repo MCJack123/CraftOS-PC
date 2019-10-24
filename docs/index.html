@@ -7,7 +7,30 @@
         <script src="../dist/marked.min.js"></script>
         <link rel="icon" href="favicon.ico">
         <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
-        <script src="docs.js"></script>
+        <script>
+            var nav = false;
+            function toggleNav() {
+                if (nav) {
+                    document.getElementById("docs-sidebar").className = "";
+                    document.getElementById("docs-content").className = "";
+                } else {
+                    document.getElementById("docs-sidebar").className = "open";
+                    document.getElementById("docs-content").className = "gray";
+                }
+                nav = !nav;
+                return false;
+            }
+            document.addEventListener("DOMContentLoaded", function() {
+                var xhr = new XMLHttpRequest();
+                xhr.addEventListener("load", function() {document.getElementById("docs-content").innerHTML = marked(this.responseText);});
+                xhr.open("GET", "md/index.md");
+                xhr.send();
+                var xhr2 = new XMLHttpRequest();
+                xhr2.addEventListener("load", function() {document.getElementById("docs-sidebar").innerHTML = marked(this.responseText);});
+                xhr2.open("GET", "md/sidebar.md");
+                xhr2.send();
+            }, false);
+        </script>
     </head>
     <body>
         <div id="main">
