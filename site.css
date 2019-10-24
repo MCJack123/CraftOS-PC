@@ -145,17 +145,23 @@ pre {
     position: relative;
     overflow: hidden;
     transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
     filter: brightness(50%);
     position: fixed;
 }
 
 #scrolling-content {
     animation: moveSlideshow 60s linear infinite;
+    -webkit-animation: moveSlideshow 60s linear infinite;
+    -moz-animation: moveSlideshow 60s linear infinite;
     float: none;
     vertical-align: top;
     height: 100%;
     overflow: visible;
     transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
     display: flex;
     flex-direction: row;
 }
@@ -266,6 +272,18 @@ pre {
 
     .hotdog {
         display: inline;
+    }
+}
+
+@-webkit-keyframes moveSlideshow {
+    100% { 
+        -webkit-transform: translateX(-50%);  
+    }
+}
+
+@-moz-keyframes moveSlideshow {
+    100% { 
+        -moz-transform: translateX(-50%);  
     }
 }
 
