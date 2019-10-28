@@ -2,14 +2,14 @@
 CraftOS-PC can be installed either through the prebuilt binaries available on the [releases](https://github.com/MCJack123/craftos2/releases) page, or by building it from the source code on GitHub.
 
 ## Windows
-1. Download the setup program from the [home page](../index.html).
+1. Download the setup program from the [home page](../).
 2. Double-click the downloaded `CraftOS-PC-Setup.exe` file to open the installer.
 3. When prompted to run as administrator, click Yes.
 4. Follow the instructions in the setup wizard.
 5. Once installed, CraftOS-PC will be available in the Start menu (and on the Desktop if selected).
 
 ## Mac
-1. Download the application archive from the [home page](../index.html).
+1. Download the application archive from the [home page](../).
 2. Open the disk image in the Finder.
 3. Drag `CraftOS-PC.app` into the Applications folder icon.
 4. Open CraftOS-PC from Applications or Launchpad.
@@ -17,7 +17,7 @@ CraftOS-PC can be installed either through the prebuilt binaries available on th
 ## <a name="Linux">Linux</a>
 CraftOS-PC is provided in binary form as both an Ubuntu package and an Arch Linux AUR package. It is not available as a plain binary for other distributions, so non-Ubuntu/Arch users will have to build from source.
 
-### Ubuntu
+### Ubuntu (18.04, 19.04, 19.10)
 Run these commands in the shell:
 ```sh
 sudo add-apt-repository ppa:jackmacwindows/ppa
@@ -27,7 +27,7 @@ sudo apt install craftos-pc
 Once installed, CraftOS-PC can be run either from the launcher or with the `craftos` command.
 
 ### Arch Linux
-Install the `craftos-pc` package using your favorite AUR package manager. (If you're using Arch I assume you either know what this means or know how to figure out what this means.) Once installed, CraftOS-PC can be run using the `craftos` command.
+Install the `craftos-pc` package using your favorite AUR package manager. (If you're using Arch I assume you either know what this means or know how to figure out what this means.) Once installed, CraftOS-PC can be run using the `craftos` command or from your desktop environment's launcher.
 
 # Building from source
 If you are using an operating system without binaries available (or you want the latest development features), you can build CraftOS-PC from the source code.
