@@ -145,17 +145,23 @@ pre {
     position: relative;
     overflow: hidden;
     transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
     filter: brightness(50%);
     position: fixed;
 }
 
 #scrolling-content {
     animation: moveSlideshow 60s linear infinite;
+    -webkit-animation: moveSlideshow 60s linear infinite;
+    -moz-animation: moveSlideshow 60s linear infinite;
     float: none;
     vertical-align: top;
     height: 100%;
     overflow: visible;
     transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
     display: flex;
     flex-direction: row;
 }
@@ -185,6 +191,7 @@ pre {
     background-color: #eeeeee;
     align-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .docs-header > * {
@@ -215,6 +222,69 @@ pre {
 #docs-content img {
     max-width: 100%;
     height: auto;
+}
+
+.hotdog {
+    display: none;
+}
+
+@media screen and (max-width: 480px) {
+    #docs-sidebar {
+        position: fixed;
+        transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transition: ease-out .25s;
+        z-index: 5;
+        width: 200px;
+        height: calc(100% - 100px);
+        overflow: scroll;
+    }
+
+    #docs-sidebar.open {
+        transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+    }
+
+    #docs-content {
+        transition: ease-out .25s;
+        padding-top: 0px;
+    }
+
+    #docs-content.gray {
+        filter: brightness(50%);
+    }
+
+    .docs-header {
+        position: fixed;
+        top: 0px;
+        z-index: 10;
+    }
+
+    .docs-header h4 {
+        display: none;
+    }
+
+    .docs-box {
+        margin-top: 50px;
+    }
+
+    .hotdog {
+        display: inline;
+    }
+}
+
+@-webkit-keyframes moveSlideshow {
+    100% { 
+        -webkit-transform: translateX(-50%);  
+    }
+}
+
+@-moz-keyframes moveSlideshow {
+    100% { 
+        -moz-transform: translateX(-50%);  
+    }
 }
 
 @keyframes moveSlideshow {
