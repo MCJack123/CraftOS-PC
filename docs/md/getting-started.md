@@ -3,7 +3,7 @@ Upon opening CraftOS-PC, the CraftOS shell will appear, ready for commands.
 
 ![Shell](../images/shell.png)
 
-CraftOS comes with many built-in programs that you can run from the shell. Many commands are similar in function to Windows or Linux commands, though do note that the default shell built into CraftOS is limited in functionality, and doesn't support many features common to modern terminals. (I've also included my own shell that's similar to Bash in the ROM if you want a more featured shell. See [cash](cash.html) for more info.)
+CraftOS comes with many built-in programs that you can run from the shell. Many commands are similar in function to Windows or Linux commands, though do note that the default shell built into CraftOS is limited in functionality, and doesn't support many features common to modern terminals.
 
 If you want to see all programs available to run, type "programs" into the shell and press Enter. These are all of the default programs available on a stock computer:
 
