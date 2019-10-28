@@ -1,14 +1,29 @@
 <html>
     <head>
         <meta charset="utf8">
+        <meta property="og:title" content="CraftOS-PC">
+        <meta property="og:description" content="A fast and feature-filled ComputerCraft emulator">
+        <meta property="og:image" content="https://mcjack123.github.io/CraftOS-PC/images/image1.png">
+        <meta property="og:url" content="https://mcjack123.github.io/CraftOS-PC/">
+        <meta property="twitter:title" content="CraftOS-PC">
+        <meta property="twitter:description" content="A fast and feature-filled ComputerCraft emulator">
+        <meta property="twitter:image" content="https://mcjack123.github.io/CraftOS-PC/images/image1.png">
+        <meta property="twitter:card" content="summary_large_index">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name=viewport content="width=device-width, initial-scale=1">
+        <meta name="description" content="The fastest emulator for ComputerCraft 1.8, CraftOS-PC adds many new features to CraftOS while staying as lightweight as possible.">
         <title>CraftOS-PC - Documentation - Plugin System</title>
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../site.css" type="text/css">
         <script src="../dist/marked.min.js"></script>
+        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
+        <script src="docs.js"></script>
     </head>
     <body>
         <div id="main">
             <div class="docs-header">
+                    <a href="#" onclick="toggleNav()" class="hotdog"><i class="fas fa-bars" style="font-size: 24px;"></i></a>
                 <a href="../"><h2>CraftOS-PC</h2></a>
                 <a href="getting-started.html"><h4>Getting Started</h4></a>
                 <a href="api-reference.html"><h4>API Reference</h4></a>
@@ -23,15 +38,5 @@
                 <a href="https://github.com/MCJack123/craftos2/">GitHub</a>
             </div>
         </div>
-        <script>
-            var xhr = new XMLHttpRequest();
-            xhr.addEventListener("load", function() {document.getElementById("docs-content").innerHTML = marked(this.responseText);});
-            xhr.open("GET", "md/" + location.href.replace(".html", ".md").split("/").reverse()[0]);
-            xhr.send();
-            var xhr2 = new XMLHttpRequest();
-            xhr2.addEventListener("load", function() {document.getElementById("docs-sidebar").innerHTML = marked(this.responseText);});
-            xhr2.open("GET", "md/sidebar.md");
-            xhr2.send();
-        </script>
     </body>
 </html>
