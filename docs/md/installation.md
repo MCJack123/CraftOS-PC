@@ -16,7 +16,7 @@ CraftOS-PC can be installed either through the prebuilt binaries available on th
 ### Note for Catalina Users
 macOS Catalina adds a new policy requiring all apps to be notarized with a Developer ID. Because I don't have a paid dev account, CraftOS-PC cannot be notarized, meaning Catalina users can't just double click on the app at first launch. **When opening CraftOS-PC for the first time, make sure to right-click on the app and click Open, instead of double-clicking the app as usual.**
 
-## <a name="Linux">Linux</a>
+## Linux
 CraftOS-PC is provided in binary form as both an Ubuntu package and an Arch Linux AUR package. It is not available as a plain binary for other distributions, so non-Ubuntu/Arch users will have to build from source.
 
 ### Ubuntu (18.04, 19.04, 19.10)
