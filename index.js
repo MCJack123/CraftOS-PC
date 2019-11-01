@@ -93,7 +93,7 @@ function ready() {
     if (icons.platform.name == "desktop") {
         if (icons.os.name == "apple") link.href = "https://github.com/MCJack123/craftos2/releases/download/latest/CraftOS-PC.dmg";
         else if (icons.os.name == "windows") link.href = "https://github.com/MCJack123/craftos2/releases/download/latest/CraftOS-PC-Setup.exe";
-        else if (icons.os.name == "linux") link.href = "docs/installation.html#Linux";
+        else if (icons.os.name == "linux") link.href = "docs/installation.html#linux";
         else {
             link.href = "https://github.com/MCJack123/craftos2/";
             document.getElementsByClassName("download-text")[0].innerText = "View on GitHub";
