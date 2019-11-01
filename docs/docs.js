@@ -12,7 +12,7 @@ function toggleNav() {
 }
 document.addEventListener("DOMContentLoaded", function() {
     var xhr = new XMLHttpRequest();
-    xhr.addEventListener("load", function() {document.getElementById("docs-content").innerHTML = marked(this.responseText);});
+    xhr.addEventListener("load", function() {document.getElementById("docs-content").innerHTML = marked(this.responseText); location.hash = location.hash;});
     xhr.open("GET", "md/" + location.href.replace(".html", ".md").split("/").reverse()[0]);
     xhr.send();
     var xhr2 = new XMLHttpRequest();
