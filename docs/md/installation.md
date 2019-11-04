@@ -1,6 +1,12 @@
 # Installation
 CraftOS-PC can be installed either through the prebuilt binaries available on the [releases](https://github.com/MCJack123/craftos2/releases) page, or by building it from the source code on GitHub.
 
+## Requirements
+* Windows Vista or later, 64-bit only
+* macOS/OS X Mavericks 10.9.5 or later
+* Ubuntu 18.04 Bionic, 19.04 Disco, or 19.10 Eoan
+* Arch Linux or derivative
+
 ## Windows
 1. Download the setup program from the [home page](../).
 2. Double-click the downloaded `CraftOS-PC-Setup.exe` file to open the installer.
