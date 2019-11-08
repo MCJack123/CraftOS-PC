@@ -15,6 +15,7 @@
 * [Auto-Updater](autoupdate.html)
 * [CLI Mode & Flags](cli.html)
 * [Plugin System](plugins.html)
+* [CraftOS-PC *Accelerated*](accelerated.html)
 
 ### API Reference
 * [CraftOS APIs (Official Wiki)](http://www.computercraft.info/wiki/Category:APIs)
