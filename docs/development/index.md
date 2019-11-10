@@ -1,0 +1,2 @@
+# CraftOS-PC Documentation (Development)
+Welcome to the documentation for CraftOS-PC. CraftOS-PC is a fast and resource-light emulator for ComputerCraft 1.8 that adds many new features to CraftOS. It's built entirely with C++, allowing it to ditch the Java VM that other emulators use, reducing resource use while improving processing speed.
