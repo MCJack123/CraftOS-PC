@@ -7,6 +7,7 @@ Here are the peripherals currently available in CraftOS-PC:
 * monitor
 * printer
 * [computer](multicomp.html)
+* [debugger](debugger.html)
 
 ## From the shell
 To attach a peripheral from the shell, you can use the "attach" command. It takes two arguments: the side or ID of the peripheral (`left`, `1`, `monitor_4`), and the type of peripheral to attach. (Some peripherals, such as drive, support a third argument; these are described later.) The peripheral will then be attached to the computer. It can then be used with any program that uses peripherals, such as the "monitor" command.  
