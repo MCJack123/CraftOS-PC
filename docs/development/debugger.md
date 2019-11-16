@@ -5,10 +5,10 @@ CraftOS-PC v2.2 introduces a new debugger peripheral that allows in-depth examin
 The debugger has multiple windows that can show information about the process. It has a multishell-style tab bar at the top, allowing you to quickly switch between each window.
 
 ### Debugger
-The Debugger window is the main window of the debugger. It has a GDB-style interface that allows stepping through lines, setting breakpoints, and examining the environment. You can trigger the debugger either by calling the `break()` method of the debugger peripheral, or you can hold Ctrl-T on the debugger window to trigger a manual break.
+The Debugger window is the main window of the debugger. It has a GDB-style interface that allows stepping through lines, setting breakpoints, and examining the environment. You can trigger the debugger either by calling the `break()` method of the debugger peripheral, or you can hold Ctrl-T on the debugger window to trigger a manual break. When in break mode, the `locals` table contains a key-value list of all locals available in the environment.
 
-### File Viewer
-The File Viewer window allows you to view the file that is currently running while in break mode. It highlights the current line the computer is executing inside the script it's running. You can press the enter key to step one line.
+### Call Stack
+The Call Stack window shows the path of the functions that ran from the start of the current coroutine to the current function. You can double-click on an entry to view where the code is currently being run. To return back to the main screen, click on the arrow in the top-left corner.
 
 ### Profiler
 The Profiler window is a basic profiler that shows run time and call counts for each function being run. Just click on the record button at the top, and the calls will start to be recorded. Press record again to stop recording.
