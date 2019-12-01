@@ -2,6 +2,7 @@
 * [What is CraftOS-PC?](about.html)
 * [Downloading & Installing](installation.html)
 * [Getting Started](getting-started.html)
+* [Changelog](changelog.html)
 
 ### New Features in CraftOS-PC
 * [Peripheral Emulation](periphemu.html)
