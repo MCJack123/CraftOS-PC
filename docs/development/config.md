@@ -16,6 +16,7 @@ These are the config variables available as of CraftOS-PC v2.2. *Variables marke
 * `disable_lua51_features` [false]: Whether to disable some Lua 5.1 features in the BIOS
 * `http_enable` [true]: Whether to enable the `http` API
 * `ignoreHotkeys` [false]: Whether to ignore hotkeys such as F2, F3, F11
+* `initialComputer` [0]: The computer to start when opening CraftOS-PC
 * `isColor` [true] (computer-local): Whether the emulated computer is an Advanced Computer (color) or Standard Computer (no color)
 * `maximumFilesOpen` [128]: Maximum number of files that can be open at once
 * `mount_mode` [2]: Specifies security settings for mounting directories
