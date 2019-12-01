@@ -1,6 +1,5 @@
 # Changelog
-
-## v2.2
+## v2.2p1 - December 1, 2019
 * Added new debugger peripheral
   * Opens in separate window
   * Four tabs available
