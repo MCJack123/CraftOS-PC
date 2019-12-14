@@ -1,4 +1,10 @@
 # Changelog
+## v2.2 - December ?, 2019
+* Added F12 hotkey to copy screenshot to clipboard (Windows & Mac only)
+  * Calling `term.screenshot("clipboard")` will have the same effect
+* Fixed default IO handles (stdin/out/err)
+* Changed `_HOST` variable to more accurately represent ComputerCraft
+* Fixed `delete.lua`
 ## v2.2p1 - December 1, 2019
 * Added new debugger peripheral
   * Opens in separate window
@@ -31,6 +37,7 @@
     * `register_getLibrary`: Recieves the address of the `library_t * getLibrary(std::string name)` function
     * `register_registerPeripheral`: Recieves the address of the `void registerPeripheral(std::string name, peripheral_init initializer)` function
     * `register_addMount`: Recieves the address of the `bool addMount(Computer * comp, const char * real_path, const char * comp_path, bool read_only)` function
+    * `register_termQueueProvider`: Recieves the address of the `void termQueueProvider(Computer *comp, const char *(*callback)(lua_State*, void*), void* data)` function
 * Added new config options
   * `vanilla`: Set to `true` to disable all CraftOS-PC features
   * `initialComputer`: The first computer that starts when opening CraftOS-PC
