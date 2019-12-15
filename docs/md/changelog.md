@@ -1,10 +1,11 @@
 # Changelog
-## v2.2 - December ?, 2019
+## v2.2 - December 15, 2019
 * Added F12 hotkey to copy screenshot to clipboard (Windows & Mac only)
   * Calling `term.screenshot("clipboard")` will have the same effect
 * Fixed default IO handles (stdin/out/err)
 * Changed `_HOST` variable to more accurately represent ComputerCraft
 * Fixed `delete.lua`
+* `wget.lua` no longer requires a file name (CC:T behavior)
 * Added `register_termQueueProvider` capability, which recieves the address of the `void termQueueProvider(Computer *comp, const char *(*callback)(lua_State*, void*), void* data)` function
 ## v2.2p1 - December 1, 2019
 * Added new debugger peripheral

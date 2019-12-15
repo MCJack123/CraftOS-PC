@@ -2,6 +2,7 @@
 * [What is CraftOS-PC?](about.html)
 * [Downloading & Installing](installation.html)
 * [Getting Started](getting-started.html)
+* [Changelog](changelog.html)
 
 ### New Features in CraftOS-PC
 * [Peripheral Emulation](periphemu.html)
@@ -13,6 +14,7 @@
 * [HTTP Server](http-server.html)
 * [CC: Tweaked Features](cctweaked.html)
 * [Auto-Updater](autoupdate.html)
+* [Debugger](debugger.html)
 * [CLI Mode & Flags](cli.html)
 * [Plugin System](plugins.html)
 * [CraftOS-PC *Accelerated*](accelerated.html)
