@@ -33,6 +33,11 @@ var details = [
         "image": "extension.png",
         "title": "Extensible",
         "text": "CraftOS-PC features a plugin API, allowing extending the functionality of CraftOS through the use of C++ code. One example of a plugin available is a compatibility layer for CCEmuX: it emulates the <pre>ccemux</pre> API, allowing programs designed for it to work with CraftOS-PC. It may also be possible for some C Lua libraries to work with CraftOS-PC. See the documentation for more details."
+    },
+    {
+        "image": "debugger_demo.png",
+        "title": "Brand-New Debugger",
+        "text": "CraftOS-PC v2.2 introduces the debugger peripheral, which allows you to set breakpoints, step through programs, and print messages to the debug console without modifying the main computer's screen. This can be extremely useful for finding that one little problem in your program. For more information on how to use it, see the full documentation for the debugger."
     }
 ];
 
