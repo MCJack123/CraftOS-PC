@@ -9,7 +9,7 @@ If you want to see all programs available to run, type "programs" into the shell
 
 ![Programs](../images/programs.png)
 
-ComputerCraft is built upon the Lua programming language, which is a simple scripting language similar to JavaScript. You can easily write your own programs using the APIs available in CraftOS.
+ComputerCraft is built upon the Lua programming language, which is a simple scripting language similar in concept to JavaScript. You can easily write your own programs using the APIs available in CraftOS.
 
 `edit` is the built-in text editor, which allows you to write Lua programs inside CraftOS. It can also run your program from the editor and even print them using the printer peripheral (see [Peripherals](peripherals.html) for more info).
 
