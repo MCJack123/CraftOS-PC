@@ -7,6 +7,7 @@
 * Fixed `delete.lua`
 * `wget.lua` no longer requires a file name (CC:T behavior)
 * Added `register_termQueueProvider` capability, which recieves the address of the `void termQueueProvider(Computer *comp, const char *(*callback)(lua_State*, void*), void* data)` function
+
 ## v2.2p1 - December 1, 2019
 * Added new debugger peripheral
   * Opens in separate window
