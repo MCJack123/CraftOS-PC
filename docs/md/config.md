@@ -2,7 +2,7 @@
 CraftOS-PC includes the same configuration options available in base ComputerCraft, plus some more to control the new features in CraftOS-PC. These options are global to all computers (except `isColor`).
 
 ## Variables
-These are the config variables available as of CraftOS-PC v2.2. *Variables marked `global.json` only are not exported through the `config` API and must be edited manually.*
+These are the config variables available as of CraftOS-PC v2.2.2. *Variables marked `global.json` only are not exported through the `config` API and must be edited manually.*
 * `abortTimeout` [17000]: Maximum time to wait for a program to yield before forcibly terminating
 * `checkUpdates` [true]: Whether to check for updates at program start
 * `clockSpeed` [20]: Terminal refresh rate
@@ -19,11 +19,13 @@ These are the config variables available as of CraftOS-PC v2.2. *Variables marke
 * `initialComputer` [0]: The computer to start when opening CraftOS-PC
 * `isColor` [true] (computer-local): Whether the emulated computer is an Advanced Computer (color) or Standard Computer (no color)
 * `maximumFilesOpen` [128]: Maximum number of files that can be open at once
+* `maxRecordingLength` [15]: The maximum number of seconds that a recording will run until it auto-stops (note that longer time * higher framerate = longer write time = higher memory usage)
 * `mount_mode` [2]: Specifies security settings for mounting directories
   * `none` (0): Do not allow mounting directories
   * `ro strict` or `ro_strict` (1): Force all mounts to be read-only
   * `ro` (2): Mounts default to read-only if not explicitly specified
   * `rw` (3): Mounts default to read-write unless marked read-only (v2.1.2 and below behavior)
+* `recordingFPS` [10]: The framerate of GIF recordings. This value should be a divisor of `clockSpeed`, as the actual framerate is determined by integer division of both values.
 * `romReadOnly` [true]: Whether the ROM is mounted as read-only (change this only if you know what you're doing!)
 * `vanilla` [false]: Whether to disable all CraftOS-PC-specific features
 

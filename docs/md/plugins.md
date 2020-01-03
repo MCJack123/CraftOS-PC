@@ -1,5 +1,5 @@
 # Plugin System
-CraftOS-PC features a new plugin system that allows importing external Lua libraries into the ComputerCraft environment. Many pre-existing Lua libraries work out of the box, including some LuaRocks. A CCEmuX adapter plugin is avaiable on the GitHub repo.
+CraftOS-PC features a new plugin system that allows importing external Lua libraries into the ComputerCraft environment. Many pre-existing Lua libraries work out of the box, including some LuaRocks. A CCEmuX adapter plugin is avaiable with all binary versions of CraftOS-PC v2.2 and later.
 
 ## Installing
 Plugins can be installed in these locations depening on your platform:
