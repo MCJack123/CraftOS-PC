@@ -3,7 +3,6 @@
 * [Downloading & Installing](installation.html)
 * [Getting Started](getting-started.html)
 * [Migrating from CCEmuX](ccemux.html)
-* [Changelog](changelog.html)
 
 ### New Features in CraftOS-PC
 * [Peripheral Emulation](periphemu.html)
@@ -19,6 +18,11 @@
 * [CLI Mode & Flags](cli.html)
 * [Plugin System](plugins.html)
 * [CraftOS-PC *Accelerated*](accelerated.html)
+
+### Other Information
+* [Program Compatibility](https://docs.google.com/spreadsheets/d/1PtZZA4Vcsk733gSlSGH3VpecaGSp9U9AJmDKkWRssa0/edit?usp=sharing)
+* [Contact](contact.html)
+* [Changelog](changelog.html)
 
 ### API Reference
 * [CraftOS APIs (Official Wiki)](http://www.computercraft.info/wiki/Category:APIs)
