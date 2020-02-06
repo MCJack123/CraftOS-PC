@@ -1,0 +1,249 @@
+@font-face {
+    font-family: "Seti-Icons";
+    src: url(vendor/seti/seti.woff) format("woff");
+}
+
+canvas.emscripten { 
+    border: 0px none; 
+    background-color: black; 
+    align-items: center;
+    vertical-align: middle;
+    align-self: center;
+}
+
+#status {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 30px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: rgb(120, 120, 120);
+}
+
+body {
+    margin: 0px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow: hidden;
+}
+
+#main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+#sidebar {
+    background-color: #333333;
+    width: 50px;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar > * {
+    margin-top: 5px;
+}
+
+.sidebar-button {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    color: #858585;
+    font-size: 25px;
+    vertical-align: middle;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    cursor: pointer;
+}
+
+.sidebar-button.selected {
+    color: #ffffff;
+}
+
+#browser {
+    background-color: #252525;
+    width: 20%;
+    height: 100%;
+}
+
+#browser-title {
+    color: #bbbbbb;
+    width: 100%;
+    padding: 15px;
+    padding-left: 25px;
+    font-size: 8pt;
+    text-transform: uppercase;
+}
+
+li, ul {
+    padding-left: 5px;
+}
+
+#browser-root {
+    padding-left: 0px;
+    margin: 0px;
+    color: #bbbbbb;
+}
+
+#browser-root > li.collapsibleListClosed > .browser-title:before {
+    content: "\f105";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+#browser-root > li.collapsibleListOpen > .browser-title:before {
+    content: "\f107";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.browser-title {
+    font-size: 8pt;
+    padding-left: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-weight: bold;
+    color: #bbbbbb;
+    background-color: #383838;
+    text-transform: uppercase;
+    width: 100%;
+    display: block;
+}
+
+.browser-list {
+    font-size: 10pt;
+    color: #bbbbbb;
+    background-color: #252525;
+    text-transform: none;
+    margin: none;
+    line-height: 1.75;
+}
+
+li {
+    list-style-type: none;
+}
+
+.browser-item {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 10pt;
+    color: #bbbbbb;
+    background-color: #252525;
+    text-transform: none;
+    margin: none;
+    line-height: 1.75;
+}
+
+.collapsibleList li{
+    list-style-image : none;
+    cursor           : auto;
+}
+
+li.collapsibleListOpen{
+    list-style-image : none;
+    cursor           : pointer;
+}
+
+li.collapsibleListOpen > .browser-item:before {
+    content: "\f107";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+li.collapsibleListClosed{
+    list-style-image : none;
+    cursor           : pointer;
+}
+
+li.collapsibleListClosed > .browser-item:before {
+    content: "\f105";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+#editor {
+    background-color: #252525;
+    width: calc(80% - 50px);
+    height: 100%;
+}
+
+#editor-tabbar {
+    background-color: #252525;
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+}
+
+.editor-tab {
+    background-color: #2d2d2d;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+    align-items: center;
+    text-align: left;
+    color: #929292;
+    min-width: 100px;
+    margin-right: 1px;
+    font-size: 10pt;
+    display: table;
+    cursor: pointer;
+    table-layout: auto;
+}
+
+.editor-tab span {
+    vertical-align: middle;
+    display: table-cell;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-collapse: collapse;
+}
+
+.editor-tab.selected {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.editor-tab span.editor-tab-button.saved {
+    opacity: 0;
+}
+
+.editor-tab.selected span.editor-tab-button.saved {
+    opacity: 100%;
+}
+
+#editor-content {
+    background-color: #1e1e1e;
+    width: 100%;
+    height: calc(100% - 35px);
+}
+
+#editor-terminal {
+    background-color: #1e1e1e;
+    width: 100%;
+    height: calc(100% - 35px);
+    align-items: center;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    top: 0px;
+    left: 0px;
+}
+
+#editor-default {
+    background-color: #1e1e1e;
+    color: #eeeeee;
+    width: 100%;
+    height: calc(100% - 35px);
+}
