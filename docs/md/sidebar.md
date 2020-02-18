@@ -21,6 +21,7 @@
 
 ### Other Information
 * [Program Compatibility](https://docs.google.com/spreadsheets/d/1PtZZA4Vcsk733gSlSGH3VpecaGSp9U9AJmDKkWRssa0/edit?usp=sharing)
+  * [Submit a Program](https://forms.gle/5WhU7K52VAgr5DR68)
 * [Contact](contact.html)
 * [Changelog](changelog.html)
 
