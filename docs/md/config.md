@@ -2,9 +2,14 @@
 CraftOS-PC includes the same configuration options available in base ComputerCraft, plus some more to control the new features in CraftOS-PC. These options are global to all computers (except `isColor`).
 
 ## Variables
-These are the config variables available as of CraftOS-PC v2.2.2. *Variables marked `global.json` only are not exported through the `config` API and must be edited manually.*
+These are the config variables available as of CraftOS-PC v2.2.4. *Variables marked `global.json` only are not exported through the `config` API and must be edited manually.*
 * `abortTimeout` [17000]: Maximum time to wait for a program to yield before forcibly terminating
 * `checkUpdates` [true]: Whether to check for updates at program start
+* `cliControlKeyMode` [0] (`global.json` only): Sets the way CLI mode reads control keys
+  * 0: Control/Alt keys are available with Home/End, and original keys can be pressed in combination with Shift
+  * 1: Opposite of mode 0; Control/Alt are available with Shift+Home/End
+  * 2: Control/Alt keys can be pressed with Esc, C/A
+  * 3: Control/Alt keys can be pressed with Ctrl-C/Ctrl-\\
 * `clockSpeed` [20]: Terminal refresh rate
 * `computerName` [] (computer-local): Name of the computer (cannot be set with `config` API)
 * `configReadOnly` [false]: Whether the configuration settings should not be able to be changed inside CraftOS (if `true`, must be disabled from `global.json`)
