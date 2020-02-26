@@ -8,15 +8,25 @@
         <p>The three lastest files are listed here. Other files are available in this directory as <code style="display: inline">CraftOS-PC-Nightly_%m-%d-%y.exe</code>.</p>
         <ul id="links"></ul>
         <script>
-            for (var i = 0; i < 3; i++) {
-                var el = document.createElement("li");
-                var a = document.createElement("a");
+            for (var i = 0, found = 0; found < 3; i++) {
                 var d = new Date();
                 d.setDate(d.getDate() - i <= 0 ? d.getDate() - i - 1 : d.getDate() - i);
-                a.href = "CraftOS-PC-Nightly_" + (d.getMonth()+1).toString().padStart(2, '0') + "-" + d.getDate().toString().padStart(2, '0') + "-" + d.getFullYear().toString().slice(-2) + ".exe";
-                a.innerText = d.toLocaleDateString(undefined, {month: "long", day: "numeric", year: "numeric"});
-                el.appendChild(a);
-                document.getElementById("links").appendChild(el);
+                if (d.UTC() < 1582675200) break; // epoch = 2/26/20 00:00:00
+                let xhr = XMLHttpRequest();
+                let path = "CraftOS-PC-Nightly_" + (d.getMonth()+1).toString().padStart(2, '0') + "-" + d.getDate().toString().padStart(2, '0') + "-" + d.getFullYear().toString().slice(-2) + ".exe";
+                xhr.open("GET", path);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                        var el = document.createElement("li");
+                        var a = document.createElement("a");
+                        a.href = path;
+                        a.innerText = d.toLocaleDateString(undefined, {month: "long", day: "numeric", year: "numeric"});
+                        el.appendChild(a);
+                        document.getElementById("links").appendChild(el);
+                        found++;
+                    }
+                }
+                xhr.send();
             }
         </script>
     </body>
