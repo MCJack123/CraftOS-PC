@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <h1>Nightly releases of CraftOS-PC for Windows</h1>
+        <p>Warning: These are experimental and may not work correctly. The files are available as the raw binary; installer & ROM not included.</p>
+        <p>The three lastest files are listed here. Other files are available in this directory as <pre>CraftOS-PC-Nightly_%m-%d-%y.exe</pre>.</p>
+        <ul id="links"></ul>
+        <script>
+            for (var i = 0; i < 3; i++) {
+                var el = document.createElement("li");
+                var a = document.createElement("a");
+                var d = new Date();
+                d.setDate(d.getDate() - i <= 0 ? d.getDate() - i - 1 : d.getDate() - i);
+                a.href = "CraftOS-PC-Nightly_" + d.getMonth().toString().padStart(2, '0') + "-" + d.getDate().toString().padStart(2, '0') + "-" + d.getFullYear().toString().slice(-2) + ".exe";
+                a.innerText = d.toLocaleDateString(undefined, {month: "long", day: "numeric", year: "numeric"});
+                el.appendChild(a);
+                document.getElementById("links").appendChild(el);
+            }
+        </script>
+    </body>
+</html>
