@@ -10,7 +10,7 @@
                 var a = document.createElement("a");
                 var d = new Date();
                 d.setDate(d.getDate() - i <= 0 ? d.getDate() - i - 1 : d.getDate() - i);
-                a.href = "CraftOS-PC-Nightly_" + d.getMonth().toString().padStart(2, '0') + "-" + d.getDate().toString().padStart(2, '0') + "-" + d.getFullYear().toString().slice(-2) + ".exe";
+                a.href = "CraftOS-PC-Nightly_" + (d.getMonth()+1).toString().padStart(2, '0') + "-" + d.getDate().toString().padStart(2, '0') + "-" + d.getFullYear().toString().slice(-2) + ".exe";
                 a.innerText = d.toLocaleDateString(undefined, {month: "long", day: "numeric", year: "numeric"});
                 el.appendChild(a);
                 document.getElementById("links").appendChild(el);
