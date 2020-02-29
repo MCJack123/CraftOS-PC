@@ -8,16 +8,30 @@
         <p>The three lastest files are listed here. Other files are available in this directory as <code style="display: inline">CraftOS-PC-Nightly_%m-%d-%y.exe</code>.</p>
         <ul id="links"></ul>
         <script>
-            var worker = new Worker("index.js");
-            worker.onmessage = function(e) {
-                let el = document.createElement("li");
-                let a = document.createElement("a");
-                a.href = e.data.href;
-                a.innerText = e.data.innerText;
-                el.appendChild(a);
-                document.getElementById("links").appendChild(el);
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://api.github.com/repos/MCJack123/CraftOS-PC/contents/nightly");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.READY && xhr.status == 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    data.sort(function(a, b) {
+                        if (a.name === "index.js" || a.name === "index.html") return -1;
+                        if (b.name === "index.js" || b.name === "index.html") return 1;
+                        let as = new Date(a.name.match(/%d{2}-%d{2}-$d{2}/).replace('-', '/'));
+                        let bs = new Date(b.name.match(/%d{2}-%d{2}-$d{2}/).replace('-', '/'));
+                        return as.getTime() - bs.getTime();
+                    });
+                    for (let i = 0; i < data.length; i++) {
+                        if (data[i].name === "index.html" || data[i].name === "index.js") continue;
+                        let el = document.createElement("li");
+                        let a = document.createElement("a");
+                        a.href = data[i].download_url;
+                        a.innerText = data[i].name;
+                        el.appendChild(a);
+                        document.getElementById("links").appendChild(el);
+                    }
+                }
             }
-            worker.postMessage("");
+            xhr.send();
         </script>
     </body>
 </html>
