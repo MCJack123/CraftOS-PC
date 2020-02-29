@@ -11,7 +11,7 @@
             let xhr = new XMLHttpRequest();
             xhr.open("GET", "https://api.github.com/repos/MCJack123/CraftOS-PC/contents/nightly");
             xhr.onreadystatechange = function() {
-                if (xhr.readyState == XMLHttpRequest.READY && xhr.status == 200) {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                     var data = JSON.parse(xhr.responseText);
                     data.sort(function(a, b) {
                         if (a.name === "index.js" || a.name === "index.html") return -1;
