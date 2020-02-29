@@ -19,14 +19,14 @@
                         console.log(a.name + " ? " + b.name);
                         let as = new Date(a.name.match(/\d{2}-\d{2}-\d{2}/)[0].replace('-', '/'));
                         let bs = new Date(b.name.match(/\d{2}-\d{2}-\d{2}/)[0].replace('-', '/'));
-                        return as.getTime() - bs.getTime();
+                        return bs.getTime() - as.getTime();
                     });
                     for (let i = 0; i < data.length; i++) {
                         if (data[i].name === "index.html" || data[i].name === "index.js") continue;
                         let el = document.createElement("li");
                         let a = document.createElement("a");
                         a.href = data[i].download_url;
-                        a.innerText = data[i].name;
+                        a.innerText = (new Date(data[i].name.match(/\d{2}-\d{2}-\d{2}/)[0].replace('-', '/'))).toLocaleDateString(undefined, {month: "long", day: "numeric", year: "numeric"});
                         el.appendChild(a);
                         document.getElementById("links").appendChild(el);
                     }
