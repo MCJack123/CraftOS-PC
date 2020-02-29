@@ -1,18 +1,18 @@
 self.onmessage = function() {
-    for (let i = 0, found = 0; found < 3; i++) {
-        let d = new Date();
-        d.setDate(d.getDate() - i <= 0 ? d.getDate() - i - 1 : d.getDate() - i);
-        if (d.getTime() < 1582675200000) break; // epoch = 2/26/20 00:00:00
-        let xhr = new XMLHttpRequest();
-        let path = "CraftOS-PC-Nightly_" + (d.getMonth()+1).toString().padStart(2, '0') + "-" + d.getDate().toString().padStart(2, '0') + "-" + d.getFullYear().toString().slice(-2) + ".exe";
-        xhr.open("GET", path, false); // synchronous to preserve order & keep track of number found
-        xhr.send();
-        if (xhr.status == 200) {
-            let a = {}
-            a.href = path;
-            a.innerText = d.toLocaleDateString(undefined, {month: "long", day: "numeric", year: "numeric"});
-            self.postMessage(a);
-            found++;
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://api.github.com/repos/MCJack123/CraftOS-PC/contents/nightly");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.READY && xhr.status == 200) {
+            let data = JSON.parse(xhr.responseText);
+            data.sort(function(a, b) {
+                if (a.name === "index.js" || a.name === "index.html") return -1;
+                if (b.name === "index.js" || b.name === "index.html") return 1;
+                let as = new Date(a.name.match(/%d{2}-%d{2}-$d{2}/).replace('-', '/'));
+                let bs = new Date(b.name.match(/%d{2}-%d{2}-$d{2}/).replace('-', '/'));
+                return as.getTime() - bs.getTime();
+            });
+            for (let i = 0; i < data.length; i++) self.postMessage({innerText: data[i].name, href: data[i].download_url});
         }
     }
+    xhr.send();
 }
