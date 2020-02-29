@@ -17,8 +17,8 @@
                         if (a.name === "index.js" || a.name === "index.html") return -1;
                         if (b.name === "index.js" || b.name === "index.html") return 1;
                         console.log(a.name + " ? " + b.name);
-                        let as = new Date(a.name.match(/\d{2}-\d{2}-\d{2}/).replace('-', '/'));
-                        let bs = new Date(b.name.match(/\d{2}-\d{2}-\d{2}/).replace('-', '/'));
+                        let as = new Date(a.name.match(/\d{2}-\d{2}-\d{2}/)[0].replace('-', '/'));
+                        let bs = new Date(b.name.match(/\d{2}-\d{2}-\d{2}/)[0].replace('-', '/'));
                         return as.getTime() - bs.getTime();
                     });
                     for (let i = 0; i < data.length; i++) {
