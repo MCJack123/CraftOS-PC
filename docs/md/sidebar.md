@@ -2,6 +2,7 @@
 * [What is CraftOS-PC?](about.html)
 * [Downloading & Installing](installation.html)
 * [Getting Started](getting-started.html)
+* [Save Data Location](saves.html)
 * [Migrating from CCEmuX](ccemux.html)
 
 ### New Features in CraftOS-PC
