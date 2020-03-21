@@ -50,6 +50,7 @@
                 xhr2.addEventListener("load", function() {document.getElementById("docs-sidebar").innerHTML = marked(this.responseText);});
                 xhr2.open("GET", dir + "/sidebar.md");
                 xhr2.send();
+                if (dir != "md") for (var elem in document.getElementsByTagName("a")) if (elem.href != undefined) elem.href += "?" + dir;
             }, false);
         </script>
     </head>
