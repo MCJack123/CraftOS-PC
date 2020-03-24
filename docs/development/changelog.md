@@ -1,4 +1,28 @@
 # Changelog
+## v2.3 - ?
+* Massively improved performance of emulation
+  * Speed issues are caused by the debugger's hooks (specifically line hooks)
+  * This version only enables the required hooks depending on what features are required
+  * In general, more debugging features -> lower performance
+* Added speaker peripheral
+  * Includes open-source sounds for notes
+  * Users can manually add in custom sounds (including offical Minecraft ones)
+* Updated CC:T compatibility to 1.87.0 (preview)
+  * Added `fs.attributes` and `fs.getCapacity` functions
+  * Added optional timeout argument to `websocket.receive`
+  * Ported pretty printer to `lua.lua`
+  * Added `__len` metamethod for tables
+  * Strings now accept `\xNN`, `\u{NNN}`, and `\z` escape codes
+  * Added `utf8` library
+  * Added base argument to `math.log`
+* Added raw terminal renderer
+  * See the documentation (https://www.craftos-pc.cc/docs/rawmode.html) for more info
+* Added TRoR (Terminal Redirect over Rednet) terminal renderer
+* Added filesystem merge mount support
+* Added standalone executable option for Windows & Linux
+* Added scrollback to debugger console
+* Added official support for WASM
+
 ## v2.2.6 - March 15, 2020
 * Added gist.lua to the default ROM
 * Reboot now resets graphics mode

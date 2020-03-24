@@ -2,25 +2,36 @@
     <head>
         <title>CraftOS-PC Online</title>
         <meta charset="utf8">
-        <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
-        <meta http-equiv="Cross-Origin-Embedder-Policy" content="same-origin">
         <link rel="stylesheet" href="style.css" type="text/css">
         <link rel="stylesheet" href="vendor/fontawesome/css/all.css" type="text/css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
         <script src="vendor/CollapsibleLists.js"></script>
+        <script src="vendor/jszip.min.js"></script>
+        <script src="vendor/FileSaver.js"></script>
     </head>
     <body>
         <div id="main">
             <div id="sidebar">
                 <div class="sidebar-button selected" onClick="sidebarSelect(0);"><i class="far fa-copy"></i></div>
                 <div class="sidebar-button" onClick="sidebarSelect(1);"><i class="fas fa-desktop"></i></div>
+                <div class="sidebar-button" onClick="sidebarSelect(2);"><i class="fas fa-search"></i></div>
+                <div class="sidebar-button" onClick="sidebarSelect(3);"><i class="fas fa-photo-video"></i></div>
+                <div class="sidebar-button" onClick="sidebarSelect(4);"><i class="fas fa-exchange-alt" style="transform: rotate(90deg)"></i></div>
             </div>
             <div id="browser">
                 <div id="browser-title">Explorer</div>
                 <ul id="browser-root">
-                    <li style="margin-left: 0px; padding-left: 0px;"><span class="browser-title">Computer 0</span><ul class="browser-list" id="browser-temp-root">
-                        
-                    </ul></li>
+                    <!-- TODO: make this work with more than one computer -->
+                    <li style="margin-left: 0px; padding-left: 0px;" onmouseenter="document.getElementsByClassName('browser-title-buttons')[0].style.display = 'inherit'" onmouseleave="document.getElementsByClassName('browser-title-buttons')[0].style.display = 'none'">
+                        <span class="browser-title">Computer 0<span class="browser-title-buttons" style="display: none">
+                            <i class="far fa-file" onclick="event.stopPropagation(); newFile()"><i class="fas fa-plus" style="position: relative; font-size: 7pt; left: -13pt; top: -3pt"></i></i>
+                            <i class="far fa-folder" style="padding-left: 5px;" onclick="event.stopPropagation(); newFolder()"><i class="fas fa-plus" style="position: relative; font-size: 7pt; left: -16pt; top: -3pt"></i></i>
+                            <i class="fas fa-redo-alt" onclick="event.stopPropagation(); sidebarSelect(0)"></i>
+                        </span></span>
+                        <ul class="browser-list" id="browser-temp-root">
+                            
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <div id="editor">
@@ -35,6 +46,9 @@
                     <div style="display: flex; background: url(frame.png); width: 644px; height: 374px; justify-content: center; align-items: center;">
                         <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
                     </div>
+                </div>
+                <div id="editor-image">
+                    <img id="editor-image-item" src="">
                 </div>
                 <div id="editor-default" style="display: hidden;">
                     <h1 style="padding: 20px; text-align: center; width: 100%;">Welcome to CraftOS-PC Online!</h1>
