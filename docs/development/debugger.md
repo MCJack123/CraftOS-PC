@@ -3,6 +3,8 @@ CraftOS-PC v2.2 introduces a new debugger peripheral that allows in-depth examin
 
 ![Debugger](../images/debugger.png)
 
+Note that in CraftOS-PC v2.3 and later, the debugger will reduce the speed of the emulator due to some technical limitations of Lua. (In reality, it's actually that *not* having the debugger *increases* speed.) Emulation speed in CraftOS-PC v2.2.x is the same speed (slow) with or without the debugger.
+
 ## Windows
 The debugger has multiple windows that can show information about the process. It has a multishell-style tab bar at the top, allowing you to quickly switch between each window. You can also use Ctrl+Left/Right to switch between each tab.
 

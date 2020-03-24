@@ -69,14 +69,20 @@
             Module.windowEventListener = {}
             Module.windowEventListener.onWindowCreate = (a, b) => {if (typeof window.onWindowCreate === "function") window.onWindowCreate(a, UTF8ToString(b));};
             Module.windowEventListener.onWindowDestroy = (a) => {if (typeof window.onWindowDestroy === "function") window.onWindowDestroy(a);};
-            FS.trackingDelegate.onOpenFile = function(p, m) {if (m & FS.tracking.openFlags.WRITE) {
-                updateBrowserLists("/user-data/computer/0", document.getElementById("browser-temp-root"));
-                CollapsibleLists.applyTo(document.getElementById("browser-root"));
-            }}
+            FS.trackingDelegate.onWriteFile = function() {
+              document.getElementById("browser-root").innerHTML = document.getElementById("browser-root").cloneNode(true).innerHTML;
+              updateBrowserLists("/user-data/computer/0", document.getElementById("browser-temp-root"));
+              CollapsibleLists.applyTo(document.getElementById("browser-root"));
+              updateBrowserCollapsibles("/user-data/computer/0", document.getElementById("browser-temp-root"));
+            }
+            FS.trackingDelegate.onDeletePath = FS.trackingDelegate.onWriteFile;
+            FS.trackingDelegate.onMovePath = FS.trackingDelegate.onWriteFile;
             setTimeout(() => {
-                updateBrowserLists("/user-data/computer/0", document.getElementById("browser-temp-root"));
-                CollapsibleLists.applyTo(document.getElementById("browser-root"));
-            }, 100);
+              document.getElementById("browser-root").innerHTML = document.getElementById("browser-root").cloneNode(true).innerHTML;
+              updateBrowserLists("/user-data/computer/0", document.getElementById("browser-temp-root"));
+              CollapsibleLists.applyTo(document.getElementById("browser-root"));
+              updateBrowserCollapsibles("/user-data/computer/0", document.getElementById("browser-temp-root"));
+            }, 150);
         }
       };
       Module.setStatus('Downloading...');

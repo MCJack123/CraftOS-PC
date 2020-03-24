@@ -86,6 +86,8 @@ li, ul {
     padding-left: 0px;
     margin: 0px;
     color: #bbbbbb;
+    display: flex;
+    flex-direction: column;
 }
 
 #browser-root > li.collapsibleListClosed > .browser-title:before {
@@ -115,6 +117,12 @@ li, ul {
     display: block;
 }
 
+.browser-title-buttons {
+    font-size: 10pt;
+    float: right;
+    margin-right: 10px;
+}
+
 .browser-list {
     font-size: 10pt;
     color: #bbbbbb;
@@ -140,6 +148,31 @@ li {
     text-transform: none;
     margin: none;
     line-height: 1.75;
+}
+
+.browser-search-match-title-path {
+    font-size: 8pt;
+    color: #999999;
+    align-content: bottom;
+    margin-left: 10px;
+}
+
+.browser-search-match-string {
+    background-color: #60391f;
+    display: inline;
+}
+
+#browser-search-matches {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100vh - 94px);
+}
+
+.browser-search-match-item {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
 }
 
 .collapsibleList li{
@@ -171,6 +204,44 @@ li.collapsibleListClosed > .browser-item:before {
     margin-right: 5px;
 }
 
+.browser-item-terminal-icon {
+    background: url(computer.svg);
+    width: 12px;
+}
+
+input {
+    margin: 2px;
+}
+
+#browser-search-find, #browser-search-replace {
+    width: calc(100% - 30pt);
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+#browser-search-replace-button.disabled {
+    color: #666666;
+}
+
+#browser-search-replace-button.enabled {
+    cursor: pointer;
+    color: #bbbbbb;
+}
+
+#browser-search-regex {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    user-select: none;
+    font-size: 12pt;
+    line-height: 20px;
+}
+
+#browser-search-regex.on {
+    background-color: #364c60;
+}
+
 #editor {
     background-color: #252525;
     width: calc(80% - 50px);
@@ -182,12 +253,12 @@ li.collapsibleListClosed > .browser-item:before {
     display: flex;
     flex-direction: row;
     height: 35px;
+    overflow-y: hidden;
 }
 
 .editor-tab {
     background-color: #2d2d2d;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    height: 35px;
     padding-left: 10px;
     padding-right: 10px;
     vertical-align: middle;
@@ -197,7 +268,7 @@ li.collapsibleListClosed > .browser-item:before {
     min-width: 100px;
     margin-right: 1px;
     font-size: 10pt;
-    display: table;
+    display: flex;
     cursor: pointer;
     table-layout: auto;
 }
@@ -223,6 +294,10 @@ li.collapsibleListClosed > .browser-item:before {
     opacity: 100%;
 }
 
+.editor-tab-button.fa-circle {
+    font-size: 8pt;
+}
+
 #editor-content {
     background-color: #1e1e1e;
     width: 100%;
@@ -230,6 +305,18 @@ li.collapsibleListClosed > .browser-item:before {
 }
 
 #editor-terminal {
+    background-color: #1e1e1e;
+    width: 100%;
+    height: calc(100% - 35px);
+    align-items: center;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    top: 0px;
+    left: 0px;
+}
+
+#editor-image {
     background-color: #1e1e1e;
     width: 100%;
     height: calc(100% - 35px);
