@@ -242,7 +242,6 @@ function updateBrowserLists(path, element) {
 function updateTerminalList() {
     if (selectedBrowser !== 1) return;
     document.getElementById("browser-root").innerHTML = "";
-    if (!isDir("/user-data/screenshots")) return;
     for (let terms in terminals) {
         let term = (typeof terms == "string" ? parseInt(terms) : terms);
         var el = document.createElement("li");
@@ -276,6 +275,7 @@ function updateTerminalList() {
 function updateScreenshotList() {
     if (selectedBrowser !== 3) return;
     document.getElementById("browser-root").innerHTML = "";
+    if (!isDir("/user-data/screenshots")) return;
     for (let f of FS.readdir("/user-data/screenshots")) {
         if (f === "." || f === "..") continue;
         let el = document.createElement("li");
@@ -629,3 +629,21 @@ require(['vs/editor/editor.main'], function() {
 });
 
 document.addEventListener("keydown", (ev) => {if (ev.keyCode == 113 || ev.keyCode == 114) ev.preventDefault()})
+
+// Check for browser support
+window.disableTerminal = function() {
+    var str = `<h1>Browser not supported</h1><p>Your browser does not support running CraftOS-PC Online. `;
+    if (navigator.userAgent.indexOf("Firefox") === -1 && navigator.userAgent.indexOf("Chrome") === -1) 
+        str += `CraftOS-PC Online is verified to work on the latest versions of <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>, <a href="https://www.google.com/chrome/">Google Chrome</a>, and <a href="https://www.microsoft.com/en-us/edge">Microsoft Edge</a>. If you're using a different (or older) browser, try using one of these instead.`;
+    else if ((navigator.userAgent.indexOf("Firefox") !== -1 && ((parseInt(navigator.userAgent.match(/Firefox\/(\d+)/)[1]) >= 55 && parseInt(navigator.userAgent.match(/Firefox\/(\d+)/)[1]) < 57) || parseInt(navigator.userAgent.match(/Firefox\/(\d+)/)[1]) < 46)) || (navigator.userAgent.indexOf("Chrome") !== -1 && parseInt(navigator.userAgent.match(/Chrome\/(\d)+/)[1] < 68))) 
+        str += `Your browser is too old. Please upgrade to a newer version:<ul><li><a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a></li><li><a href="https://www.google.com/chrome/">Google Chrome</a></li></ul>`;
+    else if (navigator.userAgent.indexOf("Firefox") !== -1) 
+        str += `Make sure the following options are enabled in <code>about:config</code>:<ul><li><code>javascript.options.shared_memory</code></li>${parseInt(navigator.userAgent.match(/Firefox\/(\d+)/)[1]) >= 57 ? "<li><code>dom.postMessage.sharedArrayBuffer.withCOOP_COEP</code></li>" : ""}</ul>`;
+    str += `</p>`;
+    document.getElementById("editor-terminal").innerHTML = str;
+    document.getElementById("editor-terminal").style.display = "block";
+    document.getElementById("editor-terminal").style.color = "#eeeeee";
+    document.getElementById("editor-terminal").style.padding = "20px";
+}
+
+if (window.SharedArrayBuffer === undefined || (navigator.userAgent.indexOf("Firefox") !== -1 && parseInt(navigator.userAgent.match(/Firefox\/(\d+)/)[1]) >= 72 && !crossOriginIsolated)) disableTerminal();
