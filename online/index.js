@@ -638,7 +638,7 @@ window.disableTerminal = function() {
     else if ((navigator.userAgent.indexOf("Firefox") !== -1 && ((parseInt(navigator.userAgent.match(/Firefox\/(\d+)/)[1]) >= 55 && parseInt(navigator.userAgent.match(/Firefox\/(\d+)/)[1]) < 57) || parseInt(navigator.userAgent.match(/Firefox\/(\d+)/)[1]) < 46)) || (navigator.userAgent.indexOf("Chrome") !== -1 && parseInt(navigator.userAgent.match(/Chrome\/(\d)+/)[1] < 68))) 
         str += `Your browser is too old. Please upgrade to a newer version:<ul><li><a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a></li><li><a href="https://www.google.com/chrome/">Google Chrome</a></li></ul>`;
     else if (navigator.userAgent.indexOf("Firefox") !== -1) 
-        str += `Make sure the following options are enabled in <code>about:config</code>:<ul><li><code>javascript.options.shared_memory</code></li>${parseInt(navigator.userAgent.match(/Firefox\/(\d+)/)[1]) >= 57 ? "<li><code>dom.postMessage.sharedArrayBuffer.withCOOP_COEP</code></li>" : ""}</ul>`;
+        str += `Make sure the following options are enabled in <code>about:config</code>:<ul><li><code>javascript.options.shared_memory</code></li>${parseInt(navigator.userAgent.match(/Firefox\/(\d+)/)[1]) >= 57 ? "<li><code>dom.postMessage.sharedArrayBuffer.withCOOP_COEP</code></li>" : ""}<li><code>browser.tabs.remote.useCrossOriginEmbedderPolicy</code></li><li><code>browser.tabs.remote.useCrossOriginOpenerPolicy</code></li></ul>`;
     str += `</p>`;
     document.getElementById("editor-terminal").innerHTML = str;
     document.getElementById("editor-terminal").style.display = "block";
