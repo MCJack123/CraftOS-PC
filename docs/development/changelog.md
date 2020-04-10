@@ -7,6 +7,8 @@
 * Added speaker peripheral
   * Includes open-source sounds for notes
   * Users can manually add in custom sounds (including offical Minecraft ones)
+  * Loading songs & soundfonts from the computer's drive is also supported
+  * MIDI & SF2 support is available
 * Updated CC:T compatibility to 1.87.0 (preview)
   * Added `fs.attributes` and `fs.getCapacity` functions
   * Added optional timeout argument to `websocket.receive`
@@ -22,6 +24,13 @@
 * Added standalone executable option for Windows & Linux
 * Added scrollback to debugger console
 * Added official support for WASM
+* Added modem multinet support
+* Fixed crashes with the modem peripheral
+* Fixed 256-color mode for monitors
+* Cursor color can now be changed as expected
+* Content-Type and Content-Length headers are no longer missing by default
+* Fixed memory leak in Mac app when taking screenshots
+* Fixed a whole bunch of other crashes
 
 ## v2.2.6 - March 15, 2020
 * Added gist.lua to the default ROM

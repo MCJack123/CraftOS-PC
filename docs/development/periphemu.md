@@ -23,6 +23,7 @@ Some peripherals have special options that can be specified as the third argumen
 * drive peripherals accept a third argument that sets the initial mounted path in the drive. This can be either a global path to a folder or audio file, a number specifying a disk ID, or a treasure path in the form `treasure:<path>`.
   * There is a new method on the drive called `insertDisk` that allows you to change the mount without reattaching the peripheral. This method is also exported through the `disk` API.
 * printer peripherals require a third argument specifying where the printed output will be stored. This should be a full path to a PDF file (if using a build supporting PDF) or a directory.
+* modem peripherals accept a third argument that sets the network ID for the modem. This allows having multiple modem networks running parallel to each other without being able to communicate with each other.
 
 ### Speaker sounds
 The speaker peripheral comes with some open-source sounds for use with the `playNote` function. It does not have any sounds that are available from the `playSound` function, but these can easily be added in from a resource pack or your own copy of Minecraft. Sound packs can be placed in the `sounds/` directory in the ROM folder. These use the same format as Minecraft resource packs, and must contain [a sounds.json file](https://minecraft.gamepedia.com/Sounds.json), and a folder named `sounds` that contains the actual sound files.
