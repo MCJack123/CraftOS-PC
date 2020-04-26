@@ -1,6 +1,7 @@
 ### Introduction
 * [What is CraftOS-PC?](about.html)
 * [Downloading & Installing](installation.html)
+* [Standalone Executables](standalone.html)
 * [Getting Started](getting-started.html)
 * [Save Data Location](saves.html)
 * [Migrating from CCEmuX](ccemux.html)
@@ -17,10 +18,12 @@
 * [Auto-Updater](autoupdate.html)
 * [Debugger](debugger.html)
 * [CLI Mode & Flags](cli.html)
+* [Raw Mode](rawmode.html)
 * [Plugin System](plugins.html)
 * [CraftOS-PC *Accelerated*](accelerated.html)
 
 ### Other Information
+* [WebAssembly Port & CraftOS-PC Online](online.html)
 * [Program Compatibility](https://docs.google.com/spreadsheets/d/1PtZZA4Vcsk733gSlSGH3VpecaGSp9U9AJmDKkWRssa0/edit?usp=sharing)
   * [Submit a Program](https://forms.gle/5WhU7K52VAgr5DR68)
 * [Contact](contact.html)

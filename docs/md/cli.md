@@ -14,8 +14,14 @@ Please note that a few features are missing in CLI mode. First, modifier keys (s
 ## Headless mode
 CraftOS-PC also has a lesser-featured headless mode that can display simple text output. It's designed to be able to run scripts in a CraftOS environment without the overhead of an interface. One use is for CI testing: when CI runs, it starts CraftOS-PC in headless mode using the `--script` argument (see below) to run a test suite. When in headless mode, an extra function is available in the OS API, `os.exit(code)`, which quits CraftOS-PC and returns the exit code provided. CraftOS-PC will start in headless mode when the `--headless` argument is passed on the command line.
 
+## Raw mode
+Raw mode allows storing or transporting a CraftOS-PC terminal session in a portable method, including use in a web client. See [the documentation page](rawmode.html) for more info.
+
+## TRoR mode
+Passing `--tror` to CraftOS-PC will enable the TRoR renderer. TRoR is a standard for ComputerCraft that allows sending terminal commands over Rednet. This reads and writes the TRoR packets through standard I/O. CraftOS-PC uses the metadata field to specify the terminal ID of the packet. See [the CraftOS Standard page](https://github.com/oeed/CraftOS-Standards/blob/master/standards/10-tror.md) for more info on the TRoR format.
+
 ## Custom script
 The `--script` flag can be used to set a custom startup script to run before any other startup scripts that may be on the computer. This is mainly useful in conjunction with headless mode. Arguments can also be passed to the script using the `--args` option. All arguments to the script must be contained within one string on the command line, so wrap multiple arguments in quotes.
 
-## Custom data directory & ID
+## Custom data/ROM directory & ID
 The `--directory` option can be passed to CraftOS-PC to change the path of the save data to somewhere other than the default location in your user directory. `--rom` does the same thing, but for the ROM directory (the folder that contains `rom` and `bios.lua`). The `--id` option changes the ID of the first computer that will open (note that this overrides the `initialComputer` config argument), so `--id 5` will open computer #5 instead of #0.
