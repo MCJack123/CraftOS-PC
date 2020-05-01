@@ -13,4 +13,4 @@ CraftOS-PC *Accelerated* is a fork of CraftOS-PC that replaces the standard Lua 
 * May use more memory
 
 ## Downloading
-CraftOS-PC *Accelerated* can be downloaded from the [GitHub releases](https://github.com/MCJack123/craftos2/releases) page. It can be installed alongside CraftOS-PC if desired. See [Installation](installation.html) for more details on installing.
+CraftOS-PC *Accelerated* can be downloaded from the [GitHub releases](https://github.com/MCJack123/craftos2/releases) page. It can be installed alongside CraftOS-PC if desired. See [Installation](installation) for more details on installing.

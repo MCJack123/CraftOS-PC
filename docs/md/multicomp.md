@@ -4,7 +4,7 @@ CraftOS-PC 2 adds support for using multiple computers. Each computer gets its o
 ![Multicomputer](../images/multicomputer.png)
 
 ## Creating computers
-Computers can be created [just like any peripheral](periphemu.html), but the ID selected must be a number. This number will be the ID of the new computer. For example, running "attach 1 computer" will create a computer with ID 1.
+Computers can be created [just like any peripheral](periphemu), but the ID selected must be a number. This number will be the ID of the new computer. For example, running "attach 1 computer" will create a computer with ID 1.
 
 Creating a new computer will also attach a computer peripheral, which can be used to interact with the new computer from Lua. Note that detaching this computer will not turn the computer off - instead, use the `turnOff` method on the computer peripheral.
 
