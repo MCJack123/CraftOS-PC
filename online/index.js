@@ -1,7 +1,9 @@
 // NOTE TO SELF: When updating WASM, make sure to add Module.disableEvents in 
 // registerOrRemoveHandler/jsEventHandler (around line 8300)
+// Also, add a try around Fetch.postMessage inside initFetchWorker and call 
+// window.disableTerminal() in a catch statement (around line 10950).
 
-var CCPC_ONLINE_VERSION = "v0.2";
+var CCPC_ONLINE_VERSION = "v0.9";
 
 function request(url, callback) {
     var xhr = new XMLHttpRequest();
