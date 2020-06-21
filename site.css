@@ -170,6 +170,7 @@ pre {
     height: 100%;
     float: none;
     vertical-align: top;
+    overflow: visible;
 }
 
 .footer-box {
