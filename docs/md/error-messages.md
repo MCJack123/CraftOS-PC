@@ -29,6 +29,13 @@ These errors can occur while starting or running a computer.
 | `An unexpected error occurred in a Lua function` | An unprotected Lua error occurred in the BIOS, and the computer could not recover. This can also occur when using a top-level coroutine override (TLCO), at which point any errors are not protected and will cause this error. | Make sure there are no runtime issues in the BIOS initialization sequence. If using a TLCO, make sure there are no errors in the running function. |
 | `Computer not responding` | A long-running task has ignored requests to terminate. | You can choose to either force reboot the computer, or you can wait for the computer to respond. If you choose to wait, the error message will be delayed for another 20 seconds before appearing again. |
 
+## Configuration loading errors
+These errors occur when there is an error in one (or more) of the configuration JSON files.
+| Message | Description | Remedy |
+|---------|-------------|--------|
+| `An error occurred while parsing the global configuration file` | There is an error in the global config file at `config/global.json`. A description of what went wrong is included. | Check the global config file for errors at the line provided in the error message. If necessary, use a JSON checker website such as https://jsonchecker.com to find the error. |
+| `An error occurred while parsing the per-computer configuration file` | There is an error in the per-computer config file at `config/<id>.json`. A description of what went wrong is included. On CraftOS-PC v2.3.5 and later, the computer's ID is also included. | Check the config file for the computer being opened for errors at the line provided in the error message. If necessary, use a JSON checker website such as https://jsonchecker.com to find the error. |
+
 ## Peripheral creation errors
 These errors can occur when creating a peripheral.
 

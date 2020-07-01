@@ -3,7 +3,7 @@ CraftOS-PC v2.1 adds a new command line interface that uses ncurses to render th
 
 ## CLI mode
 *CLI mode is not supported on Windows.*
-The command-line interface to CraftOS-PC can be activated by passing the `--cli` option to the program. When in CLI mode, the CraftOS shell appears in the terminal instead of as a new window/application. This is what CLI mode looks like on Mac:
+The command-line interface to CraftOS-PC can be activated by passing the `--cli` option to the program. When in CLI mode, the CraftOS shell appears in the terminal instead of as a new window/application. This is what CLI mode looks like on a Mac:
 
 ![CLI mode](../images/cli.png)
 
@@ -25,3 +25,14 @@ The `--script` flag can be used to set a custom startup script to run before any
 
 ## Custom data/ROM directory & ID
 The `--directory` option can be passed to CraftOS-PC to change the path of the save data to somewhere other than the default location in your user directory. `--rom` does the same thing, but for the ROM directory (the folder that contains `rom` and `bios.lua`). The `--id` option changes the ID of the first computer that will open (note that this overrides the `initialComputer` config argument), so `--id 5` will open computer #5 instead of #0.
+
+## CCEmuX compatibility flags
+CraftOS-PC v2.3.4 adds a number of new flags to make it a snap-in replacement for any tools that may use CCEmuX flags. These flags include:
+* `-a|--assets-dir <dir>`:            Sets the CC:T directory that holds the ROM & BIOS (must contain an `assets/computercraft/lua` folder inside)
+* `-C|--computers-dir <dir>`:         Sets the directory that stores data for each computer
+* `-c=|--start-dir <dir>`:            Sets the directory that holds the startup computer's files
+* `-d|--data-dir <dir>`:              Sets the directory that stores user data
+* `--plugin <file>`:                  Adds an additional plugin to the load list
+* `-r|--renderer [renderer]`:         Lists all available renderers, or selects the renderer
+
+With these arguments, you can seamlessly replace `java -jar ccemux-launcher.jar` in any script with `craftos`.

@@ -1,4 +1,135 @@
 # Changelog
+## v2.3.4 - June 29, 2020
+* Updated CC:T version to 1.89.1
+  * This includes full testing on the CC:T test set
+  * CraftOS-PC now fully passes all CC:T tests
+* Added an error dialog when an error occurs reading the configuration files
+  * The dialog includes a message describing where the JSON parsing error occurred
+  * If an error occurs, the defaults will be used, and no changes will be saved
+* Added proper `ingame` locale for `os.day/time/epoch`
+  * This is based on a 20-minute clock that starts when the computer boots
+  * This change is to improve compatibility with CCEmuX/CC:T
+* Added CCEmuX command-line flags
+  * `--assets-dir`, `--computers-dir`, `--start-dir`, `--data-dir` (alias of `--directory`), `--plugin`, `--renderer`
+  * The `--start-dir` flag only affects the initial computer (specified by `--id`)
+* Headless mode now reports a color terminal (for advanced testing)
+* `os.time` now properly parses tables returned by `os.date("*t")`
+* CraftOS-PC now reports its real version and CC version in HTTP User-Agent strings
+* `fs.delete` no longer errors when deleting a non-existent file
+* Fixed `io.open` creating a directory instead of opening a file in write mode (#116)
+* Fixed `fs.getDrive` returning the wrong results
+* Fixed a whole bunch of warnings
+* `fs.getSize` now returns 0 when used on a directory instead of erroring
+* Fixed a bug causing audio glitches when playing low notes through the speaker
+* Fixed an error when writing `nil` or a number to a file (#118)
+* Fixed a crash when an invalid format string is passed to `os.date`
+* Fixed missing cc.completion and cc.shell.completion modules
+* Fixed programs getting the path to the program in arg[0] instead of the command as it was run
+* Raised maximum Lua call depth to 32768 (from 256)
+* `loadstring` now automatically adds an `=` sign to the chunk name
+* Fixed `debug.getlocal` not returning function parameter names
+  * This fixes the `cc.pretty` module's parameter detection function
+* Fixed vulnerability in `io` library
+* Fixed `io.lines()` with no arguments
+* Fixed missing `*L` option for `io.read`/`file:read`
+* Fixed `io.write`/`file:write` not returning file handle
+* Fixed `string.format` erroring when using nil as a string parameter
+* `fs.copy` can now copy folders as expected
+* Fixed `fs.find("/")` returning an empty table
+* Fixed `fs.attributes` having the wrong name
+* Fixed `fs.makeDir` not erroring when it tries to create a directory where a file is already present
+* Fixed a boatload of string differences to comply with CC: Tweaked
+* Fixed a bunch more small inconsistencies
+* Fixed `io.open` not creating all parent directories if they're missing
+* Added support for custom options to `io.lines`
+* Fixed support for '+' modes in `io.open`
+* Fixed errors in Lua prompt showing `[string "lua"]:` instead of `lua:`
+
+## v2.3.3 - June 6, 2020
+* Added a `record` domain to drives
+  * Inserting a disk in the format `record:<name>` will insert a music disc from `minecraft:music_disc.*` in the speaker sound data
+  * `disk.insertDisk("left", "record:cat")` will insert the "cat" music disc from the sound files as a playable music disc
+* Updated `gist` (again)
+* Fixed an error preventing the debugger from starting up
+* Fixed `fs.readLine` returning weird strings on empty lines (#113)
+* Fixed an error when writing numbers to the screen
+* Fixed a bug that overrode User-Agent and Content-Type HTTP headers
+* Fixed audio clipping when playing pitched sound through the speaker
+* Fixed a crash when playing some notes on Windows
+* Fixed stack corruption in the debugger
+* Fixed origin point of paintutils calls in graphics mode
+* Fixed a bug that may lead to events being sent with the wrong parameters
+* Computers now shut down automatically if the BIOS exits
+
+## v2.3.2 - May 23, 2020
+* Feature parity with CC: Tweaked 1.88.1
+  * Add peripheral.getName - returns the name of a wrapped peripheral.
+  * The Lua REPL warns when declaring locals (lupus590, exerro)
+  * Add fs.isDriveRoot - checks if a path is the root of a drive.
+  * cc.pretty can now display a function's arguments and where it was defined. The Lua REPL will show arguments by default.
+  * Move the shell's require/package implementation to a separate cc.require module.
+* CraftOS-PC builds with the CC: Tweaked ROM are now available
+  * These builds use the stock ROM, with CraftOS-PC-specific programs included
+  * Some ROM features (notably, autocomplete for CCPC programs) may not be available
+  * CC:T Edition will replace the standard CraftOS-PC ROM, so they can't be used alongside each other
+    * This does not apply to Mac builds, which are distributed as single apps
+  * Ubuntu: Install the `craftos-pc-cct-data` package to use the CC:T ROM
+* `bit32` is now the default bit API
+  * The BIOS will set up a wrapper to allow programs to continue using `bit`
+* Added `file.readLine` to file handles opened in binary mode
+* Added `getLabel` method to computer peripherals
+* Rewrote Gist program again
+  * This will be changing once again in the next version
+* Added new plugin capabilities
+  * `register_queueTask`: Returns a function of the form `void* queueTask(std::function<void*(void*)> func, void* userdata, bool async)`
+  * `register_getComputerById`: Returns a function of the form `Computer * getComputerById(int id)`
+  * `get_selectedRenderer`: Returns a number representing the currently selected renderer
+* Capability callbacks now receive the name of the function it's called for
+* `plugin_info` can now safely throw errors
+  * If a plugin throws an error here, its API will not be loaded and the error will be reported to the user on boot
+* Added SDLTerminal::resizeWholeWindow, which resizes a terminal and its window
+* Fixed `file.readLine` only returning up to 255 characters
+* Fixed a possible race condition
+
+## v2.3.1 - May 9, 2020
+* CraftOS-PC is now available as a notarized build on Mac
+  * This means it is no longer necessary to right-click the app to open it for the first time
+* Added new crash handler that outputs a stack trace for debugging
+  * Mac & Linux builds will output the stack trace to the console
+  * Windows builds will only show a dialog showing a crash occurred; the actual stack trace will be saved in a minidump
+  * Mac app builds will show a crash report dialog as usual
+* Added mouse_move event (disabled by default)
+  * The `mouse_move_throttle` config option sets the amount of time between events sent
+  * It is disabled by default because SquidDev-CC/CC-Tweaked#434 is still in progress
+    * Set `mouse_move_throttle` to a whole number (50 is recommended) to enable
+* Added file.readAll for binary file handles
+* Added maxOpenPorts config option to cap maximum number of open ports
+* Added a couple of upcoming CraftOS features from CC: Tweaked upstream
+* Added `term.showMouse` to toggle whether the real mouse cursor should appear
+* Added startComputer capability to plugins
+* Added return value from `config.set` specifying when the change will take effect
+* Improved error message reporting across the board
+* Using non-vanilla programs in vanilla mode now shows a descriptive error
+* Fixed crash when creating directories
+* Fixed term.drawPixels not working properly for table arguments when in mode 1
+* Fixed writing text files with binary by writing in UTF-8
+* Fixed crash when an HTTP request times out
+* Fixed a security vulnerability involving the drive peripheral
+* Fixed multiple mouse_drag events being sent for the same position (#107)
+* Fixed computer not unpausing when closing debugger
+* Fixed mount dialog showing incorrect text relating to read-write mount
+* Fixed some bugs with the modem
+* Fixed a bunch of small memory leaks & issues
+* Fixed a race condition when taking a screenshot
+* Fixed a bug where the size operator of a table may not represent its actual size
+* Fixed a crash when using a modem or debugger after rebooting
+  * This was done by adding a `reinitialize` method to peripherals
+    * This method is called after restarting a computer while having the peripheral attached
+    * Use this if your peripheral holds any references to the computer's Lua state or a sub-thread
+* Fixed a bug where coroutines created before attaching a debugger won't be able to be paused from the debugger when resumed
+* Fixed `http.get` and `http.request` not allowing using a table as a parameter
+* Fixed a bug where the computer wouldn't boot when `disable_lua51_features` is enabled (#110)
+
 ## v2.3 - April 26, 2020
 * Massively improved performance of emulation
   * Speed issues are caused by the debugger's hooks (specifically line hooks)
