@@ -18,20 +18,26 @@ These are the config variables available as of CraftOS-PC v2.2.5. *Variables mar
 * `customFontScale` [] (`global.json` only): When using a custom font (besides `hdfont`), set this to specify the scale divisor for the font (1 = 12x18, 2 = 6x9 (default), 3 = 4x6)
 * `debug_enable` [false]: Whether to enable the `debug` API
 * `default_computer_settings` []: A string with some default settings to set in the `settings` API
-* `disable_lua51_features` [false]: Whether to disable some Lua 5.1 features in the BIOS
+* `disable_lua51_features` [false]: Whether to disable some Lua 5.1-only features in the BIOS
 * `http_enable` [true]: Whether to enable the `http` API
 * `ignoreHotkeys` [false]: Whether to ignore hotkeys such as F2, F3, F11
 * `initialComputer` [0]: The computer to start when opening CraftOS-PC
 * `isColor` [true] (computer-local): Whether the emulated computer is an Advanced Computer (color) or Standard Computer (no color)
 * `maximumFilesOpen` [128]: Maximum number of files that can be open at once
 * `maxRecordingLength` [15]: The maximum number of seconds that a recording will run until it auto-stops (note that longer time * higher framerate = longer write time = higher memory usage)
+* `maxOpenPorts` [128]: The maximum number of ports (channels) that may be open on a single modem
 * `mount_mode` [2]: Specifies security settings for mounting directories
   * `none` (0): Do not allow mounting directories
   * `ro strict` or `ro_strict` (1): Force all mounts to be read-only
   * `ro` (2): Mounts default to read-only if not explicitly specified
   * `rw` (3): Mounts default to read-write unless marked read-only (v2.1.2 and below behavior)
+* `mouse_move_throttle` [-1]: The amount of throttling placed on the `mouse_move` event
+  * Values \>0 will only send `mouse_move` events no less than that number of milliseconds apart
+  * 0 will disable throttling; `mouse_move` events will always be sent (could cause lag)
+  * Values \<0 will disable the `mouse_move` event entirely
 * `recordingFPS` [10]: The framerate of GIF recordings. This value should be a divisor of `clockSpeed`, as the actual framerate is determined by integer division of both values.
 * `romReadOnly` [true]: Whether the ROM is mounted as read-only (change this only if you know what you're doing!)
+* `showMountPrompt` [true]: Whether to prompt the user when mounting a directory (change this only if you know what you're doing!)
 * `vanilla` [false]: Whether to disable all CraftOS-PC-specific features
 
 ## Changing variables

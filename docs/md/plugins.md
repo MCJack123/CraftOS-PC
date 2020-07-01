@@ -11,7 +11,7 @@ The plugin file **must** have the name that the library's `luaopen_` function us
 
 ## Writing plugins
 A plugin for CraftOS-PC follows the same format as a normal Lua library, with an additional function providing metadata about the plugin. It contains a C function named `luaopen_<name>` that takes one `lua_State*` argument. This function should return a table with the contents of the new API to add. It should also contain a function named `plugin_info`, which takes a `lua_State*` as well. This function should push a table containing a `version` key with the plugin API version, as well as the required capabilities as callback functions. See the table at the bottom of the page for the API versions.  
-These are the available capabilities as of CraftOS-PC v2.2:
+These are the available capabilities as of CraftOS-PC v2.3.4:
 * `register_getLibrary`: Recieves the address of the `library_t * getLibrary(std::string name)` function
     * This function allows accessing the functions for built-in APIs without going through Lua
 * `register_registerPeripheral`: Recieves the address of the `void registerPeripheral(std::string name, peripheral_init initializer)` function
@@ -20,6 +20,15 @@ These are the available capabilities as of CraftOS-PC v2.2:
     * This function mounts a path inside the computer, similar to `mounter.mount()`
 * `register_termQueueProvider`: Recieves the address of the `void termQueueProvider(Computer *comp, const char *(*callback)(lua_State*, void*), void* data)` function
     * This function queues an event that has its data filled in by the callback
+* `register_startComputer`: Receives the address of the `Computer* startComputer(int id)` function
+    * This function starts a computer on a new thread and returns the new Computer object
+* `register_queueTask`: Receives the address of the `void* queueTask(std::function<void*(void*)> func, void* userdata, bool async)` function
+    * This function runs a function on the main thread with an optional opaque pointer argument, and unless `async` is `true`, returns an opaque pointer returned by the function
+* `register_getComputerById`: Receives the address of the `Computer * getComputerById(int id)` function
+    * This function returns a Computer object associated with an ID
+* `get_selectedRenderer`: Receives an integer specifying the current renderer
+
+As of CraftOS-PC v2.3.2, capability callbacks get the name of the capability that's being registered pushed on the stack, so you can now have one function that handles all capabilities required, checking the value of the string passed.
 
 If compiling for Windows, make sure to use the `_declspec(dllexport)` macro. (The `LUA_API` macro does this for you.) The plugin must be compiled as a dynamic library (and/or bundle on Mac) for the given platform. To see an example of a plugin, see `examples/ccemux.cpp` in the source.
 
