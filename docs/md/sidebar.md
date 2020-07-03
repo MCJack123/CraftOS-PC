@@ -32,4 +32,5 @@
 ### API Reference
 * [CraftOS APIs (Official Wiki)](http://www.computercraft.info/wiki/Category:APIs)
 * [CC: Tweaked APIs](https://github.com/SquidDev-CC/CC-Tweaked/wiki)
+* [CC: Tweaked Documentation](https://tweaked.cc)
 * [CraftOS-PC APIs](https://github.com/MCJack123/craftos2/blob/master/DOCUMENTATION.md)
