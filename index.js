@@ -22,7 +22,7 @@ var details = [
     {
         "image": "screenshot.gif",
         "title": "Built-In Screenshots & GIF Recorder",
-        "text": "CraftOS-PC includes a built-in screenshot and GIF recording tool. No longer do you need to open Snipping Tool or use recgif; CraftOS-PC can do it for you. You can press F2 to take a screenshot or F3 to toggle GIF recording, which will be saved to .craftos/screenshots in your home directory. GIFs are restricted to a maximum length of 15 seconds to save memory usage."
+        "text": "CraftOS-PC includes a built-in screenshot and GIF recording tool. No longer do you need to open Snipping Tool or use recgif; CraftOS-PC can do it for you. You can press F2 to take a screenshot or F3 to toggle GIF recording, which will be saved to .craftos/screenshots in your home directory. GIFs are restricted to a maximum length of 15 seconds by default to save memory usage, but this can be modified in the configuration."
     },
     {
         "image": "config.png",
@@ -38,6 +38,11 @@ var details = [
         "image": "debugger_demo.png",
         "title": "Brand-New Debugger",
         "text": "CraftOS-PC v2.2 introduces the debugger peripheral, which allows you to set breakpoints, step through programs, and print messages to the debug console without modifying the main computer's screen. This can be extremely useful for finding that one little problem in your program. For more information on how to use it, see the full documentation for the debugger."
+    },
+    {
+        "image": "online.png",
+        "title": "CraftOS-PC Online",
+        "text": "With the release of CraftOS-PC v2.3 comes CraftOS-PC Online, a version of CraftOS-PC that runs directly in your browser. It runs in an IDE similar to Visual Studio Code, and supports file browsing and editing, opening multiple windows, screenshots, downloading & uploading files, and more. It works in most modern browsers with WebAssembly and shared memory support. You can access CraftOS-PC Online at <a href=\"https://www.craftos-pc.cc/online/\">https://www.craftos-pc.cc/online/</a>."
     }
 ];
 
