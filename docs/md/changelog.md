@@ -146,7 +146,7 @@
 * Added speaker peripheral
   * Includes open-source sounds for notes
   * Users can manually add in custom sounds (including offical Minecraft ones)
-    * See https://www.craftos-pc.cc/docs/periphemu.html#speaker-sounds for more info
+    * See https://www.craftos-pc.cc/docs/periphemu#speaker-sounds for more info
 * Updated CC:T compatibility to 1.87.1
   * Added `fs.getAttributes` and `fs.getCapacity` functions
   * Added optional timeout argument to `websocket.receive`
@@ -161,7 +161,7 @@
   * Enabled MOTD by default
   * `http.post` now accepts a table as an argument as expected
 * Added raw terminal renderer
-  * See the documentation (https://www.craftos-pc.cc/docs/rawmode.html) for more info
+  * See the documentation (https://www.craftos-pc.cc/docs/rawmode) for more info
 * Added TRoR (Terminal Redirect over Rednet) terminal renderer
 * Added the ability to place modems on multiple separate networks
   * This can be done by adding a third argument when attaching the peripheral, specifying the network ID
@@ -302,7 +302,7 @@
     * Profiler: Measures function call count & time
     * Console: Allows printing debug messages outside of the main terminal
   * Computer can be paused with `debugger.break()`, `debug.debug()`, or Ctrl-T in debugger
-  * See [the documentation](https://www.craftos-pc.cc/docs/debugger.html) for more information
+  * See [the documentation](https://www.craftos-pc.cc/docs/debugger) for more information
 * Added breakpoints
   * Can be set with `debugger.setBreakpoint(file, line)` or `debug.setbreakpoint(file, line)`
   * Does not require debugger to be attached
