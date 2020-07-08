@@ -48,10 +48,28 @@ function showDetails() {
         node.className = "details-entry";
         var block = document.createElement("div");
         block.className = "details-image-container";
-        var image = document.createElement("img");
-        image.className = "details-image";
-        image.src = "images/" + detail.image;
-        block.appendChild(image);
+        if (detail.image.endsWith("png")) {
+            var container = document.createElement("picture");
+            container.className = "details-image";
+            var source_webp = document.createElement("source");
+            source_webp.srcset = "images/webp/" + detail.image.replace("png", "webp");
+            source_webp.type = "image/webp";
+            container.appendChild(source_webp);
+            var source_png = document.createElement("source");
+            source_png.srcset = "images/" + detail.image;
+            source_png.type = "image/png";
+            container.appendChild(source_png);
+            var img = document.createElement("img");
+            img.className = "details-image";
+            img.src = "images/" + detail.image;
+            container.appendChild(img);
+            block.appendChild(container);
+        } else {
+            var img = document.createElement("img");
+            img.className = "details-image";
+            img.src = "images/" + detail.image;
+            block.appendChild(img);
+        }
         node.appendChild(block);
         var desc = document.createElement("div");
         desc.className = "details-content";
@@ -66,10 +84,21 @@ function showDetails() {
         node.appendChild(desc);
         box.appendChild(node);
         if (detail.image != "screenshot.gif") {
-            var mimage = document.createElement("img");
-            mimage.className = "scrolling-image";
-            mimage.src = "images/" + detail.image;
-            document.getElementById("scrolling-content").appendChild(mimage);
+            var container = document.createElement("picture");
+            container.className = "scrolling-image";
+            var source_webp = document.createElement("source");
+            source_webp.srcset = "images/webp/" + detail.image.replace("png", "webp");
+            source_webp.type = "image/webp";
+            container.appendChild(source_webp);
+            var source_png = document.createElement("source");
+            source_png.srcset = "images/" + detail.image;
+            source_png.type = "image/png";
+            container.appendChild(source_png);
+            var img = document.createElement("img");
+            img.className = "scrolling-image";
+            img.src = "images/" + detail.image;
+            container.appendChild(img);
+            document.getElementById("scrolling-content").appendChild(container);
         }
     }
     document.getElementById("scrolling-content").innerHTML += document.getElementById("scrolling-content").innerHTML;
