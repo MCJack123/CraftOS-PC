@@ -1,4 +1,4 @@
-# CraftOS-PC Accelerated
+# CraftOS-PC Accelerated (Deprecated)
 CraftOS-PC *Accelerated* is a fork of CraftOS-PC that replaces the standard Lua interpreter with the LuaJIT interpreter. LuaJIT is a special implementation of Lua that compiles Lua scripts directly to machine code, rather than to Lua bytecode. This allows it to run up to 50% faster than standard CraftOS-PC in some scenarios.
 
 ## Advantages
