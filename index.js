@@ -62,12 +62,14 @@ function showDetails() {
             var img = document.createElement("img");
             img.className = "details-image";
             img.src = "images/" + detail.image;
+            img.alt = detail.title;
             container.appendChild(img);
             block.appendChild(container);
         } else {
             var img = document.createElement("img");
             img.className = "details-image";
             img.src = "images/" + detail.image;
+            img.alt = detail.title;
             block.appendChild(img);
         }
         node.appendChild(block);
@@ -97,6 +99,7 @@ function showDetails() {
             var img = document.createElement("img");
             img.className = "scrolling-image";
             img.src = "images/" + detail.image;
+            img.alt = detail.title;
             container.appendChild(img);
             document.getElementById("scrolling-content").appendChild(container);
         }
