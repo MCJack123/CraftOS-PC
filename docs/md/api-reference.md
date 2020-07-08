@@ -54,6 +54,7 @@ HTTP server extension in the `http` API.
       * setStatusCode(*number* code): Sets the HTTP response code to send
       * setResponseHeader(*string* key, *string* value): Sets a header value to send
     * **ALWAYS** call `res.close()` before returning from the callback 
+
 ### Events
 * http_request: Sent when an HTTP request is made.
   * *number*: The port the request was made on
