@@ -20,7 +20,7 @@
 * [CLI Mode & Flags](cli)
 * [Raw Mode](rawmode)
 * [Plugin System](plugins)
-* [CraftOS-PC *Accelerated*](accelerated)
+* [CraftOS-PC *Accelerated* (Deprecated)](accelerated)
 
 ### Other Information
 * [WebAssembly Port & CraftOS-PC Online](online)
