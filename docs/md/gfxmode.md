@@ -9,6 +9,15 @@ The `term.setGraphicsMode(mode)` function is the gateway to graphics mode. This 
 
 Changing into graphics mode will hide the text terminal, but it can still be written to, so any output will appear on the terminal upon switching out of graphics mode. The current graphics mode can be returned with `term.getGraphicsMode()`. It will return false for text mode and the mode number for graphics modes.
 
+The size of the graphics mode screen is exactly 6 times the width and 9 times the height of the size of the text terminal (as returned by `term.getSize()`). If you want to get the size of the screen, you can use a function like this:
+
+```lua
+local function getGraphicsSize()
+    local w, h = term.getSize()
+    return w * 6, h * 9
+end
+```
+
 ## Setting pixels
 In graphics mode, the `term.setPixel(x, y, color)` function can be used to set a pixel to a color. The color argument has different meanings depending on the mode. In mode 1, the color argument must be a color from the `colors` API. In mode 2, the color argument must be a number between 0-255. Switching to mode 2 also changes the color argument for `term.setPaletteColor` and `term.getPaletteColor`.
 
