@@ -23,7 +23,7 @@ CraftOS-PC can be installed either through the prebuilt binaries available on th
 ## Linux
 CraftOS-PC is provided in binary form as both an Ubuntu package and an Arch Linux AUR package. It is not available as a plain binary for other distributions, so non-Ubuntu/Arch users will have to build from source.
 
-### Ubuntu (18.04, 19.04, 19.10)
+### Ubuntu/Linux Mint (18.04, 19.10, 20.04)
 Run these commands in the shell:
 ```sh
 sudo add-apt-repository ppa:jackmacwindows/ppa
@@ -32,8 +32,10 @@ sudo apt install craftos-pc
 ```
 Once installed, CraftOS-PC can be run either from the launcher or with the `craftos` command.
 
-### Arch Linux
-Install the `craftos-pc` package using your favorite AUR package manager. (If you're using Arch I assume you either know what this means or know how to figure out what this means.) Once installed, CraftOS-PC can be run using the `craftos` command or from your desktop environment's launcher.
+### Arch Linux/Manjaro
+Install the `craftos-pc` package using your favorite AUR package manager, such as `yay`. (If you're using Arch I assume you either know what this means or know how to figure out what this means.) Once installed, CraftOS-PC can be run using the `craftos` command or from your desktop environment's launcher.
+
+If you prefer to always be running the latest revision as on GitHub, you can install the `craftos-pc-git` package, which builds from the latest source on the `master` branch. Running development versions may cause problems, so use it at your own risk. Support is limited for this version. To keep the files separate, `craftos-pc-git` installs into `/usr/local` (instead of `/usr`), so you can keep both versions available on your system.
 
 ## Windows Nightly Builds
 Nightly builds of CraftOS-PC are available [on the website](https://www.craftos-pc.cc/nightly/). These builds are provided to allow Windows users to test new features without having to build the entire solution and dependencies. New builds are posted at midnight EST, unless there were no changes since the last build. The download page lists the three latest builds, but older builds are available by direct link. Note that these files are just the raw executable; if there were changes to the ROM you must pull them in manually.
