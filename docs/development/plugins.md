@@ -2,12 +2,17 @@
 CraftOS-PC features a new plugin system that allows importing external Lua libraries into the ComputerCraft environment. Many pre-existing Lua libraries work out of the box, including some LuaRocks. A CCEmuX adapter plugin is avaiable with all binary versions of CraftOS-PC v2.2 and later.
 
 ## Installing
-Plugins can be installed in these locations depening on your platform:
+Plugins can be installed in these locations depending on your platform:
 * Windows: `C:\Program Files\CraftOS-PC\plugins`
 * macOS: `CraftOS-PC.app/Contents/PlugIns`
 * Linux: `/usr/share/craftos/plugins`
 
 The plugin file **must** have the name that the library's `luaopen_` function uses. For example, the CCEmuX plugin must be named `ccemux` because the loader function is named `luaopen_ccemux`. Once a plugin is installed it will be available in the global table with the same name as the plugin file.
+
+## Using Lua libraries
+CraftOS-PC can automatically import Lua libraries as they would be used with standard Lua. Even though CraftOS-PC uses its own version of Lua, you can still use libraries that were built for standard Lua 5.1.
+
+To use a Lua library with CraftOS-PC, simply drop the DLL/dylib/so file into the `plugins` folder as listed above, and rename it so it starts with `lua_` (e.g. `lua_zlib.dll`). This will tell CraftOS-PC not to search for plugin metadata, and instead treats it like a standard library. Make sure to keep the rest of the file name the same, as this is what CraftOS-PC uses to determine the library's name.
 
 ## Writing plugins
 A plugin for CraftOS-PC follows the same format as a normal Lua library, with an additional function providing metadata about the plugin. It contains a C function named `luaopen_<name>` that takes one `lua_State*` argument. This function should return a table with the contents of the new API to add. It should also contain a function named `plugin_info`, which takes a `lua_State*` as well. This function should push a table containing a `version` key with the plugin API version, as well as the required capabilities as callback functions. See the table at the bottom of the page for the API versions.  
@@ -36,5 +41,6 @@ If compiling for Windows, make sure to use the `_declspec(dllexport)` macro. (Th
 | API Version | CraftOS-PC Version |
 |-------------|--------------------|
 | (none)      | v2.0 - v2.1.3      |
-| 2           | v2.2 - Current     |
+| 2           | v2.2 - v2.3.4      |
 | 3           | Accelerated v2.2   |
+| 4           | v2.4 - Current     |
