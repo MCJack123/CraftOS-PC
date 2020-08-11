@@ -5,6 +5,7 @@
   * Uses the same base code that was used prior to v2.1, with updates that have been added since
   * Support can be enabled with the `useHardwareRenderer` config option or the `--hardware` or `-r hardware-sdl` CLI flag
   * A test script is available to see which is better for your system
+    * You can run it with `gist run 802f64508a1f51b3244f5bcc0414ca22`
   * Vsync can be enabled with the `useVsync` option
   * The driver to use can be selected with the `preferredHardwareDriver` config option or the `-r` CLI flag
     * These are all of the possible drivers:
@@ -22,32 +23,44 @@
   * Add cc.image.nft module, for working with nft files. (JakobDev)
   * Add configuration to control the sizes of monitors and terminals. (`defaultWidth`/`defaultHeight`)
   * Fix string serialization error in textutils.serializeJSON.
-* Added ID to per-computer config error messages
-* Added support for `monitor_touch` event as expected
-  * This removes the `mouse_*` events for monitors
-  * The previous behavior can be restored by setting the `monitorsUseMouseEvents` config setting
-    * This will also add the monitor's side as a fourth parameter
-* Fixed a race condition in `periphemu.detach`
-* Disabled access to `romReadOnly` from CraftOS
+* Brand-new app icon
+  * Designed especially for CraftOS-PC
+  * Inspired by the aesthetic of macOS Big Sur
+  * High-resolution, textured, modern
 * Added proper double-buffering to the terminal
   * This allows you to use the `term` API while CraftOS-PC is rendering
   * This speeds up programs that end up running lower than the render FPS
+* Added introduction & update MOTD messages
+  * When run for the first time (or in a new directory), an introduction message is displayed
+  * When run after an update, a notification message is displayed, and suggests running `help whatsnew`
+* Added support for `monitor_touch` event as expected (#119)
+  * This removes the `mouse_*` events for monitors
+  * The previous behavior can be restored by setting the `monitorsUseMouseEvents` config setting
+    * This will also add the monitor's side as a fourth parameter
+* Added `standardsMode` config option for strict compatibility with CC:T/CCEmuX
+  * Forces time readings & timer resolution to be rounded to 50 ms (1 tick)
+  * Adds back colored margins as shown in CC
+  * More compatibility tweaks may be added under this option
+* Added `startFullscreen` per-computer config option
+* Disabled access to `romReadOnly` from CraftOS
+* Fixed ABI compatibility with standard Lua libraries
+  * This means you can now properly use Lua libraries (e.g. from LuaRocks) as plugins
+  * Prefix the library name with `lua_` to tell CraftOS-PC to skip loading plugin metadata
+* Updated plugin API version to 4
+* Added ID to per-computer config error messages
 * Modems now act as wired modems and can be used to access non-local peripherals (#122)
   * Non-local peripherals can now be listed with `peripheral.getNames()` when a modem is attached
 * Fixed a crash when opening a debugger twice (#120)
 * Fixed a rare race condition while getting an event (#123)
 * Fixed an issue with saving screenshots to disk
 * Fixed a bug where function key hotkeys don't work when Caps or Num lock is enabled
-* Added `startFullscreen` per-computer config option
 * Fixed `bit32.lrotate` returning incorrect results
-* Added `standardsMode` config option for strict compatibility with CC:T/CCEmuX
-  * Forces time readings & timer resolution to be rounded to 50 ms (1 tick)
-  * Adds back colored margins as shown in CC
-  * More compatibility tweaks may be added under this option
 * Fixed crash when closing CraftOS-PC while a WebSocket is shutting down
 * Fixed crash when using too many nested coroutines (#124)
   * This was due to a bug that didn't update the C call count properly
   * Calling too many nested coroutines will result in a "C stack overflow" error
+* Fixed a race condition in `periphemu.detach`
+* Fixed incorrect prettification of non-contiguous tables (#125)
 * Fixed raw terminals getting the same ID
 * Added some more locks on timers to prevent crashes
 * Fixed abort timeout not working before first yield
@@ -59,6 +72,7 @@
 * Fixed styling of message dialogs on Windows
 * Fixed events going to the wrong window in raw mode
 * Fixed Ctrl-R/S/T shortcuts not working in non-GUI modes
+* Disabled fullscreen support in WASM to avoid crashes (#100)
 * Windows: The solution now uses vcpkg for dependencies, so NuGet and separate builds are no longer required
 * Windows: PDF printing is now supported in all builds
 * Windows: Changed Visual C++ Runtime and other libraries to dynamic linking
