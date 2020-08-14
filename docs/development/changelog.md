@@ -1,5 +1,5 @@
 # Changelog
-## v2.4 - ?
+## v2.4 - August 15, 2020
 * Added new GUI terminal that uses hardware rendering (experimental)
   * It uses the GPU to accelerate drawing graphics
   * Uses the same base code that was used prior to v2.1, with updates that have been added since
