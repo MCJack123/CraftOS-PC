@@ -54,6 +54,7 @@
 * Fixed a rare race condition while getting an event (#123)
 * Fixed an issue with saving screenshots to disk
 * Fixed a bug where function key hotkeys don't work when Caps or Num lock is enabled
+* Fixed a bug causing the `locals` table in the debugger to be missing
 * Fixed `bit32.lrotate` returning incorrect results
 * Fixed crash when closing CraftOS-PC while a WebSocket is shutting down
 * Fixed crash when using too many nested coroutines (#124)
@@ -73,6 +74,8 @@
 * Fixed events going to the wrong window in raw mode
 * Fixed Ctrl-R/S/T shortcuts not working in non-GUI modes
 * Disabled fullscreen support in WASM to avoid crashes (#100)
+* Mac: macOS 10.13 or later is now required for official builds
+  * Users on older versions are still able to build and run CraftOS-PC themselves
 * Windows: The solution now uses vcpkg for dependencies, so NuGet and separate builds are no longer required
 * Windows: PDF printing is now supported in all builds
 * Windows: Changed Visual C++ Runtime and other libraries to dynamic linking
