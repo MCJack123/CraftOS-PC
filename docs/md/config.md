@@ -18,6 +18,7 @@ These are the config variables available as of CraftOS-PC v2.2.5. *Variables mar
 * `customFontScale` [] (`global.json` only): When using a custom font (besides `hdfont`), set this to specify the scale divisor for the font (1 = 12x18, 2 = 6x9 (default), 3 = 4x6)
 * `debug_enable` [false]: Whether to enable the `debug` API
 * `default_computer_settings` []: A string with some default settings to set in the `settings` API
+* `defaultWidth`/`defaultHeight` [51/19]: The default size of new terminal windows
 * `disable_lua51_features` [false]: Whether to disable some Lua 5.1-only features in the BIOS
 * `http_enable` [true]: Whether to enable the `http` API
 * `ignoreHotkeys` [false]: Whether to ignore hotkeys such as F2, F3, F11
@@ -26,6 +27,7 @@ These are the config variables available as of CraftOS-PC v2.2.5. *Variables mar
 * `maximumFilesOpen` [128]: Maximum number of files that can be open at once
 * `maxRecordingLength` [15]: The maximum number of seconds that a recording will run until it auto-stops (note that longer time * higher framerate = longer write time = higher memory usage)
 * `maxOpenPorts` [128]: The maximum number of ports (channels) that may be open on a single modem
+* `monitorsUseMouseEvents` [false]: Whether monitors should send `mouse_*` events (v2.3.4 and below behavior)
 * `mount_mode` [2]: Specifies security settings for mounting directories
   * `none` (0): Do not allow mounting directories
   * `ro strict` or `ro_strict` (1): Force all mounts to be read-only
@@ -35,9 +37,14 @@ These are the config variables available as of CraftOS-PC v2.2.5. *Variables mar
   * Values \>0 will only send `mouse_move` events no less than that number of milliseconds apart
   * 0 will disable throttling; `mouse_move` events will always be sent (could cause lag)
   * Values \<0 will disable the `mouse_move` event entirely
+* `preferredHardwareDriver` []: The preferred driver to use with the hardware renderer. Run CraftOS-PC from the console with `-r` to list the available drivers (after `tror`).
 * `recordingFPS` [10]: The framerate of GIF recordings. This value should be a divisor of `clockSpeed`, as the actual framerate is determined by integer division of both values.
-* `romReadOnly` [true]: Whether the ROM is mounted as read-only (change this only if you know what you're doing!)
-* `showMountPrompt` [true]: Whether to prompt the user when mounting a directory (change this only if you know what you're doing!)
+* `romReadOnly` [true] (`global.json` only): Whether the ROM is mounted as read-only (change this only if you know what you're doing!) - note that in v2.4 this is reset when launched for the first time after updating
+* `showMountPrompt` [true] (`global.json` only): Whether to prompt the user when mounting a directory (change this only if you know what you're doing!)
+* `standardsMode` [false]: Enables a few super-compatibility options, such as 50ms timing and colored margins
+* `startFullscreen` [false] (computer-local): Whether to start the computer in fullscreen mode
+* `useHardwareRenderer` [false]: Whether to use the GPU for hardware-accelerated rendering
+* `useVsync` [false]: Whether to enable Vsync with the hardware renderer
 * `vanilla` [false]: Whether to disable all CraftOS-PC-specific features
 
 ## Changing variables

@@ -1,5 +1,5 @@
 # CC: Tweaked Features
-CraftOS-PC emulates all of the features available in [CC: Tweaked](https://github.com/SquidDev/CC-Tweaked). CraftOS-PC v2.3.4 is verified to have feature parity with CC:T 1.89.1, and passes all tests used by CC: Tweaked. Here are some of the features that have been ported to CraftOS-PC:
+CraftOS-PC emulates all of the features available in [CC: Tweaked](https://github.com/SquidDev/CC-Tweaked). CraftOS-PC v2.4 is verified to have feature parity with CC:T 1.90.2, and passes all tests used by CC: Tweaked. Here are some of the features that have been ported to CraftOS-PC:
 
 * WebSocket support
 * `monitor.getTextScale()` method

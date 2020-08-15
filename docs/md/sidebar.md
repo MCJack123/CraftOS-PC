@@ -17,7 +17,8 @@
 * [CC: Tweaked Features](cctweaked)
 * [Auto-Updater](autoupdate)
 * [Debugger](debugger)
-* [CLI Mode & Flags](cli)
+* [Command-Line Flags](cli)
+* [Rendering Options](renderers)
 * [Raw Mode](rawmode)
 * [Plugin System](plugins)
 * [CraftOS-PC *Accelerated* (Deprecated)](accelerated)
@@ -26,7 +27,7 @@
 * [WebAssembly Port & CraftOS-PC Online](online)
 * [Program Compatibility](https://docs.google.com/spreadsheets/d/1PtZZA4Vcsk733gSlSGH3VpecaGSp9U9AJmDKkWRssa0/edit?usp=sharing)
   * [Submit a Program](https://forms.gle/5WhU7K52VAgr5DR68)
-* [Submit a Bug](../bugreport)
+  * [Submit a Bug](../bugreport)
 * [Contact](contact)
 * [Changelog](changelog)
 
