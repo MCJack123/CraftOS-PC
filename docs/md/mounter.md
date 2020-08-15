@@ -11,6 +11,12 @@ The `mounter` API can be used to mount paths through Lua. The `mounter.mount(nam
 
 The `mounter.list()` function returns a key-value table with all of the mount mappings. In CraftOS-PC v2.2 and earlier, the value of a mount is a string; and in CraftOS-PC v2.3 and later, the value is a list of strings. `mounter.isReadOnly(name)` returns whether a mount is marked read-only. Both of these functions are used internally by the "mount" program to list mounts.
 
+## From the command line
+Directories can be injected as mounts into CraftOS-PC straight from the command line. These mounts will be added before each computer starts up. There are three ways to specify mounts. Each of these flags should be followed by an argument of the format `<path>=<directory>`, where `<path>` is the destination path inside the computer, and `<directory>` is the path to the directory to mount.
+* `--mount` will mount the path with whatever `mount_mode` is selected in the config.
+* `--mount-rw` will force the mount to be read-write.
+* `--mount-ro` will force the mount to be read-only.
+
 ## Merge mounts
 CraftOS-PC v2.3 adds support for *merge mounts* which allow mounting multiple real directories to a single CraftOS-PC mount. All that's required to create a merge mount is to mount two directories to the same path using the "mount" command or `mounter.mount`. When a merge mount is created, files and folders from all directories are available inside the mounted path. The order that the directories are mounted *does matter*, as the first mounted directory will take priority over later mounts if duplicates are detected.
 

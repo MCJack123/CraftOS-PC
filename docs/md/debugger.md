@@ -9,7 +9,9 @@ Note that in CraftOS-PC v2.3 and later, the debugger will reduce the speed of th
 The debugger has multiple windows that can show information about the process. It has a multishell-style tab bar at the top, allowing you to quickly switch between each window. You can also use Ctrl+Left/Right to switch between each tab.
 
 ### Debugger
-The Debugger window is the main window of the debugger. It has a GDB-style interface that allows stepping through lines, setting breakpoints, and examining the environment. You can trigger the debugger by holding Ctrl-T in the debugger, calling the `stop()` method of the peripheral, or calling `debug.debug()`.  
+The Debugger window is the main window of the debugger. It has a GDB-style interface that allows stepping through lines, setting breakpoints, and examining the environment. You can trigger the debugger by holding Ctrl-T in the debugger, calling the `stop()` method of the peripheral, or calling `debug.debug()`.
+
+Local variables in the `print` command are available in the `locals` table. You can either search for a local by indexing with the local's name (e.g. `p locals.myVar`), or you can get a list of all locals available in a stack frame by indexing with the frame's ID (e.g. `p locals[4]`).
 
 These are the available debugger commands as of v2.2:
 * advance -- Run to a position in a file in the format `<file>:<line>`
@@ -34,7 +36,7 @@ These are the available debugger commands as of v2.2:
 * info breakpoints -- List all current breakpoints
 * info frame -- List the status of the program
 * info locals -- List all available locals
-* print (p) -- Run an expression and print the result a la lua.lua
+* print (p) -- Run an expression and print the result, similar to `lua.lua`
 * step (s) -- Step a number of lines
 
 ### Call Stack
