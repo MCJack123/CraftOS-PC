@@ -86,7 +86,8 @@
         preRun: [function() {
           FS.mkdir('/user-data');
           FS.mount(IDBFS, {}, '/user-data');
-          FS.syncfs(true, function(err) {if (err) console.log('Error while loading filesystem: ', err);});
+          window.waitingForFilesystemSynchronization = true;
+          FS.syncfs(true, function(err) {if (err) console.log('Error while loading filesystem: ', err); window.waitingForFilesystemSynchronization = false;});
         }]
       };
       Module.setStatus('Downloading...');
