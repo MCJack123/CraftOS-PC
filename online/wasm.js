@@ -4,7 +4,6 @@
       //var spinnerElement = document.getElementById('spinner');
 
       var Module = {
-        preRun: [],
         postRun: [],
         print: (function() {
           var element = document.getElementById('output');
@@ -83,7 +82,12 @@
               CollapsibleLists.applyTo(document.getElementById("browser-root"));
               updateBrowserCollapsibles("/user-data/computer/0", document.getElementById("browser-temp-root"));
             }, 150);
-        }
+        },
+        preRun: [function() {
+          FS.mkdir('/user-data');
+          FS.mount(IDBFS, {}, '/user-data');
+          FS.syncfs(true, function(err) {if (err) console.log('Error while loading filesystem: ', err);});
+        }]
       };
       Module.setStatus('Downloading...');
       window.onerror = function(event) {
