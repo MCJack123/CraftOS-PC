@@ -1,7 +1,8 @@
-// Copyright 2015 The Emscripten Authors.  All rights reserved.
-// Emscripten is available under two separate licenses, the MIT license and the
-// University of Illinois/NCSA Open Source License.  Both these licenses can be
-// found in the LICENSE file.
+/**
+ * @license
+ * Copyright 2015 The Emscripten Authors
+ * SPDX-License-Identifier: MIT
+ */
 
 // Pthread Web Worker startup routine:
 // This is the entry point file that is loaded first by each Web Worker
@@ -12,11 +13,7 @@ var threadInfoStruct = 0; // Info area for this thread in Emscripten HEAP (share
 var selfThreadId = 0; // The ID of this thread. 0 if not hosting a pthread.
 var parentThreadId = 0; // The ID of the parent pthread that launched this thread.
 
-// Cannot use console.log or console.error in a web worker, since that would risk a browser deadlock! https://bugzilla.mozilla.org/show_bug.cgi?id=1049091
-// Therefore implement custom logging facility for threads running in a worker, which queue the messages to main thread to print.
 var Module = {};
-
-// These modes need to assign to these variables because of how scoping works in them.
 
 function assert(condition, text) {
   if (!condition) abort('Assertion failed: ' + text);
@@ -25,27 +22,19 @@ function assert(condition, text) {
 function threadPrintErr() {
   var text = Array.prototype.slice.call(arguments).join(' ');
   console.error(text);
-  console.error(new Error().stack);
 }
 function threadAlert() {
   var text = Array.prototype.slice.call(arguments).join(' ');
   postMessage({cmd: 'alert', text: text, threadId: selfThreadId});
 }
+// We don't need out() for now, but may need to add it if we want to use it
+// here. Or, if this code all moves into the main JS, that problem will go
+// away. (For now, adding it here increases code size for no benefit.)
+var out = function() {
+  throw 'out() is not defined in worker.js.';
+}
 var err = threadPrintErr;
 this.alert = threadAlert;
-
-// When using postMessage to send an object, it is processed by the structured clone algorithm.
-// The prototype, and hence methods, on that object is then lost. This function adds back the lost prototype.
-// This does not work with nested objects that has prototypes, but it suffices for WasmSourceMap and WasmOffsetConverter.
-function resetPrototype(constructor, attrs) {
-  var object = Object.create(constructor.prototype);
-  for (var key in attrs) {
-    if (attrs.hasOwnProperty(key)) {
-      object[key] = attrs[key];
-    }
-  }
-  return object;
-}
 
 Module['instantiateWasm'] = function(info, receiveInstance) {
   // Instantiate from the module posted from the main thread.
@@ -61,13 +50,19 @@ Module['instantiateWasm'] = function(info, receiveInstance) {
 this.onmessage = function(e) {
   try {
     if (e.data.cmd === 'load') { // Preload command that is called once per worker to parse and load the Emscripten code.
+
+
       // Initialize the global "process"-wide fields:
       Module['DYNAMIC_BASE'] = e.data.DYNAMIC_BASE;
+
       Module['DYNAMICTOP_PTR'] = e.data.DYNAMICTOP_PTR;
 
       // Module and memory were sent from main thread
       Module['wasmModule'] = e.data.wasmModule;
+
       Module['wasmMemory'] = e.data.wasmMemory;
+
+
       Module['buffer'] = Module['wasmMemory'].buffer;
 
       Module['ENVIRONMENT_IS_PTHREAD'] = true;
@@ -79,11 +74,14 @@ this.onmessage = function(e) {
         importScripts(objectUrl);
         URL.revokeObjectURL(objectUrl);
       }
-      PThread = Module['PThread'];
-      HEAPU32 = Module['HEAPU32'];
-      postMessage({ cmd: 'loaded' });
+
+      // MINIMAL_RUNTIME always compiled Wasm (&Wasm2JS) asynchronously, even in pthreads. But
+      // regular runtime and asm.js are loaded synchronously, so in those cases
+      // we are now loaded, and can post back to main thread.
+      postMessage({ 'cmd': 'loaded' });
+
     } else if (e.data.cmd === 'objectTransfer') {
-      PThread.receiveObjectTransfer(e.data);
+      Module['PThread'].receiveObjectTransfer(e.data);
     } else if (e.data.cmd === 'run') {
       // This worker was idle, and now should start executing its pthread entry
       // point.
@@ -97,22 +95,29 @@ this.onmessage = function(e) {
       // (+/- 0.1msecs in testing).
       Module['__performance_now_clock_drift'] = performance.now() - e.data.time;
       threadInfoStruct = e.data.threadInfoStruct;
-      Module['__register_pthread_ptr'](threadInfoStruct, /*isMainBrowserThread=*/0, /*isMainRuntimeThread=*/0); // Pass the thread address inside the asm.js scope to store it for fast access that avoids the need for a FFI out.
+
+      // Pass the thread address inside the asm.js scope to store it for fast access that avoids the need for a FFI out.
+      Module['registerPthreadPtr'](threadInfoStruct, /*isMainBrowserThread=*/0, /*isMainRuntimeThread=*/0);
+
       selfThreadId = e.data.selfThreadId;
       parentThreadId = e.data.parentThreadId;
       // Establish the stack frame for this thread in global scope
-      var max = e.data.stackBase + e.data.stackSize;
-      var top = e.data.stackBase;
+      // The stack grows downwards
+      var max = e.data.stackBase;
+      var top = e.data.stackBase + e.data.stackSize;
       assert(threadInfoStruct);
       assert(selfThreadId);
       assert(parentThreadId);
       assert(top != 0);
-      assert(e.data.stackSize > 0);
-      assert(max > top);
+      assert(max != 0);
+      assert(top > max);
       // Also call inside JS module to set up the stack frame for this pthread in JS module scope
-      Module['establishStackSpaceInJsModule'](top, max);
-      PThread.receiveObjectTransfer(e.data);
-      PThread.setThreadStatus(Module['_pthread_self'](), 1/*EM_THREAD_STATUS_RUNNING*/);
+      Module['establishStackSpace'](top, max);
+      Module['_emscripten_tls_init']();
+      Module['writeStackCookie']();
+
+      Module['PThread'].receiveObjectTransfer(e.data);
+      Module['PThread'].setThreadStatus(Module['_pthread_self'](), 1/*EM_THREAD_STATUS_RUNNING*/);
 
       try {
         // pthread entry points are always of signature 'void *ThreadMain(void *arg)'
@@ -127,13 +132,15 @@ this.onmessage = function(e) {
         Module['checkStackCookie']();
         // The thread might have finished without calling pthread_exit(). If so, then perform the exit operation ourselves.
         // (This is a no-op if explicit pthread_exit() had been called prior.)
-        if (!Module['getNoExitRuntime']()) PThread.threadExit(result);
+        if (!Module['getNoExitRuntime']())
+          Module['PThread'].threadExit(result);
       } catch(ex) {
         if (ex === 'Canceled!') {
-          PThread.threadCancel();
+          Module['PThread'].threadCancel();
         } else if (ex != 'unwind') {
-          Atomics.store(HEAPU32, (threadInfoStruct + 4 /*C_STRUCTS.pthread.threadExitCode*/ ) >> 2, (ex instanceof Module['ExitStatus']) ? ex.status : -2 /*A custom entry specific to Emscripten denoting that the thread crashed.*/);
-          Atomics.store(HEAPU32, (threadInfoStruct + 0 /*C_STRUCTS.pthread.threadStatus*/ ) >> 2, 1); // Mark the thread as no longer running.
+          Atomics.store(Module['HEAPU32'], (threadInfoStruct + 4 /*C_STRUCTS.pthread.threadExitCode*/ ) >> 2, (ex instanceof Module['ExitStatus']) ? ex.status : -2 /*A custom entry specific to Emscripten denoting that the thread crashed.*/);
+
+          Atomics.store(Module['HEAPU32'], (threadInfoStruct + 0 /*C_STRUCTS.pthread.threadStatus*/ ) >> 2, 1); // Mark the thread as no longer running.
           if (typeof(Module['_emscripten_futex_wake']) !== "function") {
             err("Thread Initialisation failed.");
             throw ex;
@@ -142,12 +149,12 @@ this.onmessage = function(e) {
           if (!(ex instanceof Module['ExitStatus'])) throw ex;
         } else {
           // else e == 'unwind', and we should fall through here and keep the pthread alive for asynchronous events.
-          out('Pthread 0x' + threadInfoStruct.toString(16) + ' completed its pthread main entry point with an unwind, keeping the pthread worker alive for asynchronous operation.');
+          err('Pthread 0x' + threadInfoStruct.toString(16) + ' completed its pthread main entry point with an unwind, keeping the pthread worker alive for asynchronous operation.');
         }
       }
     } else if (e.data.cmd === 'cancel') { // Main thread is asking for a pthread_cancel() on this thread.
       if (threadInfoStruct) {
-        PThread.threadCancel();
+        Module['PThread'].threadCancel();
       }
     } else if (e.data.target === 'setimmediate') {
       // no-op
@@ -157,12 +164,12 @@ this.onmessage = function(e) {
       }
     } else {
       err('worker.js received unknown command ' + e.data.cmd);
-      console.error(e.data);
+      err(e.data);
     }
   } catch(ex) {
-    console.error('worker.js onmessage() captured an uncaught exception: ' + ex);
-    if (ex.stack) console.error(ex.stack);
-    throw e;
+    err('worker.js onmessage() captured an uncaught exception: ' + ex);
+    if (ex.stack) err(ex.stack);
+    throw ex;
   }
 };
 
@@ -179,7 +186,7 @@ if (typeof process === 'object' && typeof process.versions === 'object' && typeo
 
   var nodeWorkerThreads = require('worker_threads');
 
-  Worker = nodeWorkerThreads.Worker;
+  global.Worker = nodeWorkerThreads.Worker;
 
   var parentPort = nodeWorkerThreads.parentPort;
 
