@@ -3,6 +3,8 @@
 // Also, add a try around Fetch.postMessage inside initFetchWorker and call 
 // window.disableTerminal() in a catch statement (around line 10950).
 
+const { FS } = require("./wasm/craftos");
+
 var CCPC_ONLINE_VERSION = "v0.9";
 
 function request(url, callback) {
@@ -355,7 +357,7 @@ function sidebarSelect(num) {
 </div><br><span class="browser-title">Upload</span><br><div style="padding-left: 10px">
 <input type="file" id="browser-upload-file" multiple><br>
 <input type="text" placeholder="Parent directory" id="browser-upload-path" oninput="event.stopPropagation()" ${DISABLE_PROPAGATION}><br>
-<button type="button" onclick="uploadFile()">Upload File</button></div></div>`;
+<button type="button" onclick="uploadFile()">Upload File</button></div><br><br><button type="button" onclick="eraseAllFiles()" style="padding-left: 10px">Erase All Files and Settings</button></div>`;
     }
 }
 
@@ -404,6 +406,27 @@ function uploadFile() {
         let p = FS.absolutePath(f.name, document.getElementById("browser-upload-path").value.replace(/^\//, "") == "" ? "/user-data/computer/0" : 
                                         FS.absolutePath(document.getElementById("browser-upload-path").value.replace(/^\//, ""), "/user-data/computer/0"));
         f.arrayBuffer().then((buffer) => {FS.writeFile(p, new Uint8Array(buffer)); FS.syncfs(false, ()=>{});});
+    }
+}
+
+function recursiveRemove(path, a) {
+    for (let x of FS.readdir(path)) {
+        if (x !== "." && x !== "..") {
+            let p = FS.joinPath([path, x])
+            if (FS.isDir(p)) {
+                recursiveRemove(p);
+            } else {
+                FS.unlink(p);
+            }
+        }
+    }
+    if (a !== true) FS.rmdir(path);
+}
+
+function eraseAllFiles() {
+    if (confirm("This will erase all files on the computer and resets all settings to default. Are you sure you want to continue?")) {
+        recursiveRemove("/user-data", true);
+        location.reload();
     }
 }
 
