@@ -355,7 +355,7 @@ function sidebarSelect(num) {
 </div><br><span class="browser-title">Upload</span><br><div style="padding-left: 10px">
 <input type="file" id="browser-upload-file" multiple><br>
 <input type="text" placeholder="Parent directory" id="browser-upload-path" oninput="event.stopPropagation()" ${DISABLE_PROPAGATION}><br>
-<button type="button" onclick="uploadFile()">Upload File</button></div><br><br><button type="button" onclick="eraseAllFiles()" style="padding-left: 10px">Erase All Files and Settings</button></div>`;
+<button type="button" onclick="uploadFile()">Upload File</button></div><br><br><br><br><button type="button" onclick="eraseAllFiles()" style="text-align: center">Erase All Files and Settings</button></div>`;
     }
 }
 
@@ -411,7 +411,7 @@ function recursiveRemove(path, a) {
     for (let x of FS.readdir(path)) {
         if (x !== "." && x !== "..") {
             let p = FS.joinPath([path, x])
-            if (FS.isDir(p)) {
+            if (isDir(p)) {
                 recursiveRemove(p);
             } else {
                 FS.unlink(p);
