@@ -3,8 +3,6 @@
 // Also, add a try around Fetch.postMessage inside initFetchWorker and call 
 // window.disableTerminal() in a catch statement (around line 10950).
 
-const { FS } = require("./wasm/craftos");
-
 var CCPC_ONLINE_VERSION = "v0.9";
 
 function request(url, callback) {
