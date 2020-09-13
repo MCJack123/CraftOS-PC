@@ -425,7 +425,7 @@ function recursiveRemove(path, a) {
 function eraseAllFiles() {
     if (confirm("This will erase all files on the computer and resets all settings to default. Are you sure you want to continue?")) {
         recursiveRemove("/user-data", true);
-        FS.syncfs(false, location.reload);
+        FS.syncfs(false, () => location.reload());
     }
 }
 
