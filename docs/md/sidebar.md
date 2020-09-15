@@ -21,7 +21,7 @@
 * [Rendering Options](renderers)
 * [Raw Mode](rawmode)
 * [Plugin System](plugins)
-* [CraftOS-PC *Accelerated* (Deprecated)](accelerated)
+* [CraftOS-PC *Accelerated*](accelerated)
 
 ### Other Information
 * [WebAssembly Port & CraftOS-PC Online](online)
