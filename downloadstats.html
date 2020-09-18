@@ -5,7 +5,7 @@
             function updateStats() {
                 let url = "";
                 if (location.search === "") url = "https://api.github.com/repos/MCJack123/craftos2/releases/latest";
-                else url = "https://api.github.com/repos/MCJack123/craftos2/releases/tags/" + location.search;
+                else url = "https://api.github.com/repos/MCJack123/craftos2/releases/tags/" + location.search.substr(1);
                 let xhr = new XMLHttpRequest();
                 xhr.open("GET", url);
                 xhr.onreadystatechange = function() {
