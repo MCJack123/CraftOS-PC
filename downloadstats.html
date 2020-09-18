@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>CraftOS-PC Download Stats</title>
+        <link rel="stylesheet" href="../site.css" type="text/css" />
         <script>
             function updateStats() {
                 let url = "";
@@ -21,7 +22,12 @@
                 xhr.send();
             }
         </script>
-        <link rel="stylesheet" href="../site.css" type="text/css" />
+        <style>
+            td, th {
+                padding-left: 5px;
+                padding-right: 10px;
+            }
+        </style>
     </head>
     <body style="padding: 20px; width: auto; height: auto">
         <h1>CraftOS-PC <span id="version"></span> Download Stats</h1>
