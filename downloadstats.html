@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>CraftOS-PC Download Stats</title>
+        <script>
+            function updateStats() {
+                let url = "";
+                if (location.search === "") url = "https://api.github.com/repos/MCJack123/craftos2/releases/latest";
+                else url = "https://api.github.com/repos/MCJack123/craftos2/releases/tags/" + location.search;
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", url);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        let data = JSON.parse(xhr.responseText);
+                        let rows = [];
+                        document.getElementById("version").innerText = data.tag_name;
+                        for (let r of data.assets) rows.push({name: r.name, count: r.download_count});
+                        rows.sort((a, b) => a.count - b.count);
+                        for (let i = 0; i < rows.length; i++) document.getElementById("rows").innerHTML += `<tr><td>${rows[i].name}</td><td>${rows[i].count}</td></tr>`;
+                    }
+                }
+                xhr.send();
+            }
+        </script>
+        <link rel="stylesheet" href="../site.css" type="text/css" />
+    </head>
+    <body>
+        <h1>CraftOS-PC <span id="version"></span> Download Stats</h1>
+        <table id="rows">
+            <tr><th>File name</th><th>Download count</th></tr>
+        </table>
+        <script>updateStats();</script>
+    </body>
+</html>
