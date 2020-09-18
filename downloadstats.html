@@ -14,7 +14,7 @@
                         let rows = [];
                         document.getElementById("version").innerText = data.tag_name;
                         for (let r of data.assets) rows.push({name: r.name, count: r.download_count});
-                        rows.sort((a, b) => a.count - b.count);
+                        rows.sort((a, b) => b.count - a.count);
                         for (let i = 0; i < rows.length; i++) document.getElementById("rows").innerHTML += `<tr><td>${rows[i].name}</td><td>${rows[i].count}</td></tr>`;
                     }
                 }
@@ -23,7 +23,7 @@
         </script>
         <link rel="stylesheet" href="../site.css" type="text/css" />
     </head>
-    <body>
+    <body style="padding: 20px">
         <h1>CraftOS-PC <span id="version"></span> Download Stats</h1>
         <table id="rows">
             <tr><th>File name</th><th>Download count</th></tr>
