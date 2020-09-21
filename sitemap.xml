@@ -1,128 +1,174 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
   <loc>https://www.craftos-pc.cc/</loc>
-  <lastmod>2019-12-15T02:30:00+05:00</lastmod>
-  <priority>1.00</priority>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>1.0</priority>
 </url>
 <url>
-  <loc>https://www.craftos-pc.cc/docs/</loc>
-  <lastmod>2019-10-27T22:30:00+04:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/getting-started</loc>
-  <lastmod>2019-10-27T22:30:00+04:00</lastmod>
+  <loc>https://www.craftos-pc.cc/nightly/</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.craftos-pc.cc/docs/about</loc>
-  <lastmod>2019-10-27T22:30:00+04:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/accelerated</loc>
-  <lastmod>2019-11-05T22:30:00+04:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/autoupdate</loc>
-  <lastmod>2019-10-27T22:30:00+04:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/ccemux</loc>
-  <lastmod>2020-03-05T12:30:00+05:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/cctweaked</loc>
-  <lastmod>2020-01-02T20:42:59+05:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/changelog</loc>
-  <lastmod>2020-03-05T12:30:00+05:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/cli</loc>
-  <lastmod>2020-03-05T12:30:00+05:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/config</loc>
-  <lastmod>2020-03-05T12:30:00+05:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/contact</loc>
-  <lastmod>2020-01-04T16:30:00+05:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/debugger</loc>
-  <lastmod>2019-12-15T02:30:00+05:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/gfxmode</loc>
-  <lastmod>2019-10-27T22:30:00+04:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/http-server</loc>
-  <lastmod>2019-10-27T22:30:00+04:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/installation</loc>
-  <lastmod>2019-10-27T22:30:00+04:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/mounter</loc>
-  <lastmod>2019-10-27T22:30:00+04:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/multicomp</loc>
-  <lastmod>2020-03-05T12:30:00+05:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.craftos-pc.cc/docs/periphemu</loc>
-  <lastmod>2019-10-27T22:30:00+04:00</lastmod>
+  <loc>https://www.craftos-pc.cc/docs/renderers</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.craftos-pc.cc/docs/plugins</loc>
-  <lastmod>2020-01-02T20:30:00+05:00</lastmod>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.craftos-pc.cc/docs/saves</loc>
-  <lastmod>2020-03-05T12:30:00+05:00</lastmod>
+  <loc>https://www.craftos-pc.cc/docs/http-server</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/changelog</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/about</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/contact</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.craftos-pc.cc/docs/screenshot</loc>
-  <lastmod>2020-03-05T12:30:00+05:00</lastmod>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.craftos-pc.cc/nightly/</loc>
-  <priority>0.5</priority>
+  <loc>https://www.craftos-pc.cc/docs/autoupdate</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/periphemu</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/ccemux</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/saves</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/mounter</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/accelerated</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/standalone</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/cli</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/online</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/getting-started</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/api-reference</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/config</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/gfxmode</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/template</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/multicomp</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/rawmode</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/error-messages</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/installation</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/debugger</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/docs/cctweaked</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/compatibility</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.4</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/downloadstats</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.4</priority>
+</url>
+<url>
+  <loc>https://www.craftos-pc.cc/bugreport</loc>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
+  <priority>0.4</priority>
 </url>
 <url>
   <loc>https://www.craftos-pc.cc/online/</loc>
-  <lastmod>2020-03-05T12:30:00+05:00</lastmod>
+  <lastmod>2020-09-21T18:32:56-0400</lastmod>
   <priority>0.8</priority>
 </url>
 
