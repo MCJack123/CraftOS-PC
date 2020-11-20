@@ -24,7 +24,8 @@
 * [CraftOS-PC *Accelerated*](accelerated)
 
 ### Other Information
-* [WebAssembly Port & CraftOS-PC Online](online)
+* [CraftOS-PC Online](online)
+* [Error Messages](error-messages)
 * [Program Compatibility](https://docs.google.com/spreadsheets/d/1PtZZA4Vcsk733gSlSGH3VpecaGSp9U9AJmDKkWRssa0/edit?usp=sharing)
   * [Submit a Program](https://forms.gle/5WhU7K52VAgr5DR68)
   * [Submit a Bug](../bugreport)
@@ -33,6 +34,5 @@
 
 ### API Reference
 * [CraftOS APIs (Official Wiki)](http://www.computercraft.info/wiki/Category:APIs)
-* [CC: Tweaked APIs](https://github.com/SquidDev-CC/CC-Tweaked/wiki)
 * [CC: Tweaked Documentation](https://tweaked.cc)
-* [CraftOS-PC APIs](https://github.com/MCJack123/craftos2/blob/master/DOCUMENTATION.md)
+* [CraftOS-PC APIs](api-reference)
