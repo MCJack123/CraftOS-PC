@@ -3,16 +3,17 @@ CraftOS-PC can be installed either through the prebuilt binaries available on th
 
 ## Requirements
 * Windows Vista or later, 64-bit only
-* macOS High Sierra 10.13 or later
-* Ubuntu 18.04 LTS Bionic, 20.04 LTS Focal, or 19.10 Eoan
+* macOS Mavericks 10.9.5 or later
+* Ubuntu 18.04 LTS Bionic, 20.04 LTS Focal, or 20.10 Groovy
 * Arch Linux or derivative
 
 ## Windows
 1. Download the setup program from the [home page](../).
 2. Double-click the downloaded `CraftOS-PC-Setup.exe` file to open the installer.
-3. When prompted to run as administrator, click Yes.
-4. Follow the instructions in the setup wizard.
-5. Once installed, CraftOS-PC will be available in the Start menu (and on the Desktop if selected).
+3. You may get a message from SmartScreen that the file isn't recognized. Click More info and Run anyway to continue.
+4. Select whether to install for just you or the whole system. If you install for the whole system, you will need an administrator password.
+5. Follow the instructions in the setup wizard.
+6. Once installed, CraftOS-PC will be available in the Start menu (and on the Desktop if selected).
 
 ## Mac
 1. Download the application archive from the [home page](../).
@@ -23,7 +24,7 @@ CraftOS-PC can be installed either through the prebuilt binaries available on th
 ## Linux
 CraftOS-PC is provided in binary form as both an Ubuntu package and an Arch Linux AUR package. It is not available as a plain binary for other distributions, so non-Ubuntu/Arch users will have to build from source.
 
-### Ubuntu/Linux Mint (18.04, 19.10, 20.04)
+### Ubuntu/Linux Mint (18.04, 20.04, 20.10)
 Run these commands in the shell:
 ```sh
 sudo add-apt-repository ppa:jackmacwindows/ppa
