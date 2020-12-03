@@ -19,7 +19,7 @@ end
 ```
 
 ## Setting pixels
-In graphics mode, the `term.setPixel(x, y, color)` function can be used to set a pixel to a color. The color argument has different meanings depending on the mode. In mode 1, the color argument must be a color from the `colors` API. In mode 2, the color argument must be a number between 0-255. Switching to mode 2 also changes the color argument for `term.setPaletteColor` and `term.getPaletteColor`.
+In graphics mode, the `term.setPixel(x, y, color)` function can be used to set a pixel to a color. **Unlike the rest of the `term` API, the coordinates of the pixels start at position (0, 0), not (1, 1).** For example, to set the top-leftmost pixel to white, use `term.setPixel(0, 0, colors.white)`. The color argument has different meanings depending on the mode. In mode 1, the color argument must be a color from the `colors` API. In mode 2, the color argument must be a number between 0-255. Switching to mode 2 also changes the color argument for `term.setPaletteColor` and `term.getPaletteColor`.
 
 To draw many pixels at once, the `term.drawPixels(startX, startY, pixels)` function can be called. It takes an initial X and Y position and draws lines of pixels in a table. Each line may be either a string with the byte value of each character representing a color from 0-15 (0-255 in 256-color mode); or a line can be a table with each entry representing one pixel as specified in `term.setPixel`. This function allows drawing pixels quicker than using `term.setPixel` for each pixel.
 
