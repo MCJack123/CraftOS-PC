@@ -133,7 +133,10 @@ function ready() {
     document.getElementById("download-button").innerHTML = '<span class="download-icon">' + (icons.platform.name == "desktop" ? icons.os.html : '<i class="fab fa-github">') + "</i></span>&nbsp;" + document.getElementById("download-button").innerHTML;
     var link = document.getElementById("download-link");
     if (icons.platform.name == "desktop") {
-        if (icons.os.name == "apple") link.href = "https://github.com/MCJack123/craftos2/releases/download/latest/CraftOS-PC.dmg";
+        if (icons.os.name == "apple") {
+            link.href = "https://github.com/MCJack123/craftos2/releases/download/latest/CraftOS-PC.dmg";
+            document.getElementById("mac-universal-note").style.display = "block";
+        }
         else if (icons.os.name == "windows") link.href = "https://github.com/MCJack123/craftos2/releases/download/latest/CraftOS-PC-Setup.exe";
         else if (icons.os.name == "linux") link.href = "docs/installation#linux";
         else {
