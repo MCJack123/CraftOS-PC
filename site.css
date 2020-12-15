@@ -20,6 +20,10 @@ body {
     margin-top: 24px;
 }
 
+.title-subtitle {
+    margin: 0;
+}
+
 a[href] {
     text-decoration: none;
     color: #444444;
@@ -45,13 +49,27 @@ img {
     align-content: center;
     align-items: center;
     text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .download-button {
     background-color: #dede6c;
     padding: 15px;
     color: #ffffff;
+    width: max-content;
+}
+
+#download-button {
     display: inline-flex;
+    flex-direction: row;
+}
+
+#mac-universal-note {
+    margin: 0;
+    margin-top: 7px;
+    width: max-content;
 }
 
 #download-content {
