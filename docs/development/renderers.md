@@ -14,7 +14,7 @@ The command-line interface to CraftOS-PC can be activated by passing the `-c` or
 
 In CLI mode, only one window (computer or monitor) can be viewed at a time. Windows can be cycled using Shift+Left/Right Arrow.
 
-Please note that a few features are missing in CLI mode. First, modifier keys (such as Ctrl) are not detected in CLI mode; instead, pressing Home and End (fn+Left and fn+Right on Mac) will send Ctrl and Alt, respectively. To actually type Home or End, hold down shift while pressing these keys. In addition, graphics mode is not available in CLI mode. Finally, the character set available in CLI mode is much different from the ComputerCraft character set, so programs using custom characters will not display correctly.
+Please note that a few features are missing in CLI mode. First, modifier keys (such as Ctrl) are not detected in CLI mode; instead, pressing Home and End (fn+Left and fn+Right on Mac) will send Ctrl and Alt, respectively. To actually type Home or End, hold down shift while pressing these keys. (This functionality can be changed with the [`cliControlKeyMode` config setting](config).) In addition, graphics mode is not available in CLI mode. Finally, the character set available in CLI mode is much different from the ComputerCraft character set, so programs using custom characters will not display correctly.
 
 ## Raw mode (`--raw`, `-r raw`) [v2.3]
 Raw mode allows storing or transporting a CraftOS-PC terminal session in a portable method, including use in a web client. See [the documentation page](rawmode) for more info.
