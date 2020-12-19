@@ -10,6 +10,7 @@ These are the config variables available as of CraftOS-PC v2.5. *Variables marke
   * 1: Opposite of mode 0; Control/Alt are available with Shift+Home/End
   * 2: Control/Alt keys can be pressed with Esc, C/A
   * 3: Control/Alt keys can be pressed with Ctrl-C/Ctrl-\\
+  * 4: Disable Control/Alt key emulation
 * `clockSpeed` [20]: Terminal refresh rate
 * `computerName` [] (computer-local): Name of the computer (cannot be set with `config` API)
 * `configReadOnly` [false]: Whether the configuration settings should not be able to be changed inside CraftOS (if `true`, must be disabled from `global.json`)
