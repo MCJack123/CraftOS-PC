@@ -118,10 +118,10 @@ Graphics mode extension in the `term` API.
   * y: The Y coordinate of the region
   * w: The width of the region
   * h: The height of the region
-* *nil* drawPixels(*number* startX, *number* startY, *table* pixels[, *number* width, *number* height]): Draws multiple pixels to the screen at once.
+* *nil* drawPixels(*number* startX, *number* startY, *table/number* fill[, *number* width, *number* height]): Draws multiple pixels to the screen at once.
   * startX: The starting X coordinate of the bitmap
   * startY: The starting Y coordinate of the bitmap
-  * pixels: A list of lines to draw on the screen. Each line may be a table with color values to draw (as in `setPixel`), or a string with each character mapping to one pixel (the colors will be 0-255 even in 16-color mode).
+  * fill: Either a list of lines to draw on the screen (where each line may be a table with color values to draw (as in `setPixel`), or a string where each byte is one pixel (the colors will be 0-255 even in 16-color mode)), or (v2.5+) a single color to fill a region with. If a color is specified, `width` and `height` become required.
   * width (v2.5+): The width of the table (missing columns will not be drawn), defaults to the width of each row
   * height (v2.5+): The height of the table (missing rows will not be drawn), defaults to the length of `pixels`
 * *nil* setPaletteColor(*number* color, *number* r[, *number* g, *number* b]): Sets the RGB values for a color. (Override)
