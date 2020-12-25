@@ -5,17 +5,16 @@ CraftOS-PC features a number of different rendering methods that you can choose 
 GUI mode is the default renderer for CraftOS-PC. It uses software rendering (on the CPU) to draw the screen. No arguments are required to use this mode, but if you want to manually specify it (for example, if `useHardwareRenderer` is enabled), you can use `--gui` to select it.
 
 ## Headless mode (`--headless`, `-r headless`) [v2.0]
-CraftOS-PC has a lesser-featured headless mode that can display simple text output. It's designed to be able to run scripts in a CraftOS environment without the overhead of an interface. One use is for CI testing: when CI runs, it starts CraftOS-PC in headless mode using the `--script` argument (see below) to run a test suite. When in headless mode, an extra function is available in the OS API, `os.exit(code)`, which quits CraftOS-PC and returns the exit code provided. CraftOS-PC will start in headless mode when the `--headless` argument is passed on the command line.
+CraftOS-PC has a lesser-featured headless mode that can display simple text output. It's designed to be able to run scripts in a CraftOS environment without the overhead of an interface. One use is for CI testing: when CI runs, it starts CraftOS-PC in headless mode using the `--script` argument (see below) to run a test suite. When in headless mode, you can pass a return code to `os.shutdown` to cause CraftOS-PC to exit with the code specified. CraftOS-PC will start in headless mode when the `--headless` argument is passed on the command line.
 
-## CLI mode (`-c`, `-r ncurses`) [v2.1]
-*CLI mode is not supported on Windows.*
+## CLI mode (`-c`, `-r ncurses`) [v2.1; v2.5 for Windows]
 The command-line interface to CraftOS-PC can be activated by passing the `-c` or `--cli` option to the program. When in CLI mode, the CraftOS shell appears in the terminal instead of as a new window/application. This is what CLI mode looks like on a Mac:
 
 ![CLI mode](../images/cli.png)
 
 In CLI mode, only one window (computer or monitor) can be viewed at a time. Windows can be cycled using Shift+Left/Right Arrow.
 
-Please note that a few features are missing in CLI mode. First, modifier keys (such as Ctrl) are not detected in CLI mode; instead, pressing Home and End (fn+Left and fn+Right on Mac) will send Ctrl and Alt, respectively. To actually type Home or End, hold down shift while pressing these keys. In addition, graphics mode is not available in CLI mode. Finally, the character set available in CLI mode is much different from the ComputerCraft character set, so programs using custom characters will not display correctly.
+Please note that a few features are missing in CLI mode. First, modifier keys (such as Ctrl) are not detected in CLI mode; instead, pressing Home and End (fn+Left and fn+Right on Mac) will send Ctrl and Alt, respectively. To actually type Home or End, hold down shift while pressing these keys. (This functionality can be changed with the [`cliControlKeyMode` config setting](config).) In addition, graphics mode is not available in CLI mode. Finally, the character set available in CLI mode is much different from the ComputerCraft character set, so programs using custom characters will not display correctly.
 
 ## Raw mode (`--raw`, `-r raw`) [v2.3]
 Raw mode allows storing or transporting a CraftOS-PC terminal session in a portable method, including use in a web client. See [the documentation page](rawmode) for more info.

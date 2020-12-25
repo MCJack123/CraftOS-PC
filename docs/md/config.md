@@ -2,7 +2,7 @@
 CraftOS-PC includes the same configuration options available in base ComputerCraft, plus some more to control the new features in CraftOS-PC. These options are global to all computers (except `isColor`).
 
 ## Variables
-These are the config variables available as of CraftOS-PC v2.4.4. *Variables marked `global.json` only are not exported through the `config` API and must be edited manually.*
+These are the config variables available as of CraftOS-PC v2.5. *Variables marked `global.json` only are not exported through the `config` API and must be edited manually.*
 * `abortTimeout` [17000]: Maximum time to wait for a program to yield before forcibly terminating
 * `checkUpdates` [true]: Whether to check for updates at program start
 * `cliControlKeyMode` [0] (`global.json` only): Sets the way CLI mode reads control keys
@@ -10,6 +10,7 @@ These are the config variables available as of CraftOS-PC v2.4.4. *Variables mar
   * 1: Opposite of mode 0; Control/Alt are available with Shift+Home/End
   * 2: Control/Alt keys can be pressed with Esc, C/A
   * 3: Control/Alt keys can be pressed with Ctrl-C/Ctrl-\\
+  * 4: Disable Control/Alt key emulation
 * `clockSpeed` [20]: Terminal refresh rate
 * `computerName` [] (computer-local): Name of the computer (cannot be set with `config` API)
 * `configReadOnly` [false]: Whether the configuration settings should not be able to be changed inside CraftOS (if `true`, must be disabled from `global.json`)
@@ -20,7 +21,16 @@ These are the config variables available as of CraftOS-PC v2.4.4. *Variables mar
 * `default_computer_settings` []: A string with some default settings to set in the `settings` API
 * `defaultWidth`/`defaultHeight` [51/19]: The default size of new terminal windows
 * `disable_lua51_features` [false]: Whether to disable some Lua 5.1-only features in the BIOS
+* ~~`http_blacklist` [local IPs] (`global.json` only): An array of IP addresses or hostnames to block; this takes priority over the whitelist~~
 * `http_enable` [true]: Whether to enable the `http` API
+* `http_max_download` [16777216]: The maximum size of an HTTP response to accept, in bytes
+* `http_max_requests` [16]: The maximum number of open HTTP request handles to allow, in bytes
+* `http_max_upload` [4194304]: The maximum size of an entire HTTP request, including POST data and headers, in bytes
+* `http_max_websocket_message` [65535]: The maximum size of one WebSocket message, in bytes
+* `http_max_websockets` [4]: The maximum number of open WebSocket connections to allow
+* `http_timeout` [30000]: The amount of time to wait for an HTTP request/response before terminating, in milliseconds
+* `http_websocket_enabled` [true]: Whether to enable WebSocket support in the `http` API
+* ~~`http_whitelist` ["*"] (`global.json` only): An array of IP addresses or hostnames to allow; any not in the list will be blocked~~
 * `ignoreHotkeys` [false]: Whether to ignore hotkeys such as F2, F3, F11
 * `initialComputer` [0]: The computer to start when opening CraftOS-PC
 * `isColor` [true] (computer-local): Whether the emulated computer is an Advanced Computer (color) or Standard Computer (no color)
@@ -33,6 +43,9 @@ These are the config variables available as of CraftOS-PC v2.4.4. *Variables mar
   * `ro strict` or `ro_strict` (1): Force all mounts to be read-only
   * `ro` (2): Mounts default to read-only if not explicitly specified
   * `rw` (3): Mounts default to read-write unless marked read-only (v2.1.2 and below behavior)
+* ~~`mounter_blacklist` ["/"] (`global.json` only): Paths to disallow mounting from, overriding the whitelist if deeper than its entry~~
+* ~~`mounter_no_ask` [] (`global.json` only): A list of paths to allow mounting without prompting, regardless of `showMountPrompt`~~
+* ~~`mounter_whitelist` [Users directories] (`global.json` only): Paths to allow mounting from, overriding the blacklist if deeper than its entry~~
 * `mouse_move_throttle` [-1]: The amount of throttling placed on the `mouse_move` event
   * Values \>0 will only send `mouse_move` events no less than that number of milliseconds apart
   * 0 will disable throttling; `mouse_move` events will always be sent (could cause lag)

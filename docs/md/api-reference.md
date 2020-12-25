@@ -39,6 +39,7 @@ See [disk API](https://computercraft.info/wiki/Disk_(API)) for other functions.
 ## `http`
 HTTP server extension in the `http` API.
 ### Functions
+* *handle|nil, string[, handle]* {put|delete|patch|trace|head|options}(*string* url, *string* post[, *table* headers[, *boolean* binary]]): Convenience functions to send HTTP requests with different methods. Functions the same as `http.post`, but using the specified method.
 * *nil* addListener(*number* port): Adds a listener on a port.
   * port: The port to listen on
 * *nil* removeListener(*number* port): Frees a port to be listened on again later.
@@ -112,10 +113,19 @@ Graphics mode extension in the `term` API.
   * x: The X coordinate of the pixel
   * y: The Y coordinate of the pixel
   * Returns: The color of the pixel
-* *nil* drawPixels(*number* startX, *number* startY, *table* pixels): Draws multiple pixels to the screen at once.
+* *table* getPixels(*number* x, *number* y, *number* w, *number* h): Returns the colors of every pixel in a region. Off-screen pixels will be `nil`.
+  * x: The X coordinate of the region
+  * y: The Y coordinate of the region
+  * w: The width of the region
+  * h: The height of the region
+* *nil* drawPixels(*number* startX, *number* startY, *table/number* fill[, *number* width, *number* height]): Draws multiple pixels to the screen at once.
   * startX: The starting X coordinate of the bitmap
   * startY: The starting Y coordinate of the bitmap
-  * pixels: A list of lines to draw on the screen. Each line may be a table with color values to draw (as in `setPixel`), or a string with each character mapping to one pixel (the colors will be 0-255 even in 16-color mode).
+  * fill: Either a list of lines to draw on the screen (where each line may be a table with color values to draw (as in `setPixel`), or a string where each byte is one pixel (the colors will be 0-255 even in 16-color mode)), or (v2.5+) a single color to fill a region with. If a color is specified, `width` and `height` become required.
+  * width (v2.5+): The width of the table (missing columns will not be drawn), defaults to the width of each row
+  * height (v2.5+): The height of the table (missing rows will not be drawn), defaults to the length of `pixels`
+* *nil* clear(): Clears the text or graphics screen, depending on the mode. (Override)
+  * Note: If graphics mode is enabled, the text screen will not be cleared, and vice versa. This is also true for the window API - the text buffers will not be cleared in graphics mode.
 * *nil* setPaletteColor(*number* color, *number* r[, *number* g, *number* b]): Sets the RGB values for a color. (Override)
   * color: The color to change
     * In mode 1, this should be a color in `colors`

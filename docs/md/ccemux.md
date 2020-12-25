@@ -11,11 +11,17 @@ CraftOS-PC v2.2 introduces an auxiliary tool that allows you to seamlessly port 
 * `maximumFilesOpen` => `maximumFilesOpen`
 * `maxComputerCapacity` => `computerSpaceLimit`
 * `httpEnable` => `http_enable`
+* `httpWhitelist` => `http_whitelist`
+* `httpBlacklist` => `http_blacklist`
 * `disableLua51Features` => `disable_lua51_features`
 * `defaultComputerSettings` => `default_computer_settings`
 * `debugEnable` => `debug_enable`
+* `http.websocketEnabled` => `http_websocket_enabled`
+* `http.max_requests` => `http_max_requests`
+* `http.max_websockets` => `http_max_websockets`
 * `termWidth` => `defaultWidth`
 * `termHeight` => `defaultHeight`
+* `plugins["net.clgd.ccemux.plugins.builtin.HDFontPlugin"].enabled` => `useHDFont`
 * All files on all computers will be copied over
 
 ## Command-line flags
