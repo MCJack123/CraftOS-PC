@@ -1,5 +1,5 @@
 # CC: Tweaked Features
-CraftOS-PC emulates all of the features available in [CC: Tweaked](https://github.com/SquidDev/CC-Tweaked). CraftOS-PC v2.4.3 is verified to have feature parity with CC:T 1.92.0, and passes all tests used by CC: Tweaked. Here are some of the features that have been ported to CraftOS-PC:
+CraftOS-PC emulates all of the features available in [CC: Tweaked](https://github.com/SquidDev/CC-Tweaked). CraftOS-PC v2.5 is verified to have feature parity with CC:T 1.95.0, and passes all tests used by CC: Tweaked. As of CraftOS-PC v2.5, the CC:T ROM files are used instead of the ComputerCraft 1.8 files, further enhancing compatibility and support. Here are some of the features that have been ported to CraftOS-PC:
 
 * WebSocket support
 * `monitor.getTextScale()` method
@@ -25,6 +25,9 @@ CraftOS-PC emulates all of the features available in [CC: Tweaked](https://githu
 * The Lua REPL warns when declaring locals
 * Add `fs.isDriveRoot` - checks if a path is the root of a drive.
 * Move the shell's `require`/`package` implementation to a separate `cc.require` module.
+* Add getter for window visibility (devomaa)
+* Use term.blit to draw boxes in paintutils (Lemmmy).
+* Fix several programs using their original name instead of aliases in usage hints (Lupus590).
 
 
 Programs that use CC: Tweaked features should work well on CraftOS-PC.

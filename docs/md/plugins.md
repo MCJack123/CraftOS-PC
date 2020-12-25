@@ -7,7 +7,7 @@ Plugins can be installed in these locations depending on your platform:
 * macOS: `CraftOS-PC.app/Contents/PlugIns`
 * Linux: `/usr/share/craftos/plugins`
 
-The plugin file **must** have the name that the library's `luaopen_` function uses. For example, the CCEmuX plugin must be named `ccemux` because the loader function is named `luaopen_ccemux`. Once a plugin is installed it will be available in the global table with the same name as the plugin file.
+The plugin file should have the name that the library's `luaopen_` function uses. For example, the CCEmuX plugin should be named `ccemux` because the loader function is named `luaopen_ccemux`. For some plugins (such as Lua libraries), this is required, but some (like the CCEmuX plugin) will tell CraftOS-PC what name to use automatically. Once a plugin is installed it will be available as a global API with the same name as the plugin.
 
 ## Using Lua libraries
 CraftOS-PC can automatically import Lua libraries as they would be used with standard Lua. Even though CraftOS-PC uses its own version of Lua, you can still use libraries that were built for standard Lua 5.1.
@@ -15,32 +15,279 @@ CraftOS-PC can automatically import Lua libraries as they would be used with sta
 To use a Lua library with CraftOS-PC, simply drop the DLL/dylib/so file into the `plugins` folder as listed above, and rename it so it starts with `lua_` (e.g. `lua_zlib.dll`). This will tell CraftOS-PC not to search for plugin metadata, and instead treats it like a standard library. Make sure to keep the rest of the file name the same, as this is what CraftOS-PC uses to determine the library's name.
 
 ## Writing plugins
-A plugin for CraftOS-PC follows the same format as a normal Lua library, with an additional function providing metadata about the plugin. It contains a C function named `luaopen_<name>` that takes one `lua_State*` argument. This function should return a table with the contents of the new API to add. It should also contain a function named `plugin_info`, which takes a `lua_State*` as well. This function should push a table containing a `version` key with the plugin API version, as well as the required capabilities as callback functions. See the table at the bottom of the page for the API versions.  
-These are the available capabilities as of CraftOS-PC v2.3.4:
-* `register_getLibrary`: Recieves the address of the `library_t * getLibrary(std::string name)` function
-    * This function allows accessing the functions for built-in APIs without going through Lua
-* `register_registerPeripheral`: Recieves the address of the `void registerPeripheral(std::string name, peripheral_init initializer)` function
-    * This function adds a peripheral class to the list of available peripherals
-* `register_addMount`: Recieves the address of the `bool addMount(Computer * comp, const char * real_path, const char * comp_path, bool read_only)` function
-    * This function mounts a path inside the computer, similar to `mounter.mount()`
-* `register_termQueueProvider`: Recieves the address of the `void termQueueProvider(Computer *comp, const char *(*callback)(lua_State*, void*), void* data)` function
-    * This function queues an event that has its data filled in by the callback
-* `register_startComputer`: Receives the address of the `Computer* startComputer(int id)` function
-    * This function starts a computer on a new thread and returns the new Computer object
-* `register_queueTask`: Receives the address of the `void* queueTask(std::function<void*(void*)> func, void* userdata, bool async)` function
-    * This function runs a function on the main thread with an optional opaque pointer argument, and unless `async` is `true`, returns an opaque pointer returned by the function
-* `register_getComputerById`: Receives the address of the `Computer * getComputerById(int id)` function
-    * This function returns a Computer object associated with an ID
-* `get_selectedRenderer`: Receives an integer specifying the current renderer
+A plugin consists of three main functions: `plugin_init`, `luaopen`, and `plugin_deinit`. `plugin_init` is called on the main thread when CraftOS-PC starts up, before any computers are started. It receives a pointer to a `PluginFunctions` structure (see below), and the path to the library as a `path_t` reference.It returns a pointer to a `PluginInfo` structure with the plugin's information filled in. This pointer can either be a static reference, or a dynamically allocated pointer (make sure to deallocate it in `plugin_deinit`, though).
 
-As of CraftOS-PC v2.3.2, capability callbacks get the name of the capability that's being registered pushed on the stack, so you can now have one function that handles all capabilities required, checking the value of the string passed.
+The signature for `plugin_init` is:
+```c++
+PluginInfo * plugin_init(const PluginFunctions * func, const path_t& path);
+```
 
-If compiling for Windows, make sure to use the `_declspec(dllexport)` macro. (The `LUA_API` macro does this for you.) The plugin must be compiled as a dynamic library (and/or bundle on Mac) for the given platform. To see an example of a plugin, see `examples/ccemux.cpp` in the source.
+`luaopen` is the main opener function that is used to initialize the API. It's called on the computer thread every time a computer boots up (this may be after a reboot!). It is a standard C Lua function, and is called in the same way as a normal Lua library opener. It takes one string - the API name - on the stack, and returns a value with which to set the API global to. The function should be named `luaopen_<name>`, where `<name>` is the name of the API. `<name>` is normally inferred from the plugin file's name, but if `PluginInfo.apiName` or `PluginInfo.luaopenName` is set, it will use that field instead.
+
+`plugin_deinit` is called on the main thread before CraftOS-PC quits. It can also be called immediately after `plugin_init` if an error was returned (however, it's not called if an exception is thrown). It takes the pointer returned from `plugin_init`, and returns nothing. `plugin_deinit` is not required for a plugin to work, but it can be used if you need to free resources or to delete a dynamically allocated `PluginInfo` structure.
+
+The signature for `plugin_deinit` is:
+```c++
+void plugin_deinit(PluginInfo * info);
+```
+
+All of these functions should be declared as exported C functions. This means they should be inside an `extern "C"` block, and on Windows have the `__declspec(dllexport)` qualifier. Examples of plugins, as well as some starter files, are contained inside the [`examples` directory](https://github.com/MCJack123/craftos2/tree/master/examples) of the CraftOS-PC repository.
+
+## `PluginFunctions` structure
+
+The [PluginFunctions](#PluginFunctions-structure) structure is used to hold all of the functions that a plugin may use to interact with CraftOS-PC. This structure is passed (as a constant pointer) to the `plugin_init` function.
+
+There are two different version fields in this structure. The first, abi_version, is used to determine the version of the ABI. Changes to this version indicate a fundamental incompatibility, and you should not continue loading if this version doesn't match the expected version.
+
+The second field, structure_version, is used to determine what functions are exported in both the Computer and [PluginFunctions](#PluginFunctions-structure) structure. This version is bumped when new fields are added to one of the structure definitions. Check this field before using any fields added after structure version 0. It is not required that this field exactly match - as long as the version is greater than or equal to the minimum that your plugin requires to function, you may continue loading.
+
+Do NOT rely on any non-version-0 fields to exist without checking the structure version. If you do this, users using your plugin on an old version of CraftOS-PC will likely experience a segmentation fault/crash when the plugin attempts to load the non-existing function. Instead, you should check that the structure version is compatible, and warn or error that the plugin is incompatible with the current version (without crashing).
+
+Do note that if your plugin doesn't require any CraftOS-PC structures during initialization, you can let CraftOS-PC handle version checks by returning an info structure with the required versions filled in (see below). If the version numbers don't match, CraftOS-PC will stop loading your plugin. However, this will not suffice if you need to access the structures in your plugin_init.
+
+You may see references to version numbers in the form xx.yy - this is a shorthand form to represent &lt;abi_version&gt;.&lt;structure_version&gt;.
+
+### `unsigned `[`abi_version`](#PluginFunctions-structure_1a61ac125a53618993d473713b3d37168c) 
+
+The plugin ABI version that is supported by this copy of CraftOS-PC. This version must **exactly** match your plugin's API version. You should check this version before doing anything else.
+
+### `unsigned `[`structure_version`](#PluginFunctions-structure_1a642cbd6d9e65d0848a9588d9b27c3e92) 
+
+The version of the [PluginFunctions](#PluginFunctions-structure), Computer, and configuration structures. Check this version before using any field that isn't available in version 0. This version must be equal to or greater than your plugin's minimum structure version.
+
+### `const int & `[`selectedRenderer`](#PluginFunctions-structure_1a6bd60b791eab332bddf66072295d2e30) 
+
+A reference to the variable holding the current renderer.
+
+### `const configuration * `[`config`](#PluginFunctions-structure_1a592469bb6f36ea90d4ab0dfb3b42f09b) 
+
+A pointer to the global configuration.
+
+### `path_t `[`getBasePath`](#PluginFunctions-structure_1a16afb7bcc19cab5f4dd31b9968d8f93e)`()` 
+
+Returns the path to the CraftOS-PC data root. 
+#### Returns
+The path to the CraftOS-PC data root.
+
+### `path_t `[`getROMPath`](#PluginFunctions-structure_1a53440f1d9485199d09e5c25abab7c023)`()` 
+
+Returns the path to the ROM. 
+#### Returns
+The path to the ROM.
+
+### `library_t * `[`getLibrary`](#PluginFunctions-structure_1a2011d725f15773836d3fb5a89169c74b)`(const std::string & name)` 
+
+Returns the library structure for a built-in API. 
+#### Parameters
+* `name` The name of the API to get 
+
+#### Returns
+A pointer to the library structure for the selected API
+
+### `Computer * `[`getComputerById`](#PluginFunctions-structure_1acbfe48f6bc49593a0e310e9d566a1a1a)`(int id)` 
+
+Returns the computer object for a specific ID. 
+#### Parameters
+* `id` The ID of the computer to get 
+
+#### Returns
+The computer object, or NULL if a computer with that ID isn't running
+
+### `void `[`registerPeripheral`](#PluginFunctions-structure_1a4f7f53efa9a0e2cece1653a7b1c40c32)`(const std::string & name,const peripheral_init & initializer)` 
+
+Registers a peripheral with the specified name. 
+#### Parameters
+* `name` The name of the peripheral to register. 
+
+* `initializer` The initialization function that creates the peripheral object. 
+
+**See also**: peripheral_init The prototype for a peripheral initializer
+
+### `void `[`registerSDLEvent`](#PluginFunctions-structure_1a079cfe0595636a5957bf3e21f0bc37b3)`(SDL_EventType type,const sdl_event_handler & handler,void * userdata)` 
+
+Registers an SDL event hook to call a function when the specified event occurs. 
+#### Parameters
+* `type` The type of event to listen for 
+
+* `handler` The function to call when the event occurs 
+
+* `userdata` An opaque pointer to pass to the handler function 
+
+**See also**: sdl_event_handler The prototype for an event handler
+
+### `bool `[`addMount`](#PluginFunctions-structure_1ad34908af3ba21ac4c81925083cc65577)`(Computer * comp,const path_t & real_path,const char * comp_path,bool read_only)` 
+
+Adds a directory mount to a computer. 
+#### Parameters
+* `comp` The computer to mount on 
+
+* `real_path` The path to the directory to mount 
+
+* `comp_path` The path inside the computer to mount on 
+
+* `read_only` Whether the mount should be read-only 
+
+#### Returns
+Whether the mount succeeded
+
+### `bool `[`addVirtualMount`](#PluginFunctions-structure_1ac6508a2f47e45526eba9bb8a838434b8)`(Computer * comp,const FileEntry & vfs,const char * comp_path)` 
+
+Adds a virtual mount to a computer. 
+#### Parameters
+* `comp` The computer to mount on 
+
+* `vfs` The virtual filesystem file entry to mount 
+
+* `comp_path` The path inside the computer to mount on 
+
+#### Returns
+Whether the mount succeeded
+
+### `Computer * `[`startComputer`](#PluginFunctions-structure_1ab9d44e8115b10e6a56da5ceee8b28087)`(int id)` 
+
+Starts up a computer with the specified ID. 
+#### Parameters
+* `id` The ID of the computer to start 
+
+#### Returns
+The Computer object for the new computer
+
+### `void `[`queueEvent`](#PluginFunctions-structure_1a11293a24a4c0b7e9056a5e15194e2af7)`(Computer * comp,const event_provider & event,void * userdata)` 
+
+Queues a Lua event to be sent to a computer. 
+#### Parameters
+* `comp` The computer to send the event to 
+
+* `event` The event provider function to queue 
+
+* `userdata` An opaque pointer storing any user data for the provider 
+
+**See also**: event_provider The prototype for the event provider
+
+### `void * `[`queueTask`](#PluginFunctions-structure_1a6205d61b5625a0df9460d8c125e5f748)`(const std::function< void *(void *)> & func,void * userdata,bool async)` 
+
+Runs a function on the main thread, and returns the result from the function. 
+#### Parameters
+* `func` The function to call 
+
+* `userdata` An opaque pointer to pass to the function 
+
+* `async` Whether to run the function asynchronously (if true, returns NULL immediately) 
+
+#### Returns
+The value returned from the function, or NULL if async is true
+
+### `std::string `[`getConfigSetting`](#PluginFunctions-structure_1acb14e40003eb1ab654e9a6131098f2b5)`(const std::string & name)` 
+
+Returns the value of a custom configuration setting as a string. 
+#### Parameters
+* `name` The name of the setting 
+
+#### Returns
+The value of the setting 
+
+#### Exceptions
+* `std::out_of_range` If the config setting does not exist
+
+### `int `[`getConfigSettingInt`](#PluginFunctions-structure_1aded6ed0c0c78afde399df0542d3244f3)`(const std::string & name)` 
+
+Returns the value of a custom configuration setting as an integer. 
+#### Parameters
+* `name` The name of the setting 
+
+#### Returns
+The value of the setting 
+
+#### Exceptions
+* `std::out_of_range` If the config setting does not exist 
+
+* `std::invalid_argument` If the config setting is not an integer
+
+### `bool `[`getConfigSettingBool`](#PluginFunctions-structure_1aeaf0af6b1c67c239071614aa1df1700e)`(const std::string & name)` 
+
+Returns the value of a custom configuration setting as a boolean. 
+#### Parameters
+* `name` The name of the setting 
+
+#### Returns
+The value of the setting 
+
+#### Exceptions
+* `std::out_of_range` If the config setting does not exist 
+
+* `std::invalid_argument` If the config setting is not a boolean
+
+### `void `[`setConfigSetting`](#PluginFunctions-structure_1a7d775793bb2225883152b3904111ca57)`(const std::string & name,const std::string & value)` 
+
+Sets a custom configuration variable as a string. 
+#### Parameters
+* `name` The name of the setting 
+
+* `value` The value of the setting
+
+### `void `[`setConfigSettingInt`](#PluginFunctions-structure_1a6148d1552d737c201c4ea706bf95f589)`(const std::string & name,int value)` 
+
+Sets a custom configuration variable as an integer. 
+#### Parameters
+* `name` The name of the setting 
+
+* `value` The value of the setting
+
+### `void `[`setConfigSettingBool`](#PluginFunctions-structure_1ab25a170f3b9683fe3b344775c0e251ff)`(const std::string & name,bool value)` 
+
+Sets a custom configuration variable as a boolean. 
+#### Parameters
+* `name` The name of the setting 
+
+* `value` The value of the setting
+
+## `PluginInfo` structure
+
+The [PluginInfo](#PluginInfo-structure) structure is used to hold information about a plugin. This structure is returned by plugin_init to indicate some properties about the plugin. The default values in this structure will not change any functionality - feel free to leave them at their default values, or change them to configure your plugin.
+
+### `unsigned `[`abi_version`](#PluginInfo-structure_1af579acc308b2f0c4b3857ede9354e57c) 
+
+The required ABI version for the plugin. Defaults to the version being built for.
+
+### `unsigned `[`minimum_structure_version`](#PluginInfo-structure_1a88675eff27d38e66275a56f9492eac42) 
+
+The minumum required structure version. Defaults to 0 (works with any version).
+
+### `std::string `[`luaopenName`](#PluginInfo-structure_1a1d59ab02a59133cc561cbd30d6a1078c) 
+
+The name of the `luaopen` function. This may be useful to be able to rename the plugin file without breaking `luaopen`.
+
+### `std::string `[`failureReason`](#PluginInfo-structure_1a35dd0cfbb0a7c2a2c6eed3ad064f3591) 
+
+This can be used to trigger a load failure without throwing an exception. Set this field to any non-blank value to stop loading.
+
+### `std::string `[`apiName`](#PluginInfo-structure_1a6390d8dd5af9a537fba6e6be3e2601fd) 
+
+The name of the API. This can be used to override the default, which is determined by filename. This will also affect luaopenName if that's not set.
+
+### `inline  `[`PluginInfo`](#PluginInfo-structure_1a37a95afcb45254a6b59f8d6cf0fcec15)`(const std::string & api,unsigned sv)` 
+
+Returns a dynamically-allocated error info structure. Make sure you have a `plugin_deinit` function in place first.
+
+#### Parameters
+* `api` The name of the API.
+
+* `sv` The minimum structure version required for the plugin; defaults to 0.
+
+### ABI compatibility
+When compiling plugins, you must use a compiler that is compatible with CraftOS-PC.
+* On Windows, CraftOS-PC is built with Visual Studio 2019. You may build plugins for Windows with Visual Studio 2015, 2017, or 2019, or Clang. You may not use MinGW to build plugins.
+* On macOS, CraftOS-PC is built with Clang 12 using libc++. You may build plugins for macOS with Clang. You may not use GCC to build plugins, unless you manually link with libc++.
+* On Linux, CraftOS-PC is built with GCC using libstdc++. You may build plugins for Linux with GCC 3.4.0+, or Clang with libstdc++ (default, or use `-stdlib=libstdc++`).
 
 #### API versions
-| API Version | CraftOS-PC Version |
-|-------------|--------------------|
-| (none)      | v2.0 - v2.1.3      |
-| 2           | v2.2 - v2.3.4      |
-| 3           | Accelerated v2.2   |
-| 4           | v2.4 - Current     |
+| API Version | Structure Version | CraftOS-PC Version |
+|-------------|-------------------|--------------------|
+| (none)      | (none)            | v2.0 - v2.1.3      |
+| 2           | (none)            | v2.2 - v2.3.4      |
+| 3           | (none)            | Accelerated v2.2   |
+| 4           | (none)            | v2.4 - v2.4.5      |
+| 10          | 0                 | v2.5 - Current     |
+| 11          | 0                 | Accelerated v2.5 - Current |
+
+*Note: When building for debug targets on Windows, add 100000 to the plugin version.*
