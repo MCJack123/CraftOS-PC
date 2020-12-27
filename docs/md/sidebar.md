@@ -26,9 +26,10 @@
 ### Other Information
 * [CraftOS-PC Online](online)
 * [Error Messages](error-messages)
+* [Known Issues](https://github.com/MCJack123/craftos2/discussions/174)
 * [Program Compatibility](https://docs.google.com/spreadsheets/d/1PtZZA4Vcsk733gSlSGH3VpecaGSp9U9AJmDKkWRssa0/edit?usp=sharing)
   * [Submit a Program](https://forms.gle/5WhU7K52VAgr5DR68)
-  * [Submit a Bug](../bugreport)
+* [Report a Bug](../bugreport)
 * [Contact](contact)
 * [Changelog](changelog)
 
