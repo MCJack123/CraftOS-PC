@@ -1,4 +1,86 @@
 # Changelog
+## v2.5 - December 25, 2020
+* Reorganized code structure for easier maintenance of the codebase
+  * Code has been divided between APIs, peripherals, renderers, and general functions
+  * Resolved a large number (>1000) of warnings
+  * Reduced usage of `extern` to headers only
+  * Made all non-global variables `static`
+* Rebased ROM on the CC: Tweaked ROM
+  * The ROM is now equivalent to the CC: Tweaked ROM with additional CraftOS-PC features from the old ROM
+  * With this, the CC:T Edition has been discontinued
+    * It wasn't really necessary anyway
+  * This should help improve compatibility in the ROM
+* Updated CC:T version to 1.95.0
+  * 1.94.0
+    * Add getter for window visibility (devomaa)
+    * Use term.blit to draw boxes in paintutils (Lemmmy).
+    * Fix several programs using their original name instead of aliases in usage hints (Lupus590).
+  * 1.95.0
+    * Clear gets an option to reset the palette (Luca0208)
+    * Use term.blit on initial paint render.
+    * Add option to disable setting globals (Lupus590).
+    * Fixed length check on function name in `expect` (MCJack123)
+    * Allow strings or numbers in textutils.*tabulate.
+    * Make fs.combine accept multiple arguments.
+    * Added improved help viewer (MCJack123)
+    * Added numpad enter support (TheWireLord).
+    * Add functions to wrap text (Lupus590)
+* Added new plugin API
+  * API version has now been bumped to 10
+  * New plugin init/deinit functions: `PluginInfo * plugin_init(const PluginFunctions * functions, const path_t& path);` & `void plugin_deinit(PluginInfo * info);`
+  * Capabilities in the old API are now present as function pointers in the `PluginFunctions` structure passed to `plugin_init`
+  * Additional functions are now available as well:
+    * Access to the configuration, including custom settings for plugins
+    * SDL event hooks
+    * Virtual mounts
+    * Running tasks on the main thread
+  * See https://www.craftos-pc.cc/docs/plugins for more info on how to write plugins
+* Added release note viewer
+* Added support for CLI mode on Windows through PDCurses
+* Added optional width and height options to `term.drawPixels`
+* Added `term.getPixels` to read a region of pixels (LoganDark)
+* Added optional solid color fill argument to `term.drawPixels` (LoganDark)
+* Added some missing HTTP configuration options (besides black/whitelist)
+* Added a panic handler that is more like ComputerCraft's in standards mode
+* Added force-shutdown functionality when a computer refuses to close
+* Added error handlers when an uncaught exception occurs
+  * This should not happen, but if it does CraftOS-PC will no longer fully crash
+* Added tracing of the last C Lua function called, hopefully helping memory corruptions be able to be fixed
+* Optimized scroll and clear routines to directly copy memory
+* Fixed `os.setAlarm` implementation to no longer use 100% CPU
+* Fixed unknown config options being deleted
+* Fixed close button and hotkeys not functioning when there are too many events in the queue (#154)
+* Fixed `monitor.setTextScale` not functioning properly with non-6x9 fonts (#150)
+* Fixed `term.getPixel` returning the wrong values in mode 1 (#159)
+* Fixed a race condition while resizing when using the hardware renderer
+* Fixed a race condition in `os.startTimer`
+* Fixed a possible race condition when firing a timer
+* Reduced the number of event timeout timers started when pulling events (#158)
+  * This fixes an issue causing the timer thread to lock up trying to process start/cancel events
+* Fixed some locking issues in terminals
+* Fixed missing range checks in `term.drawPixels`
+* Fixed `term.getPixel` crashing when accessing pixel at edge of screen (LoganDark)
+* Fixed some issues with resizing the debugger
+* Fixed computers hanging when closing the debugger on Linux (#157)
+* Fixed debugger `locals` table sometimes not functioning properly
+* Fixed some CraftOS-PC term functions being redirected (LoganDark)
+* The craftos2-lua library can now be used in programs other than CraftOS-PC
+
+## v2.4.5 - November 28, 2020
+* Bumped CC:T version to 1.93.1
+  * 1.94.0 support will be coming in v2.5
+* CC:T Edition builds will now update to the standard ROM due to deprecation in v2.5
+  * v2.5 is merging the CC:T ROM into the main ROM, so CC:T Edition downloads will be removed
+  * Further auto-updates will download the standard version regardless of whether CC:T Edition was installed
+  * v2.5 will be the last version with a CC:T Edition download available - after that, updating from CC:T Edition will fail
+* Added some previously missing checks from `term` API functions
+* Fixed `term.setGraphicsMode(false)` not working properly
+* Fixed a possible crash in `file.readLine` on empty lines
+* Fixed a memory leak in `os.startTimer`
+* Fixed `ccemux.openDataDir` not working on Windows
+* Fixed monitor_touch events not being sent when monitorsUseMouseEvents is disabled
+* Fixed update message appearing when switching between standard and Accelerated versions
+
 ## v2.4.4 - October 18, 2020
 * Bumped CC:T version to 1.93.0
 * Added computer size counting to `fs.getFreeSpace`
