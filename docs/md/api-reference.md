@@ -143,4 +143,4 @@ Graphics mode extension in the `term` API.
 * *nil* showMouse(*boolean* mouse): Toggles whether to show the mouse cursor over the window.
 * *nil* setFrozen(*boolean* frozen): (v2.5.1+) Sets whether the terminal is currently frozen.
   * Note: While the terminal is frozen, updates will not be displayed until it is unfrozen.
-* *boolean* getFrozen(): (v2.5.1+) Gets whether the terminal is frozen.
+* *boolean* getFrozen(): (v2.5.1+) Gets whether the terminal is currently frozen.
