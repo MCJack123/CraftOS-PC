@@ -118,7 +118,7 @@ Graphics mode extension in the `term` API.
   * y: The Y coordinate of the region
   * w: The width of the region
   * h: The height of the region
-  * strings: `false` by default. If `true`, returns a table of strings rather than a table of tables.
+  * strings (v2.5.1+): `false` by default. If `true`, returns a table of strings rather than a table of tables.
 * *nil* drawPixels(*number* startX, *number* startY, *table/number* fill[, *number* width, *number* height]): Draws multiple pixels to the screen at once.
   * startX: The starting X coordinate of the bitmap
   * startY: The starting Y coordinate of the bitmap
