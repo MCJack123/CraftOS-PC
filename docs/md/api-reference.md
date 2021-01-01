@@ -113,7 +113,7 @@ Graphics mode extension in the `term` API.
   * x: The X coordinate of the pixel
   * y: The Y coordinate of the pixel
   * Returns: The color of the pixel
-* *table* getPixels(*number* x, *number* y, *number* w, *number* h[, *boolean* strings]): Returns the colors of every pixel in a region. Off-screen pixels will be `-1`.
+* *table* getPixels(*number* x, *number* y, *number* w, *number* h[, *boolean* strings]): Returns the colors of every pixel in a region. Off-screen pixels will be `-1` (they were `nil` in v2.5.0).
   * x: The X coordinate of the region
   * y: The Y coordinate of the region
   * w: The width of the region
