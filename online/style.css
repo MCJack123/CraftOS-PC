@@ -9,13 +9,18 @@ canvas.emscripten {
     align-items: center;
     vertical-align: middle;
     align-self: center;
+    width: 620px;
+    height: 350px;
+    object-fit: none;
+    object-position: top left;
 }
 
-@media (min-resolution: 144dpi) and (max-resolution: 240dpi) {
+/*@media (min-resolution: 144dpi) and (max-resolution: 240dpi) {
     canvas.emscripten {
-        clip-path: polygon(0% 0%, 0% 50%, 50% 50%, 50% 0%);
-        margin-left: 620px;
-        margin-top: 350px;
+        --dpr-ratio: calc(1.0 / attr(data-dpr number, 1.0));
+        clip-path: polygon(0% 0%, 0% var(--dpr-ratio), var(--dpr-ratio) var(--dpr-ratio), var(--dpr-ratio) 0%);
+        margin-left: calc(620px * var(--dpr-ratio));
+        margin-top: calc(350px * var(--dpr-ratio));
     }
 }
 
@@ -25,7 +30,7 @@ canvas.emscripten {
         margin-left: 1240px;
         margin-top: 700px;
     }
-}
+}*/
 
 #status {
     display: inline-block;
