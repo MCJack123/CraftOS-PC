@@ -9,14 +9,19 @@ The `term.setGraphicsMode(mode)` function is the gateway to graphics mode. This 
 
 Changing into graphics mode will hide the text terminal, but it can still be written to, so any output will appear on the terminal upon switching out of graphics mode. The current graphics mode can be returned with `term.getGraphicsMode()`. It will return false for text mode and the mode number for graphics modes.
 
-The size of the graphics mode screen is exactly 6 times the width and 9 times the height of the size of the text terminal (as returned by `term.getSize()`). If you want to get the size of the screen, you can use a function like this:
+The size of the graphics mode screen, as of v2.5.1, is still guaranteed to be 6 times the width and 9 times the height of the text terminal by default. However, `term.getSize()` now accepts an optional argument specifying which mode to return the size of, and you are advised to use that function instead. Existing programs should be migrated to use the new overload if they require the pixel dimensions of the screen.
+
+To get the pixel dimensions of the screen, depending on which mode you are in, you may want to use a function such as this one:
 
 ```lua
-local function getGraphicsSize()
-    local w, h = term.getSize()
-    return w * 6, h * 9
+local function pixelDimensions()
+    return term.getSize(term.getGraphicsMode() or 1)
 end
 ```
+
+Currently, all graphics modes have the same dimensions, but this behavior may change in the future. The relation between the text mode dimensions and graphics mode dimensions is not guaranteed to be upheld, so switching to `term.getSize()` is the correct solution.
+
+For compatibility reasons, `term.getSize()` (with no arguments) always returns the size of text mode, not the current mode. This behavior is not likely to change.
 
 ## Setting pixels
 In graphics mode, the `term.setPixel(x, y, color)` function can be used to set a pixel to a color. **Unlike the rest of the `term` API, the coordinates of the pixels start at position (0, 0), not (1, 1).** For example, to set the top-leftmost pixel to white, use `term.setPixel(0, 0, colors.white)`. The color argument has different meanings depending on the mode. In mode 1, the color argument must be a color from the `colors` API. In mode 2, the color argument must be a number between 0-255. Switching to mode 2 also changes the color argument for `term.setPaletteColor` and `term.getPaletteColor`.
