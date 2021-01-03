@@ -9,7 +9,7 @@ The `term.setGraphicsMode(mode)` function is the gateway to graphics mode. This 
 
 Changing into graphics mode will hide the text terminal, but it can still be written to, so any output will appear on the terminal upon switching out of graphics mode. The current graphics mode can be returned with `term.getGraphicsMode()`. It will return false for text mode and the mode number for graphics modes.
 
-The size of the graphics mode screen, as of v2.5.1, is still guaranteed to be 6 times the width and 9 times the height of the text terminal. However, `term.getSize()` now accepts an optional argument specifying which mode to return the size of, and you are advised to use that function instead. Existing programs should be migrated to use the new overload if they require the pixel dimensions of the screen.
+The size of the graphics mode screen, as of v2.5.1, is still guaranteed to be 6 times the width and 9 times the height of the text terminal by default. However, `term.getSize()` now accepts an optional argument specifying which mode to return the size of, and you are advised to use that function instead. Existing programs should be migrated to use the new overload if they require the pixel dimensions of the screen.
 
 To get the pixel dimensions of the screen, depending on which mode you are in, you may want to use a function such as this one:
 
