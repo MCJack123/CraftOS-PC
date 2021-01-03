@@ -113,11 +113,12 @@ Graphics mode extension in the `term` API.
   * x: The X coordinate of the pixel
   * y: The Y coordinate of the pixel
   * Returns: The color of the pixel
-* *table* getPixels(*number* x, *number* y, *number* w, *number* h): Returns the colors of every pixel in a region. Off-screen pixels will be `nil`.
+* *table* getPixels(*number* x, *number* y, *number* w, *number* h[, *boolean* strings]): Returns the colors of every pixel in a region. Off-screen pixels will be `-1` (they were `nil` in v2.5.0).
   * x: The X coordinate of the region
   * y: The Y coordinate of the region
   * w: The width of the region
   * h: The height of the region
+  * strings (v2.5.1+): `false` by default. If `true`, returns a table of strings rather than a table of tables.
 * *nil* drawPixels(*number* startX, *number* startY, *table/number* fill[, *number* width, *number* height]): Draws multiple pixels to the screen at once.
   * startX: The starting X coordinate of the bitmap
   * startY: The starting Y coordinate of the bitmap
@@ -140,3 +141,6 @@ Graphics mode extension in the `term` API.
   * Returns: The RGB values for the color, each from 0.0 to 1.0
 * *nil* screenshot(): Takes a screenshot. This function is rate-limited to prevent spam.
 * *nil* showMouse(*boolean* mouse): Toggles whether to show the mouse cursor over the window.
+* *nil* setFrozen(*boolean* frozen): (v2.5.1+) Sets whether the terminal is currently frozen.
+  * Note: While the terminal is frozen, updates will not be displayed until it is unfrozen.
+* *boolean* getFrozen(): (v2.5.1+) Gets whether the terminal is currently frozen.
