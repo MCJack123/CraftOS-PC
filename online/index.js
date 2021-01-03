@@ -167,8 +167,8 @@ function updateBrowserLists(path, element) {
     for (var el of element.children) {
         var text = el.querySelector(".browser-item");
         text = (text.children[0].style.fontFamily === "Seti-Icons") ? text.children[1] : text.children[0];
-        if (el.classList.contains("collapsibleListOpen")) openedExplorerItems[FS.absolutePath(text.innerText.replace(/^ /g, ""), path)] = true;
-        else if (el.classList.contains("collapsibleListClosed")) openedExplorerItems[FS.absolutePath(text.innerText.replace(/^ /g, ""), path)] = false;
+        if (el.classList.contains("collapsibleListOpen")) openedExplorerItems[PATH_FS.resolve(path, text.innerText.replace(/^ /g, ""))] = true;
+        else if (el.classList.contains("collapsibleListClosed")) openedExplorerItems[PATH_FS.resolve(path, text.innerText.replace(/^ /g, ""))] = false;
     }
     element.innerHTML = "";
     for (let p of FS.readdir(path)) {if (p !== "." && p !== "..") {
@@ -178,7 +178,7 @@ function updateBrowserLists(path, element) {
         el.style.justifyItems = "top";
         var txt = document.createElement("span");
         txt.innerText = " " + p;
-        if (isDir(FS.absolutePath(p, path))) {
+        if (isDir(PATH_FS.resolve(path, p))) {
             //el.classList = "fas";
         } else {
             var img = document.createElement("span");
@@ -206,34 +206,34 @@ function updateBrowserLists(path, element) {
         }
         el.appendChild(txt);
         ell.appendChild(el);
-        if (isDir(FS.absolutePath(p, path))) {
+        if (isDir(PATH_FS.resolve(path, p))) {
             var ul = document.createElement("ul");
             ul.classList = "browser-list";
             ul.style.display = "flex";
-            updateBrowserLists(FS.absolutePath(p, path), ul);
+            updateBrowserLists(PATH_FS.resolve(path, p), ul);
             ell.appendChild(ul);
         } else if (p.endsWith(".png") || p.endsWith(".bmp") || p.endsWith(".jpg") || p.endsWith(".webp") || p.endsWith(".gif")) {
             el.onclick = function() {
                 for (var tab = 0; tab < tabs.length; tab++) {
-                    if (tabs[tab].type === "Image" && tabs[tab].path === FS.absolutePath(p, path)) {
+                    if (tabs[tab].type === "Image" && tabs[tab].path === PATH_FS.resolve(path, p)) {
                         selectedTab = tab;
                         reloadTabs();
                         return;
                     }
                 }
-                selectedTab = tabs.push({name: p.replace(/\.png$|\.bmp$|\.gif$/g, ""), path: FS.absolutePath(p, path), type: "Image"}) - 1;
+                selectedTab = tabs.push({name: p.replace(/\.png$|\.bmp$|\.gif$/g, ""), path: PATH_FS.resolve(path, p), type: "Image"}) - 1;
                 reloadTabs();
             }
         } else {
             el.onclick = function() {
                 for (var tab = 0; tab < tabs.length; tab++) {
-                    if (tabs[tab].type === "File" && tabs[tab].path === FS.absolutePath(p, path)) {
+                    if (tabs[tab].type === "File" && tabs[tab].path === PATH_FS.resolve(path, p)) {
                         selectedTab = tab;
                         reloadTabs();
                         return;
                     }
                 }
-                selectedTab = tabs.push({name: p, path: FS.absolutePath(p, path), content: FS.readFile(FS.absolutePath(p, path), {encoding: "utf8"}), type: "File", scroll: {left: 0, top: 0}, saved: true}) - 1;
+                selectedTab = tabs.push({name: p, path: PATH_FS.resolve(path, p), content: FS.readFile(PATH_FS.resolve(path, p), {encoding: "utf8"}), type: "File", scroll: {left: 0, top: 0}, saved: true}) - 1;
                 reloadTabs();
             }
         }
@@ -296,7 +296,7 @@ function updateScreenshotList() {
                     return;
                 }
             }
-            selectedTab = tabs.push({name: f.replace(/\.png$|\.bmp$|\.gif$/g, ""), path: FS.absolutePath(f, "/user-data/screenshots"), type: "Image"}) - 1;
+            selectedTab = tabs.push({name: f.replace(/\.png$|\.bmp$|\.gif$/g, ""), path: PATH_FS.resolve("/user-data/screenshots", f), type: "Image"}) - 1;
             reloadTabs();
         }
         el.appendChild(img);
@@ -321,8 +321,8 @@ function updateBrowserCollapsibles(path, element) {
     for (var el of element.children) {
         var text = el.querySelector(".browser-item");
         text = (text.children[0].style.fontFamily === "Seti-Icons") ? text.children[1] : text.children[0];
-        if (openedExplorerItems[FS.absolutePath(text.innerText.replace(/^ /g, ""), path)] === true) openCollapsibleList(el);
-        if (el.classList.contains("collapsibleListClosed") || el.classList.contains("collapsibleListOpen")) updateBrowserCollapsibles(FS.absolutePath(text.innerText.replace(/^ /g, ""), path), el.querySelector("ul"));
+        if (openedExplorerItems[PATH_FS.resolve(path, text.innerText.replace(/^ /g, ""))] === true) openCollapsibleList(el);
+        if (el.classList.contains("collapsibleListClosed") || el.classList.contains("collapsibleListOpen")) updateBrowserCollapsibles(PATH_FS.resolve(path, text.innerText.replace(/^ /g, "")), el.querySelector("ul"));
     }
 }
 
@@ -363,7 +363,7 @@ function sidebarSelect(num) {
 function newFile() {
     let p = prompt("Enter the path of the new file:");
     if (p == null) return;
-    let path = FS.absolutePath(p, "/user-data/computer/0");
+    let path = PATH_FS.resolve("/user-data/computer/0", p);
     FS.createFile(FS.analyzePath(path).parentPath, p.match(/[^/]+$/)[0], {}, true, true);
     FS.syncfs(false, ()=>{});
     sidebarSelect(0);
@@ -381,7 +381,7 @@ function newFile() {
 function newFolder() {
     let p = prompt("Enter the path of the new folder:", null);
     if (p == null) return;
-    FS.mkdir(FS.absolutePath(p, "/user-data/computer/0"));
+    FS.mkdir(PATH_FS.resolve("/user-data/computer/0", p));
     FS.syncfs(false, ()=>{});
     sidebarSelect(0);
 }
@@ -389,8 +389,8 @@ function newFolder() {
 function packZip(zip, path) {
     for (let f of FS.readdir(path)) {
         if (f == "." || f == "..") continue;
-        if (isDir(FS.absolutePath(f, path))) packZip(zip.folder(f), FS.absolutePath(f, path));
-        else zip.file(f, FS.readFile(FS.absolutePath(f, path)));
+        if (isDir(PATH_FS.resolve(path, f))) packZip(zip.folder(f), PATH_FS.resolve(path, f));
+        else zip.file(f, FS.readFile(PATH_FS.resolve(path, f)));
     }
 }
 
@@ -402,8 +402,8 @@ function downloadZip(id) {
 
 function uploadFile() {
     for (let f of document.getElementById("browser-upload-file").files) {
-        let p = FS.absolutePath(f.name, document.getElementById("browser-upload-path").value.replace(/^\//, "") == "" ? "/user-data/computer/0" : 
-                                        FS.absolutePath(document.getElementById("browser-upload-path").value.replace(/^\//, ""), "/user-data/computer/0"));
+        let p = PATH_FS.resolve(document.getElementById("browser-upload-path").value.replace(/^\//, "") == "" ? "/user-data/computer/0" : 
+                                    PATH_FS.resolve("/user-data/computer/0", document.getElementById("browser-upload-path").value.replace(/^\//, "")), f.name);
         f.arrayBuffer().then((buffer) => {FS.writeFile(p, new Uint8Array(buffer)); FS.syncfs(false, ()=>{});});
     }
 }
@@ -451,12 +451,12 @@ function getMatches(path, pattern, base) {
     let retval = {};
     for (let f of FS.readdir(path)) {
         if (f === "." || f === "..") continue;
-        if (isDir(FS.absolutePath(f, path))) {
-            let m = getMatches(FS.absolutePath(f, path), pattern, base === "" ? f : base + "/" + f);
+        if (isDir(PATH_FS.resolve(path, f))) {
+            let m = getMatches(PATH_FS.resolve(path, f), pattern, base === "" ? f : base + "/" + f);
             for (let k in m) retval[k] = m[k];
         } else {
             let file = null
-            try {file = FS.readFile(FS.absolutePath(f, path), {encoding: "utf8"});} catch {continue;}
+            try {file = FS.readFile(PATH_FS.resolve(path, f), {encoding: "utf8"});} catch {continue;}
             if (file === null) continue;
             let indices = [];
             if (searchRegex) {
@@ -534,9 +534,9 @@ function findText() {
             ell.classList = "browser-item browser-search-match-item";
             ell.innerHTML = safetext(m.line.substring(Math.max(0, m.start - 15), m.start)) + '<span class="browser-search-match-string">' + safetext(m.line.substring(m.start, m.end)) + '</span>' + safetext(m.line.substring(m.end));
             ell.onclick = function() {
-                console.log(FS.absolutePath(file, "/user-data/computer/0"));
+                console.log(PATH_FS.resolve("/user-data/computer/0", file));
                 for (var tab = 0; tab < tabs.length; tab++) {
-                    if (tabs[tab].type === "File" && tabs[tab].path === FS.absolutePath(file, "/user-data/computer/0")) {
+                    if (tabs[tab].type === "File" && tabs[tab].path === PATH_FS.resolve("/user-data/computer/0", file)) {
                         selectedTab = tab;
                         editor.revealLine(m.lineNumber);
                         editor.setPosition({column: m.start, lineNumber: m.lineNumber});
@@ -544,7 +544,7 @@ function findText() {
                         return;
                     }
                 }
-                selectedTab = tabs.push({name: p, path: FS.absolutePath(file, "/user-data/computer/0"), content: FS.readFile(FS.absolutePath(file, "/user-data/computer/0"), {encoding: "utf8"}), type: "File", scroll: {left: m.start, top: m.lineNumber*19}, saved: true, lineNumber: m.lineNumber}) - 1;
+                selectedTab = tabs.push({name: p, path: PATH_FS.resolve("/user-data/computer/0", file), content: FS.readFile(PATH_FS.resolve("/user-data/computer/0", file), {encoding: "utf8"}), type: "File", scroll: {left: m.start, top: m.lineNumber*19}, saved: true, lineNumber: m.lineNumber}) - 1;
                 reloadTabs();
             }
             ul.appendChild(ell);
@@ -557,13 +557,13 @@ function findText() {
 function replaceInFiles(path, find, replace) {
     for (let file of FS.readdir(path)) {
         if (file === "." || file === "..") continue;
-        if (isDir(FS.absolutePath(file, path))) replaceInFiles(FS.absolutePath(file, path), find, replace);
+        if (isDir(PATH_FS.resolve(path, file))) replaceInFiles(PATH_FS.resolve(path, file), find, replace);
         else {
-            let f = FS.readFile(FS.absolutePath(file, path), {encoding: "utf8"});
+            let f = FS.readFile(PATH_FS.resolve(path, file), {encoding: "utf8"});
             if (f === null || f.search(find) == -1) continue;
-            FS.writeFile(FS.absolutePath(file, path), f.replace(find, replace));
+            FS.writeFile(PATH_FS.resolve(path, file), f.replace(find, replace));
             for (var tab = 0; tab < tabs.length; tab++) {
-                if (tabs[tab].type === "File" && tabs[tab].path === FS.absolutePath(file, path)) {
+                if (tabs[tab].type === "File" && tabs[tab].path === PATH_FS.resolve(path, file)) {
                     tabs[tab].content = tabs[tab].content.replace(find, replace);
                 }
             }

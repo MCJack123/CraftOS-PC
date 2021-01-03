@@ -95,14 +95,16 @@
         // TODO: do not warn on ok events like simulating an infinite loop or exitStatus
         Module.setStatus('Exception thrown, see JavaScript console');
         var ctx = Module.canvas.getContext('2d');
-        var data = ctx.getImageData(0, 0, Module.canvas.width, Module.canvas.height);
-        for (var i = 0; i < Module.canvas.width * Module.canvas.height; i++) {
-          var avg = (data.data[i*4] + data.data[i*4+1] + data.data[i*4+2]) / 3;
-          data.data[i*4] = avg / 2;
-          data.data[i*4+1] = avg / 2;
-          data.data[i*4+2] = avg / 2;
+        if (ctx !== null) {
+          var data = ctx.getImageData(0, 0, Module.canvas.width, Module.canvas.height);
+          for (var i = 0; i < Module.canvas.width * Module.canvas.height; i++) {
+            var avg = (data.data[i*4] + data.data[i*4+1] + data.data[i*4+2]) / 3;
+            data.data[i*4] = avg / 2;
+            data.data[i*4+1] = avg / 2;
+            data.data[i*4+2] = avg / 2;
+          }
+          ctx.putImageData(data, 0, 0);
         }
-        ctx.putImageData(data, 0, 0);
         //spinnerElement.style.display = 'none';
         Module.setStatus = function(text) {
           if (text) Module.printErr('[post-exception status] ' + text);
