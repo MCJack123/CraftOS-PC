@@ -117,18 +117,18 @@ Graphics mode extension in the `term` API.
   * x: The X coordinate of the pixel
   * y: The Y coordinate of the pixel
   * Returns: The color of the pixel
-* *table* getPixels(*number* x, *number* y, *number* w, *number* h[, *boolean* strings]): Returns the colors of every pixel in a region. Off-screen pixels will be `-1` (they were `nil` in v2.5.0).
+* *table* getPixels(*number* x, *number* y, *number* w, *number* h[, *boolean* strings]): Returns the colors of every pixel in a region. Off-screen pixels will be `-1`.
   * x: The X coordinate of the region
   * y: The Y coordinate of the region
   * w: The width of the region
   * h: The height of the region
-  * strings (v2.5.1+): `false` by default. If `true`, returns a table of strings rather than a table of tables.
+  * strings: `false` by default. If `true`, returns a table of strings rather than a table of tables.
 * *nil* drawPixels(*number* startX, *number* startY, *table/number* fill[, *number* width, *number* height]): Draws multiple pixels to the screen at once.
   * startX: The starting X coordinate of the bitmap
   * startY: The starting Y coordinate of the bitmap
-  * fill: Either a list of lines to draw on the screen (where each line may be a table with color values to draw (as in `setPixel`), or a string where each byte is one pixel (the colors will be 0-255 even in 16-color mode)), or (v2.5+) a single color to fill a region with. If a color is specified, `width` and `height` become required.
-  * width (v2.5+): The width of the table (missing columns will not be drawn), defaults to the width of each row
-  * height (v2.5+): The height of the table (missing rows will not be drawn), defaults to the length of `pixels`
+  * fill: Either a list of lines to draw on the screen (where each line may be a table with color values to draw (as in `setPixel`), or a string where each byte is one pixel (the colors will be 0-255 even in 16-color mode)), or a single color to fill a region with. If a color is specified, `width` and `height` become required.
+  * width: The width of the table (missing columns will not be drawn), defaults to the width of each row
+  * height: The height of the table (missing rows will not be drawn), defaults to the length of `pixels`
 * *nil* clear(): Clears the text or graphics screen, depending on the mode. (Override)
   * Note: If graphics mode is enabled, the text screen will not be cleared, and vice versa. This is also true for the window API - the text buffers will not be cleared in graphics mode.
 * *nil* setPaletteColor(*number* color, *number* r[, *number* g, *number* b]): Sets the RGB values for a color. (Override)
@@ -145,6 +145,6 @@ Graphics mode extension in the `term` API.
   * Returns: The RGB values for the color, each from 0.0 to 1.0
 * *nil* screenshot(): Takes a screenshot. This function is rate-limited to prevent spam.
 * *nil* showMouse(*boolean* mouse): Toggles whether to show the mouse cursor over the window.
-* *nil* setFrozen(*boolean* frozen): (v2.5.1+) Sets whether the terminal is currently frozen.
+* *nil* setFrozen(*boolean* frozen): Sets whether the terminal is currently frozen.
   * Note: While the terminal is frozen, updates will not be displayed until it is unfrozen.
-* *boolean* getFrozen(): (v2.5.1+) Gets whether the terminal is currently frozen.
+* *boolean* getFrozen(): Gets whether the terminal is currently frozen.
