@@ -100,8 +100,8 @@ Creates and removes peripherals from the registry.
 ## `term`
 Graphics mode extension in the `term` API.
 ### Functions
-* *number*, *number* getSize([*number/boolean* mode]): Returns the size of the specified mode.
-  * mode: `0` or `false` for text mode. `true` or a positive number for a graphics mode.
+* *number*, *number* getSize([*number/boolean* mode]): Returns the size of the specified mode. (Override)
+  * mode: `0` or `false` for text mode. `true` or a positive number for graphics mode.
   * Returns: The text dimensions of the screen by default, or the pixel dimensions of the specified graphics mode otherwise.
   * Note: You can use this function regardless of which graphics mode you are currently in. As of v2.5.1, all pixel graphics modes are guaranteed to be 6 times the width and 9 times the height of text mode, but this may change in the future and may even change now if the terminal is redirected.
 * *nil* setGraphicsMode(*number/boolean* mode): Sets whether the terminal is in pixel-graphics mode
