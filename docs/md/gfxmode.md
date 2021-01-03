@@ -35,3 +35,19 @@ To retrieve pixels from the screen after drawing, you can use `term.getPixel(x, 
 In 256-color mode, the first 16 colors are set to the default ComputerCraft palette, but the rest are unset. To take advantage of all of the colors available, the `term.setPaletteColor` function is used to set the remaining colors as needed.
 
 The `paintutils` API supports graphics mode in the same way as usual. All `paintutils` functions can be used in graphics mode, drawing pixels instead of color characters.
+
+## Working with large amounts of pixels
+
+As of CraftOS-PC v2.5, more batch operations have been implemented to allow reading and writing large amounts of pixels faster than ever before. On the C side, these operations use optimized `memset` and `memcpy` routines, rather than setting one pixel at a time.
+
+However, in order to allow those optimizations, you must work with data in the correct format. This format is strings, which store one pixel per byte, and may store many bytes in a row for `memcpy`. Generally, you will find pixel functions a couple orders of magnitude faster when operating on strings rather than tables, as they do not have to coax individual values out of Lua and set one pixel at a time.
+
+- One of the most basic batch operations, and one that deserves special mention, is the solid color fill. As of v2.5, `term.drawPixels` accepts a color constant (or palette index in 256-color mode) as its third argument. This switches it to solid-fill mode, which requires all five arguments (x, y, color, width, height). When called correctly, it will fill an entire region of pixels with a solid color.
+
+- `term.drawPixels` was introduced in v2.2 and allows drawing many pixels to the screen at once. However, in v2.5, another function was introduced to go along with it: `term.getPixels`. This allows you to read large regions of the screen at once, which can then be quickly drawn back at any point with `term.drawPixels`.
+
+- In v2.5.1, `term.getPixels` got an optional fifth argument, which can be set to `true` to return strings instead of nested tables. It is **strongly recommended** that you always specify this argument if you are using `getPixels` for buffering purposes or for moving portions of the screen around. It makes the function about 100 times faster! The argument is ignored in v2.5.
+
+- While performing batch operations can be much faster than the alternative, you can still get flickering caused by the drawing not being completed by the end of the frame. v2.5.1 introduced a pair of functions that allow you to *freeze* the screen, which is a way to prevent the new frame from being displayed until you are done drawing it.
+
+  The two freezing functions are `term.setFrozen(boolean)` and `term.getFrozen()`. While the terminal is frozen, updates will not be drawn on-screen. You can freeze the terminal (`term.setFrozen(true)`) before you draw, and then unfreeze (`term.setFrozen(false)`) it once you are completely done drawing.
