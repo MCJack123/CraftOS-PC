@@ -1,11 +1,5 @@
 # Migrating from CCEmuX
-CraftOS-PC v2.2 introduces an auxiliary tool that allows you to seamlessly port your old data from CCEmuX into CraftOS-PC. This tool preserves all of your computer data as well as most options that may be set in `ccemux.json`.
-
-## How to use
-1. Download the latest tool [from the repository](https://raw.githubusercontent.com/MCJack123/craftos2/master/CCEmuXConverter.jar).
-2. Double-click it or run it with `java -jar CCEmuXConverter.jar`.
-3. Wait for it to complete (a dialog will pop up if it succeedes).
-4. Open up CraftOS-PC. Your old files will be available on the same computers and disks as they were in CCEmuX.
+CraftOS-PC v2.5.2 and later automatically prompt to migrate data from any detected CCEmuX installation when run for the first time. This process preserves all of your computer data as well as most options that may be set in `ccemux.json`. You can also trigger this manually by running CraftOS-PC on the command line with `--migrate`.
 
 ## Supported options
 * `maximumFilesOpen` => `maximumFilesOpen`

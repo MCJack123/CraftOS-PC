@@ -97,6 +97,16 @@ Creates and removes peripherals from the registry.
   * Returns: `true` on success, `false` on failure (already removed)
 * *table* names(): Returns a list of available peripheral types.
 
+## `speaker` peripheral
+Extra convenience extensions for playing local sounds.
+### Functions
+* *table* listSounds(): Returns a hierarchical list of all sounds available to `playSound`.
+* *nil* playLocalMusic(*string* path[, *number* volume]): Plays a local music file.
+  * path: The path to the music file
+  * volume: The volume of the music, from 0.0 to 3.0.
+* *nil* setSoundFont(*string* path): Sets the path to the active soundfont, if supported. (Experimental)
+  * path: The path to the SF2 file
+
 ## `term`
 Graphics mode extension in the `term` API.
 ### Functions

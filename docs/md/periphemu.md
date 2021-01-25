@@ -20,7 +20,11 @@ The `periphemu` API provides low-level access to the peripheral emulation layer.
 
 ## Special peripherals
 Some peripherals have special options that can be specified as the third argument to "attach" or `periphemu.create`.
-* drive peripherals accept a third argument that sets the initial mounted path in the drive. This can be either a global path to a folder or audio file, a number specifying a disk ID, or a treasure path in the form `treasure:<path>`.
+* drive peripherals accept a third argument that sets the initial mounted path in the drive. This can be either a global path to a folder or audio file, a number specifying a disk ID, or a namespaced ID in the form `<type>:<path>`.
+  * These are the available namespaces as of v2.5.2:
+    * `treasure:<path>`
+    * `record:<name>`
+    * `computer:<id>`
   * There is a new method on the drive called `insertDisk` that allows you to change the mount without reattaching the peripheral. This method is also exported through the `disk` API.
 * printer peripherals require a third argument specifying where the printed output will be stored. This should be the full (real) path to the target PDF file, or a directory if using a custom build without PDF support.
 * modem peripherals accept a third argument that sets the network ID for the modem. This allows having multiple modem networks running parallel to each other without being able to communicate with each other.

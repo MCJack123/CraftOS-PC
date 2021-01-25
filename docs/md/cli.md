@@ -27,5 +27,7 @@ CraftOS-PC v2.3.4 adds a number of new flags to make it a snap-in replacement fo
 
 With these arguments, you can seamlessly replace `java -jar ccemux-launcher.jar` in any script with `craftos`.
 
+In addition, you can use `--migrate` to trigger CCEmuX migration, even if data is already present.
+
 ## Help & version
 If you want to see an overview of the available options for your version of CraftOS-PC, you can use the `-h` flag to show the help. You can also view the version information as well as compiled features with the `-V` flag.

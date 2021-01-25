@@ -21,6 +21,7 @@ These are the config variables available as of CraftOS-PC v2.5. *Variables marke
 * `default_computer_settings` []: A string with some default settings to set in the `settings` API
 * `defaultWidth`/`defaultHeight` [51/19]: The default size of new terminal windows
 * `disable_lua51_features` [false]: Whether to disable some Lua 5.1-only features in the BIOS
+* `extendMargins` [false]: Whether to extend colored margins to the edges of the screen, independent of standards mode
 * ~~`http_blacklist` [local IPs] (`global.json` only): An array of IP addresses or hostnames to block; this takes priority over the whitelist~~
 * `http_enable` [true]: Whether to enable the `http` API
 * `http_max_download` [16777216]: The maximum size of an HTTP response to accept, in bytes
@@ -28,6 +29,7 @@ These are the config variables available as of CraftOS-PC v2.5. *Variables marke
 * `http_max_upload` [4194304]: The maximum size of an entire HTTP request, including POST data and headers, in bytes
 * `http_max_websocket_message` [65535]: The maximum size of one WebSocket message, in bytes
 * `http_max_websockets` [4]: The maximum number of open WebSocket connections to allow
+* `http_proxy_server`/`http_proxy_port` []: Allows using a proxy for HTTP connections
 * `http_timeout` [30000]: The amount of time to wait for an HTTP request/response before terminating, in milliseconds
 * `http_websocket_enabled` [true]: Whether to enable WebSocket support in the `http` API
 * ~~`http_whitelist` ["*"] (`global.json` only): An array of IP addresses or hostnames to allow; any not in the list will be blocked~~
@@ -54,6 +56,7 @@ These are the config variables available as of CraftOS-PC v2.5. *Variables marke
 * `recordingFPS` [10]: The framerate of GIF recordings. This value should be a divisor of `clockSpeed`, as the actual framerate is determined by integer division of both values.
 * `romReadOnly` [true] (`global.json` only): Whether the ROM is mounted as read-only (change this only if you know what you're doing!) - note that in v2.4 this is reset when launched for the first time after updating
 * `showMountPrompt` [true] (`global.json` only): Whether to prompt the user when mounting a directory (change this only if you know what you're doing!)
+* `snapToSize` [true]: Whether to automatically snap window size to the nearest character size, keeping margins normalized
 * `standardsMode` [false]: Enables a few super-compatibility options, such as 50ms timing and colored margins
 * `startFullscreen` [false] (computer-local): Whether to start the computer in fullscreen mode
 * `useHardwareRenderer` [false]: Whether to use the GPU for hardware-accelerated rendering
