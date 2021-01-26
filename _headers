@@ -4,6 +4,6 @@
   Cross-Origin-Embedder-Policy: require-corp
 
 /*
-  Content-Security-Policy: default-src 'self'; style-src 'self' fonts.googleapis.com cdnjs.cloudflare.com; script-src 'self' www.googletagmanager.com cdn.rawgit.com
+  Content-Security-Policy: default-src 'self'; style-src 'self' fonts.googleapis.com cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' www.googletagmanager.com cdn.rawgit.com; font-src fonts.gstatic.com cdnjs.cloudflare.com
   X-Frame-Options: deny
   X-Content-Type-Options: nosniff
