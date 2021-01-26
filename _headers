@@ -2,3 +2,8 @@
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
   Cross-Origin-Embedder-Policy: require-corp
+
+/*
+  Content-Security-Policy: default-src 'self' fonts.googleapis.com cdnjs.cloudflare.com www.googletagmanager.com cdn.rawgit.com
+  X-Frame-Options: deny
+  X-Content-Type-Options: nosniff
