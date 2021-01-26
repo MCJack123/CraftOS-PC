@@ -4,6 +4,6 @@
   Cross-Origin-Embedder-Policy: require-corp
 
 /*
-  Content-Security-Policy: default-src 'self' api.github.com www.google-analytics.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com cdnjs.cloudflare.com cdn.rawgit.com; script-src 'self' 'unsafe-inline' www.googletagmanager.com cdn.rawgit.com www.google-analytics.com; font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com
+  Content-Security-Policy: default-src 'self' api.github.com www.google-analytics.com www.googletagmanager.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com cdnjs.cloudflare.com cdn.rawgit.com; script-src 'self' 'unsafe-inline' www.googletagmanager.com cdn.rawgit.com www.google-analytics.com; font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com
   X-Frame-Options: deny
   X-Content-Type-Options: nosniff
