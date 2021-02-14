@@ -28,7 +28,7 @@
                         if (data[i].name === "index.html" || data[i].name === "index.js") continue;
                         let el = document.createElement("li");
                         let a = document.createElement("a");
-                        a.href = data[i].download_url;
+                        a.href = data[i].name;
                         a.innerText = (new Date(data[i].name.match(/\d{2}-\d{2}-\d{2}/)[0].replace(/-/g, '/'))).toLocaleDateString(undefined, {month: "long", day: "numeric", year: "numeric"});
                         el.appendChild(a);
                         document.getElementById("links").appendChild(el);
