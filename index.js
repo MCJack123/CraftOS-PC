@@ -127,6 +127,12 @@ function getLatest() {
 }
 
 function ready() {
+    setTimeout(() => {
+        if (localStorage.getItem("cookieSeen") != "shown") {
+            document.getElementById("cookie-banner").classList += "open";
+            localStorage.setItem("cookieSeen", "shown");
+        }
+    }, 200);    
     getLatest();
     showDetails();
     const icons = FaUserAgent.faUserAgent(navigator.userAgent);
@@ -151,4 +157,8 @@ function ready() {
         document.getElementsByClassName("download-text")[0].innerText = "View on GitHub";
         document.getElementById("download-source").remove();
     }
+}
+
+function acceptCookies() {
+    document.getElementById("cookie-banner").classList = "";
 }

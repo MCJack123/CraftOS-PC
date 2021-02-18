@@ -294,6 +294,32 @@ pre {
     }
 }
 
+#cookie-banner {
+    position: fixed;
+    bottom: 0px;
+    width: calc(100% - 28px);
+    padding: 5px 14px;
+    display: flex;
+    opacity: 0;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #eeeeee;
+    transition: all 0.5s;
+}
+
+#cookie-banner.open {
+    opacity: 100%;
+}
+
+.cookie-banner-close {
+    height: 20px;
+    padding: 7px 10px;
+    background-color: #dede6c;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+}
+
 @-webkit-keyframes moveSlideshow {
     100% { 
         -webkit-transform: translateX(-50%);  
@@ -309,6 +335,24 @@ pre {
 @keyframes moveSlideshow {
     100% { 
         transform: translateX(-50%);  
+    }
+}
+
+@-webkit-keyframes fade {
+    100% { 
+        opacity: 100%;
+    }
+}
+
+@-moz-keyframes fade {
+    100% { 
+        opacity: 100%;
+    }
+}
+
+@keyframes fade {
+    100% { 
+        opacity: 100%;
     }
 }
 
@@ -332,11 +376,20 @@ pre {
         color: #eeeeee;
     }
 
+    .cookie-banner-close {
+        background-color: #b3b358;
+        color: #eeeeee;
+    }
+
     #scrolling-box {
         filter: brightness(90%);
     }
 
     .footer-box {
+        background-color: #222222;
+    }
+
+    #cookie-banner {
         background-color: #222222;
     }
 
