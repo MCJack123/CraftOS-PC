@@ -7,7 +7,7 @@ var details = [
     {
         "image": "peripherals.png",
         "title": "Full Peripheral Support with Directory Mounting",
-        "text": "CraftOS-PC supports many of the peripherals available in ComputerCraft, including monitors, printers, disk drives, modems, and more. You can connect and disconnect peripherals using the attach and detach commands from the shell. The <pre>periphemu</pre> API can also be used to manipulate peripherals from Lua. In addition, the mount and unmount commands and the <pre>mounter</pre> API allow mounting real directories inside the CraftOS environment."
+        "text": "CraftOS-PC supports many of the peripherals available in ComputerCraft, including monitors, speakers, disk drives, modems, and more. You can connect and disconnect peripherals using the attach and detach commands from the shell. The <pre>periphemu</pre> API can also be used to manipulate peripherals from Lua. In addition, the mount and unmount commands and the <pre>mounter</pre> API allow mounting real directories inside the CraftOS environment."
     },
     {
         "image": "multicomputer.png",
@@ -22,12 +22,12 @@ var details = [
     {
         "image": "screenshot.gif",
         "title": "Built-In Screenshots & GIF Recorder",
-        "text": "CraftOS-PC includes a built-in screenshot and GIF recording tool. No longer do you need to open Snipping Tool or use recgif; CraftOS-PC can do it for you. You can press F2 to take a screenshot or F3 to toggle GIF recording, which will be saved to .craftos/screenshots in your home directory. GIFs are restricted to a maximum length of 15 seconds by default to save memory usage, but this can be modified in the configuration."
+        "text": "CraftOS-PC includes a built-in screenshot and GIF recording tool. No longer do you need to open Snipping Tool or use recgif; CraftOS-PC can do it for you. You can press F2 to take a screenshot or F3 to toggle GIF recording, which will be saved to the screenshots directory in the CraftOS-PC save folder. Or you can use F12 to copy the screenshot directly to your clipboard. GIFs are restricted to a maximum length of 15 seconds by default to save memory usage, but this can be modified in the configuration."
     },
     {
         "image": "config.png",
         "title": "Highly Configurable",
-        "text": "CraftOS-PC allows you to configure every part of the ComputerCraft experience. The config command and API allow access to the configuration directly from inside CraftOS. The configuration is stored as plain JSON in <pre>~/.craftos/config</pre>, so it's easily editable even outside the ComputerCraft environment."
+        "text": "CraftOS-PC allows you to configure every part of the ComputerCraft experience. The config command and API allow access to the configuration directly from inside CraftOS. The configuration is stored as plain JSON, so it's easily editable even outside the ComputerCraft environment."
     },
     {
         "image": "extension.png",
