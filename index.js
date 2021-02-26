@@ -43,6 +43,11 @@ var details = [
         "image": "online.png",
         "title": "CraftOS-PC Online",
         "text": "With the release of CraftOS-PC v2.3 comes CraftOS-PC Online, a version of CraftOS-PC that runs directly in your browser. It runs in an IDE similar to Visual Studio Code, and supports file browsing and editing, opening multiple windows, screenshots, downloading & uploading files, and more. It works in most modern browsers with WebAssembly and shared memory support. You can access CraftOS-PC Online at <a href=\"https://www.craftos-pc.cc/online/\">https://www.craftos-pc.cc/online/</a>."
+    },
+    {
+        "image": "accelerated.png",
+        "title": "LuaJIT Support",
+        "text": "CraftOS-PC Accelerated is a fork of CraftOS-PC that uses the LuaJIT engine to increase speeds even further, with up to 100x faster execution (depending on the workload). It uses the same data locations as standard CraftOS-PC, and can be installed alongside it without issues. Please note that not every program is compatible with CraftOS-PC Accelerated, and support is not guaranteed."
     }
 ];
 
