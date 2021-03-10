@@ -128,14 +128,14 @@ img {
     .details-content {
         margin-left: 0px;
     }
+    .mobile-hidden {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 400px) {
     .title-title {
         font-size: 56px;
-    }
-    .mobile-hidden {
-        display: none;
     }
 }
 
