@@ -28,12 +28,12 @@ fetch("https://api.github.com/repos/MCJack123/craftos2/releases/latest", {header
 
 Promise.all([
     fs.readFile("docs/sidebar.md", {encoding: "utf8"}),
-    fs.readdir("docs/md")
+    fs.readdir("docs")
 ]).then(res => {
     let sidebar = marked(res[0]);
     for (let file of res[1]) {
         if (file !== "sidebar.md") {
-            fs.readFile("docs/md/" + file, {encoding: "utf8"})
+            fs.readFile("docs/" + file, {encoding: "utf8"})
                 .then(data => ejs.renderFile("src/docs.ejs", {info: docsInfo[file.match(/[^%.]+/)], sidebar: sidebar, content: marked(data)}))
                 .then(data => fs.writeFile("build/docs/" + file.replace(".md", ".html"), data, {encoding: "utf8"}))
                 .catch(err => {
