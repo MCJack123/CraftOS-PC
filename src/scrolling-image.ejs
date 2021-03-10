@@ -1,4 +1,4 @@
-<picture class="scrolling-image">
+<picture class="scrolling-image" style="width: <%= imageSizes[detail.image].width / imageSizes[detail.image].height * 100 %>%">
                         <source srcset="images/webp/<%= detail.image %>.webp" type="image/webp">
                         <source srcset="images/<%= detail.image %>.png" type="image/png">
                         <img class="scrolling-image" src="images/<%= detail.image %>.png" alt="<%= detail.title %>">
