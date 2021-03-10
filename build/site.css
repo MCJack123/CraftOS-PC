@@ -231,6 +231,10 @@ pre {
     padding: 25px;
 }
 
+#docs-sidebar > h3:first-child, #docs-content > h1:first-child {
+    margin-top: 0;
+}
+
 #docs-content {
     padding: 25px;
     width: 75%;

@@ -1,2 +1,2 @@
-nightly/*.exe filter=lfs diff=lfs merge=lfs -text
+build/nightly/*.exe filter=lfs diff=lfs merge=lfs -text
 . !text !filter !merge !diff

@@ -59,6 +59,7 @@
             }
         </script>
         <title>CraftOS-PC - A fast and feature-filled ComputerCraft emulator - Home Page</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="preload" as="style" type="text/css" media="all" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=optional" />
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=optional" rel="stylesheet" type="text/css" media="all">
         <link rel="preload" as="style" type="text/css" media="all" href="/site.css" />
@@ -78,9 +79,9 @@
             <div id="scrolling-box">
                 <div id="scrolling-content">
                     <% details.forEach((data) => { %>
-                        <%- data.image == "screenshot.gif" ? "" : include('scrolling-image', {detail: data}); %>
+                        <%- data.image === "screenshot.gif" ? "" : include('scrolling-image', {detail: data}); %>
                     <% }); details.forEach((data) => { %>
-                        <%- data.image == "screenshot.gif" ? "" : include('scrolling-image', {detail: data}); %>
+                        <%- data.image === "screenshot.gif" ? "" : include('scrolling-image', {detail: data}); %>
                     <% }); %>
                 </div>
             </div>

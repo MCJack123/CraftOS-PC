@@ -1,5 +1,6 @@
 <html>
     <head>
+        <meta charset="utf-8">
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151205123-1"></script>
         <script>
@@ -9,27 +10,102 @@
 
         gtag('config', 'UA-151205123-1');
         </script>
-        <meta charset="utf8">
         <meta name="theme-color" content="#DEDE6C">
         <meta property="og:site_name" content="CraftOS-PC">
-        <meta property="og:title" content="About">
-        <meta property="og:description" content="Information about CraftOS-PC.">
-        <meta property="og:image" content="https://www.craftos-pc.cc/images/image1.png">
+        <meta property="og:title" content="<%= info.title %>">
+        <meta property="og:description" content="<%= info.description %>">
+        <meta property="og:image" content="https://www.craftos-pc.cc/images/<%= info.image %>.png">
         <meta property="og:url" content="https://www.craftos-pc.cc/">
-        <meta property="twitter:title" content="About">
-        <meta property="twitter:description" content="Information about CraftOS-PC.">
-        <meta property="twitter:image" content="https://www.craftos-pc.cc/images/image1.png">
+        <meta property="twitter:title" content="<%= info.title %>">
+        <meta property="twitter:description" content="<%= info.description %>">
+        <meta property="twitter:image" content="https://www.craftos-pc.cc/images/<%= info.image %>.png">
         <meta property="twitter:card" content="summary_large_index">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name=viewport content="width=device-width, initial-scale=1">
-        <title>CraftOS-PC - Documentation - About</title>
+        <title>CraftOS-PC - Documentation - <%= info.title %></title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="preload" as="style" type="text/css" media="all" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=optional" />
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=optional" rel="stylesheet" type="text/css" media="all">
         <link rel="preload" as="style" type="text/css" media="all" href="/site.css" />
         <link rel="stylesheet" href="/site.css" type="text/css">
-        <script src="../dist/marked.min.js"></script>
+        <style>
+/* Tomorrow Night Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+  color: #969896;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+  color: #cc6666;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+  color: #de935f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+  color: #f0c674;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #b5bd68;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+  color: #81a2be;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #b294bb;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #1d1f21;
+  color: #c5c8c6;
+  padding: 0.5em;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+        </style>
         <link rel="icon" href="/favicon.ico">
-        <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
         <script src="docs.js"></script>
     </head>
     <body>
@@ -41,8 +117,12 @@
                 <a href="api-reference"><h4>API Reference</h4></a>
             </div>
             <div class="docs-box">
-                <div id="docs-sidebar"></div>
-                <div id="docs-content"></div>
+                <div id="docs-sidebar">
+                    <%- sidebar %>
+                </div>
+                <div id="docs-content">
+                    <%- content %>
+                </div>
             </div>
             <div class="footer-box">
                 <span>&copy; 2019-2021 JackMacWindows</span>

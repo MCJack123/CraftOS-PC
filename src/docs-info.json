@@ -1,0 +1,147 @@
+{
+    "about": {
+        "title": "About",
+        "description": "Information about CraftOS-PC.",
+        "image": "image1"
+    },
+    "accelerated": {
+        "title": "CraftOS-PC Accelerated",
+        "description": "CraftOS-PC Accelerated is a fork of CraftOS-PC using the LuaJIT engine.",
+        "image": "image1"
+    },
+    "api-reference": {
+        "title": "API Reference",
+        "description": "This page lists quick information about all of the new functions in CraftOS-PC.",
+        "image": "image1"
+    },
+    "autoupdate": {
+        "title": "Auto-Updater",
+        "description": "CraftOS-PC's auto-updater ensures you're always using the latest version of CraftOS-PC.",
+        "image": "update"
+    },
+    "ccemux": {
+        "title": "Migrating from CCEmuX",
+        "description": "How to move over your files and settings from CCEmuX, as well as compatibility information.",
+        "image": "image1"
+    },
+    "cctweaked": {
+        "title": "CC: Tweaked Features",
+        "description": "CraftOS-PC supports full emulation of CC: Tweaked, the continuation of the original ComputerCraft.",
+        "image": "image1"
+    },
+    "changelog": {
+        "title": "Changelog",
+        "description": "This page lists the changes that were made in each CraftOS-PC version.",
+        "image": "image1"
+    },
+    "cli": {
+        "title": "Command Line Flags",
+        "description": "CraftOS-PC supports passing a number of options on the command line.",
+        "image": "image1"
+    },
+    "config": {
+        "title": "ComputerCraft Configuration",
+        "description": "CraftOS-PC has a number of options in the configuration to tweak how it works.",
+        "image": "config"
+    },
+    "contact": {
+        "title": "Contact",
+        "description": "How you can contact the creator of CraftOS-PC.",
+        "image": "image1"
+    },
+    "debugger": {
+        "title": "Debugger",
+        "description": "CraftOS-PC v2.2 introduces a debugger for finding bugs in your program.",
+        "image": "debugger_demo"
+    },
+    "error-messages": {
+        "title": "Error Messages",
+        "description": "A list of various error messages that may appear, and what they mean.",
+        "image": "image1"
+    },
+    "getting-started": {
+        "title": "Getting Started",
+        "description": "How to get started with CraftOS-PC.",
+        "image": "image1"
+    },
+    "gfxmode": {
+        "title": "Graphics Mode",
+        "description": "CraftOS-PC features an exclusive graphics mode, allowing you to draw pixels with up to 256 colors.",
+        "image": "gfx"
+    },
+    "http-server": {
+        "title": "HTTP Server",
+        "description": "CraftOS-PC includes the ability to host an HTTP or WebSocket server.",
+        "image": "image1"
+    },
+    "index": {
+        "title": "Documentation Home",
+        "description": "The full documentation for CraftOS-PC.",
+        "image": "image1"
+    },
+    "installation": {
+        "title": "Installation",
+        "description": "How to install CraftOS-PC.",
+        "image": "image1"
+    },
+    "mounter": {
+        "title": "File System Mounting",
+        "description": "CraftOS-PC supports mounting real directories inside the virtual computer.",
+        "image": "image1"
+    },
+    "multicomp": {
+        "title": "Multiple Computers",
+        "description": "CraftOS-PC allows you to run multiple computers in parallel.",
+        "image": "multicomputer"
+    },
+    "online": {
+        "title": "CraftOS-PC Online",
+        "description": "CraftOS-PC Online is a full ComputerCraft IDE available online - no downloads required.",
+        "image": "online"
+    },
+    "periphemu": {
+        "title": "Peripheral Emulation",
+        "description": "CraftOS-PC allows you to emulate all peripherals that are supported in ComputerCraft.",
+        "image": "peripherals"
+    },
+    "plugins": {
+        "title": "Plugin System",
+        "description": "CraftOS-PC supports a plugin system that allows loading custom APIs, peripherals, and Lua libraries.",
+        "image": "image1"
+    },
+    "privacy": {
+        "title": "Privacy Policy",
+        "description": "This page describes how CraftOS-PC may use your data.",
+        "image": "image1"
+    },
+    "rawmode": {
+        "title": "Raw Mode",
+        "description": "CraftOS-PC v2.3 adds a new renderer that sends the terminal data in a special binary format.",
+        "image": "image1"
+    },
+    "renderers": {
+        "title": "Rendering Options",
+        "description": "CraftOS-PC has multiple renderers that can be used to show the terminal using different methods.",
+        "image": "image1"
+    },
+    "saves": {
+        "title": "Save Data Structure & Location",
+        "description": "This page lists where the different files for CraftOS-PC are located on your hard drive.",
+        "image": "image1"
+    },
+    "screenshot": {
+        "title": "Screenshots & Recording",
+        "description": "CraftOS-PC allows you to quickly take screenshots and record GIFs of your screen.",
+        "image": "recording"
+    },
+    "standalone": {
+        "title": "Standalone Executable",
+        "description": "The standalone version of CraftOS-PC can be used when a full installation is not desirable.",
+        "image": "image1"
+    },
+    "standards": {
+        "title": "Standards Mode",
+        "description": "Standards mode enhances compatibility by changing some behaviors to be more compliant at the expense of performance.",
+        "image": "image1"
+    }
+}
