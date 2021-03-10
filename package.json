@@ -1,0 +1,26 @@
+{
+  "name": "craftos-pc-website",
+  "version": "1.0.0",
+  "description": "www.craftos-pc.cc build script",
+  "main": "build.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MCJack123/CraftOS-PC.git"
+  },
+  "author": "JackMacWindows",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/MCJack123/CraftOS-PC/issues"
+  },
+  "homepage": "https://www.craftos-pc.cc",
+  "dependencies": {
+    "ejs": "^3.1.6"
+  }
+}

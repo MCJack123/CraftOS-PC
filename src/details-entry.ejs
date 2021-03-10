@@ -1,0 +1,19 @@
+<div class="details-entry">
+                            <div class="details-image-container">
+                                <% if (detail.image != "screenshot.gif") { %>
+                                <picture class="details-image">
+                                    <source srcset="images/webp/<%= detail.image %>.webp" type="image/webp">
+                                    <source srcset="images/<%= detail.image %>.png" type="image/png">
+                                    <img class="details-image" src="images/<%= detail.image %>.png" alt="<%= detail.title %>">
+                                </picture>
+                                <% } else { %>
+                                <img class="details-image" src="images/<%= detail.image %>" alt="<%= detail.title %>">
+                                <% } %>
+                            </div>
+                            <div class="details-content">
+                                <h2 class="details-title"><%= detail.title %></h2>
+                                <p class="details-text">
+                                    <%= detail.text %>
+                                </p>
+                            </div>
+                        </div>

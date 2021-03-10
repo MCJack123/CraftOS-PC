@@ -1,6 +1,7 @@
 <!--<!DOCTYPE html>-->
 <html lang="en">
     <head>
+        <meta charset="utf-8">
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -17,7 +18,6 @@
 
         gtag('config', 'UA-151205123-1');
         </script>
-        <meta charset="utf8">
         <meta name="theme-color" content="#DEDE6C">
         <meta property="og:site_name" content="CraftOS-PC">
         <meta property="og:title" content="CraftOS-PC">
@@ -76,14 +76,20 @@
         <!-- End Google Tag Manager (noscript) -->
         <div id="main">
             <div id="scrolling-box">
-                <div id="scrolling-content"></div>
+                <div id="scrolling-content">
+                    <% details.forEach((data) => { %>
+                        <%- data.image == "screenshot.gif" ? "" : include('scrolling-image', {detail: data}); %>
+                    <% }); details.forEach((data) => { %>
+                        <%- data.image == "screenshot.gif" ? "" : include('scrolling-image', {detail: data}); %>
+                    <% }); %>
+                </div>
             </div>
             <div class="after-scrolling">
                 <div class="title-box">
                     <div class="title-content">
                         <h1 class="title-title">CraftOS-PC</h1>
                         <h2 class="title-subtitle">A fast and feature-filled ComputerCraft emulator</h2>
-                        <h4 class="title-version">Current Version: <span id="current-version">?</span></h4>
+                        <h4 class="title-version">Current Version: <span id="current-version"><%= tag %></span></h4>
                         <a href="#" id="download-link">
                             <div class="download-button">
                                 <div id="download-button">
@@ -97,7 +103,9 @@
                     </div>
                 </div>
                 <div id="details-box">
-
+                    <% details.forEach((data) => { %>
+                        <%- include('details-entry', {detail: data}); %>
+                    <% }); %>
                 </div>
                 <div class="footer-box">
                     <span>&copy; 2019-2021 JackMacWindows</span>
