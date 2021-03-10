@@ -62,7 +62,7 @@
         <link rel="preload" as="style" type="text/css" media="all" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=optional" />
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=optional" rel="stylesheet" type="text/css" media="all">
         <link rel="preload" as="style" type="text/css" media="all" href="/site.css" />
-        <link rel="stylesheet" href="site.css" type="text/css">
+        <link rel="stylesheet" href="/site.css" type="text/css">
         <link rel="preload" as="style" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
         <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
         <script src="dist/fontawesome-user-agent.min.js"></script>
@@ -90,10 +90,11 @@
                         <h1 class="title-title">CraftOS-PC</h1>
                         <h2 class="title-subtitle">A fast and feature-filled ComputerCraft emulator</h2>
                         <h4 class="title-version">Current Version: <span id="current-version"><%= tag %></span></h4>
-                        <a href="#" id="download-link">
+                        <a href="https://github.com/MCJack123/craftos2/" id="download-link">
                             <div class="download-button">
                                 <div id="download-button">
-                                    <span class="download-text">&nbsp;Download for&nbsp;<span id="download-platform">?</span></span>
+                                    <span class="download-icon"><i class="fab fa-github"></i></span>
+                                    <span class="download-text">&nbsp;View on GitHub&nbsp;<span id="download-platform"></span></span>
                                 </div>
                                 <h5 id="mac-universal-note" style="display: none">CraftOS-PC runs natively on Apple Silicon Macs.</h5>
                             </div>
@@ -111,13 +112,13 @@
                     <span>&copy; 2019-2021 JackMacWindows</span>
                     <a href="docs/">Documentation</a>
                     <a href="docs/privacy">Privacy Policy</a>
-                    <a href="online/">CraftOS-PC Online</a>
-                    <a href="nightly/">Nightly Windows builds</a>
-                    <a href="https://github.com/MCJack123/craftos2/">GitHub</a>
-                    <a href="discord">Discord</a>
+                    <a href="online/" class="mobile-hidden">CraftOS-PC Online</a>
+                    <a href="nightly/" class="mobile-hidden">Nightly Windows builds</a>
+                    <a href="https://github.com/MCJack123/craftos2/" class="mobile-hidden">GitHub</a>
+                    <a href="discord" class="mobile-hidden">Discord</a>
                 </div>
             </div>
-            <div id="cookie-banner">
+            <div id="cookie-banner" style="display: none">
                 <p>This site uses cookies for analytics. By using this site, you agree to the <a href="docs/privacy">privacy policy</a>.</p>
                 <p class="cookie-banner-close" onclick="acceptCookies()">OK</p>
             </div>

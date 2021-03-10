@@ -134,6 +134,9 @@ img {
     .title-title {
         font-size: 56px;
     }
+    .mobile-hidden {
+        display: none;
+    }
 }
 
 .details-image {

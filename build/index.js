@@ -1,11 +1,13 @@
 function ready() {
     setTimeout(() => {
         if (localStorage.getItem("cookieSeen") != "shown") {
-            document.getElementById("cookie-banner").classList += "open";
+            document.getElementById("cookie-banner").style.display = null;
+            setTimeout(() => document.getElementById("cookie-banner").classList += "open", 10);
             localStorage.setItem("cookieSeen", "shown");
         }
-    }, 200);    
+    }, 200);
     const icons = FaUserAgent.faUserAgent(navigator.userAgent);
+    for (let el of document.getElementsByClassName("download-icon")) el.remove();
     document.getElementById("download-button").innerHTML = '<span class="download-icon">' + (icons.platform.name == "desktop" ? icons.os.html : '<i class="fab fa-github">') + "</i></span>&nbsp;" + document.getElementById("download-button").innerHTML;
     var link = document.getElementById("download-link");
     if (icons.platform.name == "desktop") {
@@ -20,8 +22,13 @@ function ready() {
             document.getElementsByClassName("download-text")[0].innerText = "View on GitHub";
             document.getElementById("download-source").remove();
         }
-        if (icons.os.name == "apple") document.getElementById("download-platform").innerText = "macOS";
-        else if (document.getElementById("download-platform") != undefined) document.getElementById("download-platform").innerText = icons.os.name.charAt(0).toUpperCase() + icons.os.name.slice(1);
+        if (icons.os.name == "apple") {
+            document.getElementsByClassName("download-text")[0].innerHTML = document.getElementsByClassName("download-text")[0].innerHTML.replace("View on GitHub", "Download for");
+            document.getElementById("download-platform").innerText = "macOS";
+        } else if (document.getElementById("download-platform") != undefined) {
+            document.getElementsByClassName("download-text")[0].innerHTML = document.getElementsByClassName("download-text")[0].innerHTML.replace("View on GitHub", "Download for");
+            document.getElementById("download-platform").innerText = icons.os.name.charAt(0).toUpperCase() + icons.os.name.slice(1);
+        }
     } else {
         link.href = "https://github.com/MCJack123/craftos2/";
         document.getElementsByClassName("download-text")[0].innerText = "View on GitHub";
@@ -32,4 +39,5 @@ function ready() {
 
 function acceptCookies() {
     document.getElementById("cookie-banner").classList = "";
+    setTimeout(() => document.getElementById("cookie-banner").style.display = "none", 500);
 }
