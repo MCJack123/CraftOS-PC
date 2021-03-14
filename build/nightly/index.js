@@ -1,6 +1,6 @@
 self.onmessage = function() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://api.github.com/repos/MCJack123/CraftOS-PC/contents/nightly");
+    xhr.open("GET", "https://api.github.com/repos/MCJack123/CraftOS-PC/contents/build/nightly");
     xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.READY && xhr.status == 200) {
             let data = JSON.parse(xhr.responseText);
