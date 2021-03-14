@@ -15,7 +15,7 @@
         <ul id="links" style="line-height: 1.5"></ul>
         <script>
             let xhr = new XMLHttpRequest();
-            xhr.open("GET", "https://api.github.com/repos/MCJack123/CraftOS-PC/contents/nightly");
+            xhr.open("GET", "https://api.github.com/repos/MCJack123/CraftOS-PC/contents/build/nightly");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                     var data = JSON.parse(xhr.responseText);
