@@ -241,6 +241,18 @@ Sets a custom configuration variable as a boolean.
 
 * `value` The value of the setting
 
+### `void `[`registerConfigSetting`](#PluginFunctions-structure_1ab25a170f3b9683fe3b344775c0e251ff)`(const std::string & name,int type,const std::function<int(const std::string &,void *)> & callback, void * userdata)` 
+
+Registers a custom config setting so it can be accessed with the config API, with an optional callback. Pass nullptr to callback to ignore.
+#### Parameters
+* `name` The name of the setting 
+
+* `type` The type of the setting: 0 for boolean, 1 for integer, 2 for string
+
+* `callback` A callback to call when the setting is changed. This takes the name and userdata, and returns 0 for immediate use, 1 to reboot the computer, and 2 to restart CraftOS-PC before taking effect. Set this to nullptr to not call a function.
+
+* `userdata` An optional opaque pointer to pass to the function.
+
 ## `PluginInfo` structure
 
 The [PluginInfo](#PluginInfo-structure) structure is used to hold information about a plugin. This structure is returned by plugin_init to indicate some properties about the plugin. The default values in this structure will not change any functionality - feel free to leave them at their default values, or change them to configure your plugin.
@@ -288,8 +300,10 @@ When compiling plugins, you must use a compiler that is compatible with CraftOS-
 | 3           | (none)            | Accelerated v2.2   |
 | 4           | (none)            | v2.4 - v2.4.5      |
 | 10          | 0                 | v2.5 - v2.5.1.1    |
-| 10          | 1                 | v2.5.2 - Current   |
+| 10          | 1                 | v2.5.2             |
+| 10          | 2                 | v2.5.3             |
 | 11          | 0                 | Accelerated v2.5 - v2.5.1.1 |
-| 11          | 1                 | Accelerated v2.5.2 - Current |
+| 11          | 1                 | Accelerated v2.5.2 |
+| 11          | 2                 | Accelerated v2.5.3 |
 
 *Note: When building for debug targets on Windows, add 100000 to the plugin version.*
