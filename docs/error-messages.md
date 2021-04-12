@@ -17,6 +17,14 @@ This error can happen when creating anything that has a terminal attached, such 
 | Message | Description | Remedy |
 |---------|-------------|--------|
 | `Failed to create window` | The computer's terminal window could not be created. | This is a rare issue, but it indicates some system issue that prevents CraftOS-PC from starting. On CraftOS-PC v2.3.1 or later, an extra error message is included that describes the issue better. |
+| `Failed to load font` | The font file could not be loaded. (Obsolete since v2.5.) | This usually only occurs when using a custom font, including using the HD font. If using the HD font, make sure `hdfont.bmp` is present in the install/ROM directory. If using another custom font, make sure the file exists and is stored in BMP format. The path has to be an absolute path and accessible to the user that is running CraftOS-PC. |
+| `Failed to convert font` | The font bitmap could not internally be converted into the correct format. (Obsolete since v2.5.) | This error is highly unlikely. On CraftOS-PC v2.3.1 or later, an extra error message is included that describes the issue better. |
+
+## `Failed to initialize renderer`
+This error can occur when an issue arises while setting up the video components. Usually this is caused by a missing font, but other situations may cause this to happen. (v2.5.5+)
+
+| Message | Description | Remedy |
+|---------|-------------|--------|
 | `Failed to load font` | The font file could not be loaded. | This usually only occurs when using a custom font, including using the HD font. If using the HD font, make sure `hdfont.bmp` is present in the install/ROM directory. If using another custom font, make sure the file exists and is stored in BMP format. The path has to be an absolute path and accessible to the user that is running CraftOS-PC. |
 | `Failed to convert font` | The font bitmap could not internally be converted into the correct format. | This error is highly unlikely. On CraftOS-PC v2.3.1 or later, an extra error message is included that describes the issue better. |
 
@@ -55,7 +63,7 @@ These errors can occur when calling a method on a peripheral.
 | `Could not mount` | `drive.insertDisk` | The requested directory to mount was not found. | Make sure the path to the directory to mount exists and is readable. |
 | `Too many open channels` | `modem.open` | The maximum number of open ports for a modem has been reached. | Close some open ports, or adjust the `maxOpenPorts` config option. |
 | `Error printing to PDF` | `printer.endPage` | An error occurred while writing the output. | An additional error message is included to help diagnose the error. |
-| `invalid volume`, `invalid pitch`, `invalid speed` | `speaker.playNote`, `speaker.playSound` | The specified value is out of range. | Make sure the  volume is in the range [0.0, 3.0], the pitch is in the range [0, 24], or the speed is in the range (0.0, 2.0]. |
+| `invalid volume`, `invalid pitch`, `invalid speed` | `speaker.playNote`, `speaker.playSound` | The specified value is out of range. | Make sure the volume is in the range [0.0, 3.0], the pitch is in the range [0, 24], or the speed is in the range (0.0, 2.0]. |
 
 ## Plugin errors
 These errors can occur when loading incompatible plugins. They appear when starting the computer before the shell loads. Not all of these errors will cause the plugin loading to fail, but are just warnings.
