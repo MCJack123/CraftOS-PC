@@ -8,7 +8,11 @@ Various flags are available to select different renderers for CraftOS-PC. These 
 The `--script` flag can be used to set a custom startup script to run before any other startup scripts that may be on the computer. This is mainly useful in conjunction with headless mode. You can also use the `--exec` flag to run an inline string of code from the command line instead of from a file. Arguments can be passed to the script using the `--args` option. All arguments to the script must be contained within one string on the command line, so wrap multiple arguments in quotes.
 
 ## Custom data/ROM directory & ID
-The `--directory` option can be passed to CraftOS-PC to change the path of the save data to somewhere other than the default location in your user directory. `--rom` does the same thing, but for the ROM directory (the folder that contains `rom` and `bios.lua`). The `--mc-save` flag can also be used to use the computer directory in the specified Minecraft save (assuming the standard Minecraft install directory). The `--id` option changes the ID of the first computer that will open (note that this overrides the `initialComputer` config argument), so `--id 5` will open computer #5 instead of #0.
+The `--directory` option can be passed to CraftOS-PC to change the path of the save data to somewhere other than the default location in your user directory. The `--mc-save` flag can also be used to use the computer directory in the specified Minecraft save (assuming the standard Minecraft install directory). The `--id` option changes the ID of the first computer that will open (note that this overrides the `initialComputer` config argument), so `--id 5` will open computer #5 instead of #0.
+
+`--rom` sets the path to the ROM directory to use. To set up a custom ROM path, the directory must contain at least `bios.lua` and a `rom/` directory (these can contain any contents, but must be named exactly). In addition, the following extra files are required from the default ROM depending on the configuration:
+* `hdfont.bmp` is required if the HD font is enabled
+* `debug/` is required if using the debugger
 
 ## Mount injection
 Directories can be injected as mounts into CraftOS-PC straight from the command line. These mounts will be added before each computer starts up. There are three ways to specify mounts. Each of these flags should be followed by an argument of the format `<path>=<directory>`, where `<path>` is the destination path inside the computer, and `<directory>` is the path to the directory to mount.
