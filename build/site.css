@@ -262,7 +262,7 @@ pre {
         transition: ease-out .25s;
         z-index: 5;
         width: 200px;
-        height: calc(100% - 100px);
+        height: calc(100vh - 100px);
         overflow: scroll;
     }
 
