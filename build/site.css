@@ -223,6 +223,12 @@ pre {
     margin-right: 10px;
 }
 
+.docs-header-logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+}
+
 .docs-box {
     display: flex;
     flex-direction: row;
