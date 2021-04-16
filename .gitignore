@@ -2,3 +2,5 @@ node_modules
 build/online/wasm/*.map
 build/online/wasm/craftos2-lua
 build/online/wasm/src
+build/index.html
+build/docs/*.html

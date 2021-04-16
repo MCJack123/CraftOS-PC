@@ -131,6 +131,9 @@ img {
     .mobile-hidden {
         display: none;
     }
+    .footer-box {
+        font-size: 10pt;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -256,6 +259,7 @@ pre {
 @media screen and (max-width: 480px) {
     #docs-sidebar {
         position: fixed;
+        top: 50px;
         transform: translateX(-100%);
         -moz-transform: translateX(-100%);
         -webkit-transform: translateX(-100%);
@@ -274,7 +278,6 @@ pre {
 
     #docs-content {
         transition: ease-out .25s;
-        padding-top: 0px;
     }
 
     #docs-content.gray {
@@ -282,17 +285,13 @@ pre {
     }
 
     .docs-header {
-        position: fixed;
+        position: sticky;
         top: 0px;
         z-index: 10;
     }
 
     .docs-header h4 {
         display: none;
-    }
-
-    .docs-box {
-        margin-top: 50px;
     }
 
     .hotdog {

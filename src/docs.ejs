@@ -27,8 +27,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="preload" as="style" type="text/css" media="all" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=optional" />
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=optional" rel="stylesheet" type="text/css" media="all">
-        <link rel="preload" as="style" type="text/css" media="all" href="/site.css" />
-        <link rel="stylesheet" href="/site.css" type="text/css">
+        <link rel="preload" as="style" type="text/css" media="all" href="../site.css" />
+        <link rel="stylesheet" href="../site.css" type="text/css">
         <style>
 /* Tomorrow Night Theme */
 /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
@@ -112,7 +112,7 @@
     <body>
         <div id="main">
             <div class="docs-header">
-                <a href="#" onclick="toggleNav()" class="hotdog"><i class="fas fa-bars" style="font-size: 24px;"></i></a>
+                <i class="fas fa-bars hotdog" style="font-size: 24px; cursor: pointer;" onclick="toggleNav()"></i>
                 <a href="../"><h2>CraftOS-PC</h2></a>
                 <a href="getting-started"><h4>Getting Started</h4></a>
                 <a href="api-reference"><h4>API Reference</h4></a>
@@ -127,12 +127,12 @@
             </div>
             <div class="footer-box">
                 <span>&copy; 2019-2021 JackMacWindows</span>
-                <a href="./">Documentation</a>
-                <a href="privacy">Privacy Policy</a>
-                <a href="https://www.craftos-pc.cc/online/">CraftOS-PC Online</a>
-                <a href="/nightly/">Nightly Windows builds</a>
-                <a href="https://github.com/MCJack123/craftos2/">GitHub</a>
-                <a href="discord">Discord</a>
+                <a href="docs/">Documentation</a>
+                <a href="docs/privacy">Privacy Policy</a>
+                <a href="online/" class="mobile-hidden">CraftOS-PC Online</a>
+                <a href="nightly/" class="mobile-hidden">Nightly Windows builds</a>
+                <a href="https://github.com/MCJack123/craftos2/" class="mobile-hidden">GitHub</a>
+                <a href="discord" class="mobile-hidden">Discord</a>
             </div>
         </div>
     </body>
