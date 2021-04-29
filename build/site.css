@@ -331,6 +331,37 @@ pre {
     cursor: pointer;
 }
 
+.popup {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(64, 64, 64, 0.5);
+    transition: all 1s;
+    z-index: 50;
+}
+
+.popup.hidden {
+    background-color: rgba(64, 64, 64, 0);
+}
+
+.popup .popup-inner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20px;
+    min-width: 50%;
+    max-width: 66%;
+    min-height: 20%;
+    background-color: #dddddd;
+    transition: all 1s;
+    padding: 8px;
+    margin: 0 auto;
+}
+
+.popup.hidden .popup-inner {
+    top: -200%;
+}
+
 @-webkit-keyframes moveSlideshow {
     100% { 
         -webkit-transform: translateX(-50%);  
@@ -410,5 +441,9 @@ pre {
 
     #docs-sidebar {
         background-color: #333333;
+    }
+
+    .popup .popup-inner {
+        background-color: #222222;
     }
 }

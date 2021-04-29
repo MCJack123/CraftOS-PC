@@ -62,7 +62,7 @@
         <link rel="preload" as="style" type="text/css" media="all" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=optional" />
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=optional" rel="stylesheet" type="text/css" media="all">
         <link rel="preload" as="style" type="text/css" media="all" href="/site.css" />
-        <link rel="stylesheet" href="/site.css" type="text/css">
+        <link rel="stylesheet" href="site.css" type="text/css">
         <link rel="preload" as="style" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
         <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
         <script src="dist/fontawesome-user-agent.min.js"></script>
@@ -75,6 +75,16 @@
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
         <div id="main">
+            <div id="android-popup" class="popup hidden">
+                <div class="popup-inner">
+                    <h2>CraftOS-PC for Android (Beta)</h2>
+                    <p>CraftOS-PC for Android supports all ARM devices, as well as 64-bit Intel devices, running Android 7 Nougat or later.</p>
+                    <p>This release of CraftOS-PC for Android is a work-in-progress. Most things should be working, but note that there may be bugs.</p>
+                    <p>Note: To re-open the keyboard, pinch anywhere on the screen with two fingers.</p>
+                    <p><a href="https://drive.google.com/file/d/1q6KHMofKcyK14vTcTU1Se22hEb2MRqw8/view?usp=sharing">Tap this link to download the APK.</a></p>
+                    <p class="cookie-banner-close" style="width: 30pt; margin-left: auto; margin-right: auto; text-align: center;" onclick="document.getElementById('android-popup').classList = 'popup hidden'; document.body.style.overflow = null">OK</p>
+                </div>
+            </div>
             <div id="scrolling-box">
                 <div id="scrolling-content">
                     <% details.forEach((data) => { %>

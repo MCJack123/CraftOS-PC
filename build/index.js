@@ -8,7 +8,7 @@ function ready() {
     }, 200);
     const icons = FaUserAgent.faUserAgent(navigator.userAgent);
     for (let el of document.getElementsByClassName("download-icon")) el.remove();
-    document.getElementById("download-button").innerHTML = '<span class="download-icon">' + (icons.platform.name == "desktop" ? icons.os.html : '<i class="fab fa-github">') + "</i></span>&nbsp;" + document.getElementById("download-button").innerHTML;
+    document.getElementById("download-button").innerHTML = '<span class="download-icon">' + (icons.platform.name != "tv" ? icons.os.html : '<i class="fab fa-github">') + "</i></span>&nbsp;" + document.getElementById("download-button").innerHTML;
     var link = document.getElementById("download-link");
     if (icons.platform.name == "desktop") {
         if (icons.os.name == "apple") {
@@ -25,6 +25,25 @@ function ready() {
         if (icons.os.name == "apple") {
             document.getElementsByClassName("download-text")[0].innerHTML = document.getElementsByClassName("download-text")[0].innerHTML.replace("View on GitHub", "Download for");
             document.getElementById("download-platform").innerText = "macOS";
+        } else if (document.getElementById("download-platform") != undefined) {
+            document.getElementsByClassName("download-text")[0].innerHTML = document.getElementsByClassName("download-text")[0].innerHTML.replace("View on GitHub", "Download for");
+            document.getElementById("download-platform").innerText = icons.os.name.charAt(0).toUpperCase() + icons.os.name.slice(1);
+        }
+    } else if (icons.platform.name.startsWith("mobile") || icons.platform.name.startsWith("tablet")) {
+        if (icons.os.name == "android") {
+            link.href = "#";
+            link.onclick = () => {
+                document.getElementById("android-popup").classList = "popup";
+                document.body.style.overflow = "hidden";
+            }
+        } else {
+            link.href = "https://github.com/MCJack123/craftos2/";
+            document.getElementsByClassName("download-text")[0].innerText = "View on GitHub";
+            document.getElementById("download-source").remove();
+        }
+        if (icons.os.name == "apple") {
+            document.getElementsByClassName("download-text")[0].innerHTML = document.getElementsByClassName("download-text")[0].innerHTML.replace("View on GitHub", "Download for");
+            document.getElementById("download-platform").innerText = "iOS";
         } else if (document.getElementById("download-platform") != undefined) {
             document.getElementsByClassName("download-text")[0].innerHTML = document.getElementsByClassName("download-text")[0].innerHTML.replace("View on GitHub", "Download for");
             document.getElementById("download-platform").innerText = icons.os.name.charAt(0).toUpperCase() + icons.os.name.slice(1);
