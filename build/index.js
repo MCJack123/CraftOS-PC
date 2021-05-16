@@ -30,10 +30,12 @@ function ready() {
             document.getElementById("download-platform").innerText = icons.os.name.charAt(0).toUpperCase() + icons.os.name.slice(1);
         }
     } else if (icons.platform.name.startsWith("mobile") || icons.platform.name.startsWith("tablet")) {
-        if (icons.os.name == "android") {
+        if (icons.os.name == "android" || icons.os.name == "apple") {
+            if (icons.os.name !== "android") document.getElementById("popup-inner-android").style.display = "none";
+            else document.getElementById("popup-inner-ios").style.display = "none";
             link.href = "#";
             link.onclick = () => {
-                document.getElementById("android-popup").classList = "popup";
+                document.getElementById("mobile-popup").classList = "popup";
                 document.body.style.overflow = "hidden";
             }
         } else {
