@@ -336,12 +336,13 @@ pre {
     width: 100%;
     height: 100%;
     background-color: rgba(64, 64, 64, 0.5);
-    transition: all 1s;
+    transition: background-color 1s;
     z-index: 50;
 }
 
 .popup.hidden {
     background-color: rgba(64, 64, 64, 0);
+    height: 0;
 }
 
 .popup .popup-inner {
@@ -359,7 +360,7 @@ pre {
 }
 
 .popup.hidden .popup-inner {
-    top: -200%;
+    top: -150vh;
 }
 
 @-webkit-keyframes moveSlideshow {
