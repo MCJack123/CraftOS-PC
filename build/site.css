@@ -13,6 +13,12 @@ body {
     width: 100%;
 }
 
+.title-image {
+    width: auto;
+    height: max(15vw, 15vh);
+    margin-top: min(-7.5vw, -7.5vh);
+}
+
 .title-title {
     font-size: 64pt;
     margin-bottom: 24px;
@@ -119,6 +125,10 @@ img {
 }
 
 @media screen and (max-width: 800px) {
+    /*.title-image {
+        height: 40vw;
+        margin-top: -20vw;
+    }*/
     .details-entry {
         flex-direction: column;
     }

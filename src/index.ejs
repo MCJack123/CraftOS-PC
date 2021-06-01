@@ -61,7 +61,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="preload" as="style" type="text/css" media="all" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=optional" />
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=optional" rel="stylesheet" type="text/css" media="all">
-        <link rel="preload" as="style" type="text/css" media="all" href="/site.css" />
+        <link rel="preload" as="style" type="text/css" media="all" href="site.css" />
         <link rel="stylesheet" href="site.css" type="text/css">
         <link rel="preload" as="style" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
         <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
@@ -105,6 +105,11 @@
             <div class="after-scrolling">
                 <div class="title-box">
                     <div class="title-content">
+                        <picture>
+                            <source srcset="images/webp/logo.webp" type="image/webp">
+                            <source srcset="images/logo.png" type="image/png">
+                            <img class="title-image" src="images/logo.png" alt="CraftOS-PC logo">
+                        </picture>
                         <h1 class="title-title">CraftOS-PC</h1>
                         <h2 class="title-subtitle">A fast and feature-filled ComputerCraft emulator</h2>
                         <h4 class="title-version">Current Version: <span id="current-version"><%= tag %></span></h4>

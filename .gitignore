@@ -4,3 +4,4 @@ build/online/wasm/craftos2-lua
 build/online/wasm/src
 build/index.html
 build/docs/*.html
+build/nightly/index.html
