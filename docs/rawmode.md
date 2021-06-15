@@ -481,7 +481,7 @@ This packet type notifies the client of a file operation's success or failure, a
 
 The contents of the response differ depending on the request type. Before reading the rest of the data, check the request type to know what data to read.
 
-The request ID MUST have the same value as the ID sent in the request for this operation.
+The request ID field MUST have the same value as the ID sent in the request for this operation. If the request type was any open type (16-23), the request type MAY be any valid open value, and does not have to correspond to the exact open flags passed. For example, a client may send a request with `OPEN | WRITE | BINARY`, but the server could send a response with only `OPEN | WRITE`.
 
 ### 4.3. Type 9: File data
 
