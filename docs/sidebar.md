@@ -21,11 +21,13 @@
 * [Command-Line Flags](cli)
 * [Rendering Options](renderers)
 * [Raw Mode](rawmode)
+* [VS Code Extension](extension)
 * [Plugin System](plugins)
 * [CraftOS-PC *Accelerated*](accelerated)
 
 ### Other Information
 * [CraftOS-PC Online](online)
+* [CraftOS-PC Remote](remote)
 * [Error Messages](error-messages)
 * [Known Issues](https://github.com/MCJack123/craftos2/discussions/174)
 * [Program Compatibility](https://docs.google.com/spreadsheets/d/1PtZZA4Vcsk733gSlSGH3VpecaGSp9U9AJmDKkWRssa0/edit?usp=sharing)
