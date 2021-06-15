@@ -59,6 +59,11 @@
         "description": "A list of various error messages that may appear, and what they mean.",
         "image": "image1"
     },
+    "extension": {
+        "title": "CraftOS-PC Extension",
+        "description": "The CraftOS-PC extension for VS Code lets you open CraftOS-PC windows directly inside VS Code.",
+        "image": "vscode"
+    },
     "getting-started": {
         "title": "Getting Started",
         "description": "How to get started with CraftOS-PC.",
@@ -118,6 +123,11 @@
         "title": "Raw Mode",
         "description": "CraftOS-PC v2.3 adds a new renderer that sends the terminal data in a special binary format.",
         "image": "image1"
+    },
+    "remote": {
+        "title": "CraftOS-PC Remote",
+        "description": "The CraftOS-PC Remote service allows you to access remote ComputerCraft computers and browse their files inside VS Code.",
+        "image": "vscode"
     },
     "renderers": {
         "title": "Rendering Options",
