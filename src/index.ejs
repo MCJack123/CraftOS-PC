@@ -110,6 +110,18 @@
                             <source srcset="images/logo.png" type="image/png">
                             <img class="title-image" src="images/logo.png" alt="CraftOS-PC logo">
                         </picture>
+                        <script>
+                            // polyfill for min/max
+                            const browserInfo = getBrowserInfo(navigator.userAgent);
+                            if (!(
+                                ((browserInfo.sName == "Chrome" || browserInfo.sName == "MSIE") && browserInfo.sVersion >= "79") ||
+                                (browserInfo.sName == "Firefox" && browserInfo.sVersion >= "75") ||
+                                (browserInfo.sName == "Opera" && browserInfo.sVersion >= "66") ||
+                                (browserInfo.sName == "Safari" && browserInfo.sVersion >= "11.3"))) {
+                                document.getElementsByClassName("title-image")[0].style.height = Math.max(0.15 * vw, 0.15 * vh);
+                                document.getElementsByClassName("title-image")[0].style.marginTop = Math.min(-0.075 * vw, -0.075 * vh);
+                            }
+                        </script>
                         <h1 class="title-title">CraftOS-PC</h1>
                         <h2 class="title-subtitle">A fast and feature-filled ComputerCraft emulator</h2>
                         <h4 class="title-version">Current Version: <span id="current-version"><%= tag %></span></h4>
