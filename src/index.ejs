@@ -118,6 +118,8 @@
                                 (browserInfo.sName == "Firefox" && browserInfo.sVersion >= "75") ||
                                 (browserInfo.sName == "Opera" && browserInfo.sVersion >= "66") ||
                                 (browserInfo.sName == "Safari" && browserInfo.sVersion >= "11.3"))) {
+                                const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+                                const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
                                 document.getElementsByClassName("title-image")[0].style.height = Math.max(0.15 * vw, 0.15 * vh);
                                 document.getElementsByClassName("title-image")[0].style.marginTop = Math.min(-0.075 * vw, -0.075 * vh);
                             }
