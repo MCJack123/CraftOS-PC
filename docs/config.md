@@ -13,16 +13,17 @@ These are the config variables available as of CraftOS-PC v2.5.2. *Variables mar
   * 4: Disable Control/Alt key emulation
 * `clockSpeed` [20]: Terminal refresh rate
 * `computerName` [] (computer-local): Name of the computer (cannot be set with `config` API)
+* `computerWidth`/`computerHeight` [51/19] (computer-local): Default size of the current computer in characters
 * `configReadOnly` [false]: Whether the configuration settings should not be able to be changed inside CraftOS (if `true`, must be disabled from `global.json`)
 * `customCharScale` [] (`global.json` only): Set this to change the default character scale
 * `customFontPath` [] (`global.json` only): Set this to specify a custom font in BMP format (`hdfont` will use the built-in HD font)
 * `customFontScale` [] (`global.json` only): When using a custom font (besides `hdfont`), set this to specify the scale divisor for the font (1 = 12x18, 2 = 6x9 (default), 3 = 4x6)
-* `debug_enable` [false]: Whether to enable the `debug` API
+* ~~`debug_enable` [false]: Whether to enable the `debug` API~~ (removed as of CraftOS-PC v2.6)
 * `default_computer_settings` []: A string with some default settings to set in the `settings` API
 * `defaultWidth`/`defaultHeight` [51/19]: The default size of new terminal windows
 * `disable_lua51_features` [false]: Whether to disable some Lua 5.1-only features in the BIOS
 * `extendMargins` [false]: Whether to extend colored margins to the edges of the screen, independent of standards mode
-* ~~`http_blacklist` [local IPs] (`global.json` only): An array of IP addresses or hostnames to block; this takes priority over the whitelist~~
+* `http_blacklist` [local IPs]: An array of IP addresses or hostnames to block; this takes priority over the whitelist
 * `http_enable` [true]: Whether to enable the `http` API
 * `http_max_download` [16777216]: The maximum size of an HTTP response to accept, in bytes
 * `http_max_requests` [16]: The maximum number of open HTTP request handles to allow, in bytes
@@ -32,10 +33,11 @@ These are the config variables available as of CraftOS-PC v2.5.2. *Variables mar
 * `http_proxy_server`/`http_proxy_port` []: Allows using a proxy for HTTP connections
 * `http_timeout` [30000]: The amount of time to wait for an HTTP request/response before terminating, in milliseconds
 * `http_websocket_enabled` [true]: Whether to enable WebSocket support in the `http` API
-* ~~`http_whitelist` ["*"] (`global.json` only): An array of IP addresses or hostnames to allow; any not in the list will be blocked~~
+* `http_whitelist` ["*"]: An array of IP addresses or hostnames to allow; any not in the list will be blocked
 * `ignoreHotkeys` [false]: Whether to ignore hotkeys such as F2, F3, F11
 * `initialComputer` [0]: The computer to start when opening CraftOS-PC
 * `isColor` [true] (computer-local): Whether the emulated computer is an Advanced Computer (color) or Standard Computer (no color)
+* `keepOpenOnShutdown` [false]: Whether to leave computer windows open after the computer shuts down; it can be rebooted with Ctrl+R
 * `maximumFilesOpen` [128]: Maximum number of files that can be open at once
 * `maxRecordingLength` [15]: The maximum number of seconds that a recording will run until it auto-stops (note that longer time * higher framerate = longer write time = higher memory usage)
 * `maxOpenPorts` [128]: The maximum number of ports (channels) that may be open on a single modem
@@ -57,7 +59,8 @@ These are the config variables available as of CraftOS-PC v2.5.2. *Variables mar
 * `romReadOnly` [true] (`global.json` only): Whether the ROM is mounted as read-only (change this only if you know what you're doing!) - note that in v2.4 this is reset when launched for the first time after updating
 * `showMountPrompt` [true] (`global.json` only): Whether to prompt the user when mounting a directory (change this only if you know what you're doing!)
 * `snapToSize` [true]: Whether to automatically snap window size to the nearest character size, keeping margins normalized
-* `standardsMode` [false]: Enables a few super-compatibility options, such as 50ms timing and colored margins
+* `snooperEnabled` [false]: Whether to send crash reports to the developer's server (see the [privacy policy](privacy) on how this data is handled)
+* `standardsMode` [false]: Enables a few extra compatibility options, such as 50ms timing and colored margins (see [Standards Mode](standards))
 * `startFullscreen` [false] (computer-local): Whether to start the computer in fullscreen mode
 * `useHardwareRenderer` [false]: Whether to use the GPU for hardware-accelerated rendering
 * `useVsync` [false]: Whether to enable Vsync with the hardware renderer

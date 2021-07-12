@@ -7,7 +7,7 @@ Plugins can be installed in these locations depending on your platform:
 * macOS: `CraftOS-PC.app/Contents/PlugIns`
 * Linux: `/usr/share/craftos/plugins`
 
-The plugin file should have the name that the library's `luaopen_` function uses. For example, the CCEmuX plugin should be named `ccemux` because the loader function is named `luaopen_ccemux`. For some plugins (such as Lua libraries), this is required, but some (like the CCEmuX plugin) will tell CraftOS-PC what name to use automatically. Once a plugin is installed it will be available as a global API with the same name as the plugin.
+The plugin file should have the name that the library's `luaopen_` function uses. For example, the CCEmuX plugin should be named `ccemux` because the loader function is named `luaopen_ccemux`. For some plugins (such as Lua libraries), this is required, but most plugins designed for CraftOS-PC (like the CCEmuX plugin) will tell CraftOS-PC what name to use automatically. Once a plugin is installed it will be available as a global API with the same name as the plugin.
 
 ## Using Lua libraries
 CraftOS-PC can automatically import Lua libraries as they would be used with standard Lua. Even though CraftOS-PC uses its own version of Lua, you can still use libraries that were built for standard Lua 5.1.
@@ -15,7 +15,7 @@ CraftOS-PC can automatically import Lua libraries as they would be used with sta
 To use a Lua library with CraftOS-PC, simply drop the DLL/dylib/so file into the `plugins` folder as listed above, and rename it so it starts with `lua_` (e.g. `lua_zlib.dll`). This will tell CraftOS-PC not to search for plugin metadata, and instead treats it like a standard library. Make sure to keep the rest of the file name the same, as this is what CraftOS-PC uses to determine the library's name.
 
 ## Writing plugins
-A plugin consists of three main functions: `plugin_init`, `luaopen`, and `plugin_deinit`. `plugin_init` is called on the main thread when CraftOS-PC starts up, before any computers are started. It receives a pointer to a `PluginFunctions` structure (see below), and the path to the library as a `path_t` reference.It returns a pointer to a `PluginInfo` structure with the plugin's information filled in. This pointer can either be a static reference, or a dynamically allocated pointer (make sure to deallocate it in `plugin_deinit`, though).
+A plugin consists of three main functions: `plugin_init`, `luaopen`, and `plugin_deinit`. `plugin_init` is called on the main thread when CraftOS-PC starts up, before any computers are started. It receives a pointer to a `PluginFunctions` structure (see below), and the path to the library as a `path_t` reference. It returns a pointer to a `PluginInfo` structure with the plugin's information filled in. This pointer can either be a static reference, or a dynamically allocated pointer (make sure to deallocate it in `plugin_deinit`, though).
 
 The signature for `plugin_init` is:
 ```c++
@@ -253,6 +253,63 @@ Registers a custom config setting so it can be accessed with the config API, wit
 
 * `userdata` An optional opaque pointer to pass to the function.
 
+### `peripheral * attachPeripheral(Computer * computer, const std::string& side, const std::string& type, std::string * errorReturn, const char * format, ...)`
+
+Attaches a peripheral of the specified type to a side, with optional extended arguments.
+
+#### Parameters
+* `computer` The computer to attach to
+* `side` The side to attach the peripheral on
+* `type` The type of peripheral to attach
+* `errorReturn` A pointer to a string to hold an error message (NULL to ignore)
+* `format` A format string specifying the arguments passed - 1 character per argument; set to "L" to pass a Lua state instead  
+    'i' = lua_Integer, 'n' = lua_Number, 's' = const char *, 'b' = bool, 'N' = nil/NULL (pass NULL in the arg list)
+* `...` Any arguments to pass to the constructor
+
+#### Returns
+The new peripheral object, or NULL on error
+
+#### Throws
+* `std::invalid_argument` If the format string is invalid
+* `std::exception` If the peripheral constructor throws an exception
+
+### `bool detachPeripheral(Computer * computer, const std::string& side)`
+
+Detaches a peripheral from a side.
+
+#### Parameters
+* `computer` The computer to detach from
+* `side` The side to detach
+
+#### Returns
+Whether the operation succeeded
+
+### `void addEventHook(const std::string& event, Computer * computer, const event_hook& hook, void* userdata)`
+
+Adds a hook function to be called when an event of a specific type is
+queued from C++. The hook is called directly after the callback function
+for the event, with the same parameters as an event provider + an
+additional field for the event name. It returns the new name of the event,
+which for most applications should be the same as the input. If the event
+name returned is empty, the event is removed from the queue. Hooks are
+executed in the order they were added. Computer hooks are executed
+before global hooks.
+
+#### Parameters
+* `event` The name of the event to hook
+* `computer` The computer to hook for, or NULL for all computers
+* `hook` The hook function to execute
+* `userdata` An opaque pointer to pass to the function
+
+### `void setDistanceProvider(const std::function<double(const Computer *, const Computer *)>& func)`
+
+Sets a custom disance provider for modems.
+
+#### Parameters
+* `func` The callback function to use to get distance. It takes two
+computer arguments (the sender and receiver), and returns a double
+specifying the distance.
+
 ## `PluginInfo` structure
 
 The [PluginInfo](#PluginInfo-structure) structure is used to hold information about a plugin. This structure is returned by plugin_init to indicate some properties about the plugin. The default values in this structure will not change any functionality - feel free to leave them at their default values, or change them to configure your plugin.
@@ -302,8 +359,12 @@ When compiling plugins, you must use a compiler that is compatible with CraftOS-
 | 10          | 0                 | v2.5 - v2.5.1.1    |
 | 10          | 1                 | v2.5.2             |
 | 10          | 2                 | v2.5.3             |
+| 10          | 3                 | v2.5.4 - v2.5.5    |
+| 10          | 4                 | v2.6               |
 | 11          | 0                 | Accelerated v2.5 - v2.5.1.1 |
 | 11          | 1                 | Accelerated v2.5.2 |
 | 11          | 2                 | Accelerated v2.5.3 |
+| 11          | 3                 | Accelerated v2.5.4 - v2.5.5 |
+| 11          | 4                 | Accelerated v2.6   |
 
 *Note: When building for debug targets on Windows, add 100000 to the plugin version.*

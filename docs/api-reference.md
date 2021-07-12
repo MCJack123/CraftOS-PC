@@ -63,6 +63,18 @@ HTTP server extension in the `http` API.
   * *table*: The response table
 * server_stop: Send this inside an `http.listen()` callback to stop the server
 
+## `mobile` (iOS/Android only)
+Mobile interaction API.
+### Functions
+* *nil* openKeyboard(\[*boolean* open\]): Opens or closes the keyboard.
+  * open: If false, this closes the keyboard; otherwise, the keyboard is opened
+* *boolean* isKeyboardOpen(): Returns whether the keyboard is currently open.
+
+### Events
+* _CCPC_mobile_keyboard_open: Sent when the keyboard is opened.
+  * *number*: The visible height of the screen in chatacter cells
+* _CCPC_mobile_keyboard_close: Sent when the keyboard is closed.
+
 ## `mounter`
 Mounts and unmounts real directories.
 ### Functions

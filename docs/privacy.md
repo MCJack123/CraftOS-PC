@@ -16,6 +16,8 @@ Uploaded crash dumps will never be sent to any third-party besides the server th
 
 Automatic crash uploads are disabled by default, but the user is prompted about this on first boot, or upon updating to v2.5.3. This setting can later be changed through the `snooperEnabled` configuration option.
 
+For operating systems other than Windows, no data is collected.
+
 ## Website
 The CraftOS-PC website uses Google Analytics for basic statistics, including view/download count, region information, and acquisition methods. This data has been anonymized as much as possible; however, Google may still collect data outside of the scope of the CraftOS-PC website.
 
