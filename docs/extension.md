@@ -17,7 +17,7 @@ From this point, you can use CraftOS-PC as usual. New windows that are created w
 
 To close a window, hover over its entry and click the X button. In addition, to quit CraftOS-PC entirely, click on the X button in the Computers header.
 
-On CraftOS-PC v2.5.6 and later, you can also access the files for the computer from directly within VS Code. Click on the Remote button (looks like a screen and a circle with two arrows) on top of a computer window's entry, and the computer's virtual filesystem will be accessible within VS Code.
+On CraftOS-PC v2.6 and later, you can also access the files for the computer from directly within VS Code. Click on the Remote button (looks like a screen and a circle with two arrows) on top of a computer window's entry, and the computer's virtual filesystem will be accessible within VS Code.
 
 On older versions, you can still access the data folder by pressing Shift+Ctrl+P (Shift+Cmd+P on Mac) and typing "CraftOS-PC: Open Data Directory for Computer...". Then enter the ID of the computer to open, and that computer's data directory will be added to the current workspace. This also does not have the overhead of communicating with CraftOS-PC, instead using the filesystem directly.
 

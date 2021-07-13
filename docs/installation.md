@@ -4,8 +4,10 @@ CraftOS-PC can be installed either through the prebuilt binaries available on th
 ## Requirements
 * Windows Vista or later, 64-bit only
 * macOS Mavericks 10.9.5 or later
-* Ubuntu 18.04 LTS Bionic, 20.04 LTS Focal, or 20.10 Groovy
+* Ubuntu 18.04 LTS Bionic, 20.04 LTS Focal, or 21.04 Hirsute
 * Arch Linux or derivative
+* iOS 11.0 or later
+* Android 7.0 Nougat or later
 
 ## Windows
 1. Download the setup program from the [home page](../).
@@ -24,7 +26,7 @@ CraftOS-PC can be installed either through the prebuilt binaries available on th
 ## Linux
 CraftOS-PC is provided in binary form as both an Ubuntu package and an Arch Linux AUR package. It is not available as a plain binary for other distributions, so non-Ubuntu/Arch users will have to build from source.
 
-### Ubuntu/Linux Mint (18.04, 20.04, 20.10)
+### Ubuntu/Linux Mint (18.04, 20.04, 21.04)
 Run these commands in the shell:
 ```sh
 sudo add-apt-repository ppa:jackmacwindows/ppa
@@ -38,6 +40,14 @@ Install the `craftos-pc` package using your favorite AUR package manager, such a
 
 If you prefer to always be running the latest revision as on GitHub, you can install the `craftos-pc-git` package, which builds from the latest source on the `master` branch. Running development versions may cause problems, so use it at your own risk. Support is limited for this version. To keep the files separate, `craftos-pc-git` installs into `/usr/local` (instead of `/usr`), so you can keep both versions available on your system.
 
+### iOS
+[Visit the App Store](https://apps.apple.com/us/app/craftos-pc/id1565893014) to download CraftOS-PC. Or you can [join the TestFlight beta](https://testflight.apple.com/join/SiuXlijR) to get access to the latest versions before they're released.
+
+### Android
+1. Download the latest APK from the [home page](../)
+2. Open the file and tap "Install".
+3. Once installed, the app will be available in the app drawer and on the home screen.
+
 ## Windows Nightly Builds
 Nightly builds of CraftOS-PC are available [on the website](https://www.craftos-pc.cc/nightly/). These builds are provided to allow Windows users to test new features without having to build the entire solution and dependencies. New builds are posted at midnight EST, unless there were no changes since the last build. The download page lists the three latest builds, but older builds are available by direct link. Note that these files are just the raw executable; if there were changes to the ROM you must pull them in manually.
 
@@ -48,13 +58,13 @@ Note: You should clone the repository using `git`. Downloading an archive from G
 
 ## Requirements
 * [CraftOS ROM package](https://github.com/MCJack123/craftos2-rom)
-* Compiler supporting C++11
+* Compiler supporting C++14
   * Linux: G++ 4.9+, make
   * Mac: Xcode CLI tools (xcode-select --install)
   * Windows: Visual Studio 2019
 * SDL 2.0.8+ (may work on older versions on non-Linux)
 * OpenSSL 1.1 (for POCO)
-* POCO NetSSL & JSON libraries + dependencies
+* POCO 1.5.0+: NetSSL & JSON libraries + dependencies
   * Foundation
   * Util
   * Crypto
@@ -62,6 +72,7 @@ Note: You should clone the repository using `git`. Downloading an archive from G
   * JSON
   * Net
   * NetSSL
+    * On Windows, you'll need to modify the `poco` port to use OpenSSL. Simply open `vcpkg\ports\poco\portfile.cmake`, find `ENABLE_NETSSL_WIN`, and replace it with `FORCE_OPENSSL`. Then install as normal.
 * Windows: dirent.h (install with NuGet OR vcpkg)
 * Windows: [vcpkg](https://github.com/microsoft/vcpkg)
 
@@ -70,19 +81,21 @@ Note: You should clone the repository using `git`. Downloading an archive from G
   * Can be disabled with `--without-png`, will save as BMP instead
 * [libharu/libhpdf](https://github.com/libharu/libharu)
   * Can be disabled with `--without-hpdf`, `--with-html` or `--with-txt`
-* ncurses
+* ncurses or PDCurses
   * Can be disabled with `--without-ncurses`, will disable CLI support
 * SDL_mixer 2.0+
-  * Can be disabled with `--without-sdl_mixer`, will disable audio disc support
+  * Can be disabled with `--without-sdl_mixer`, will disable audio disc and speaker support
   * For MP3 support, libmpg123 is required
   * For FLAC support, libFLAC is required
-  * For SF2 support, SDL_mixer must be built manually with fluidsynth support
+  * For SF2 support, SDL_mixer must be built manually with fluidsynth support (or with the `fluidsynth` feature in vcpkg since July 9, 2021)
 * The path to the ROM package can be changed with `--prefix=<path>`, which will store the ROM at `<path>/share/craftos`
 * Standalone builds can be enabled with `--with-standalone-rom=<fs_standalone.cpp>`, with `<fs_standalone.cpp>` referring to the path to the packed standalone ROM file.
   * The latest packed ROM can be downloaded as an artifact from the latest CI build, found by following the top link [here](https://github.com/MCJack123/craftos2-rom/actions).
 
 You can get all of these dependencies with:
-  * Windows: `vcpkg install sdl2:x64-windows sdl2-mixer:x64-windows libpng:x64-windows libharu:x64-windows poco:x64-windows dirent:x64-windows` (install png++ manually)
+  * Windows: `vcpkg --feature-flags=manifests install --triplet x64-windows` inside the repository directory
+    * Visual Studio will do this for you automatically (as long as vcpkg integration is installed)
+  * Windows (manual): `vcpkg install sdl2:x64-windows sdl2-mixer[dynamic-load,libflac,mpg123,libmodplug,libvorbis,opusfile,fluidsynth]:x64-windows pngpp:x64-windows libharu:x64-windows poco[netssl]:x64-windows dirent:x64-windows pdcurses:x64-windows`
   * Mac (Homebrew): `brew install sdl2 sdl2_mixer png++ libharu poco ncurses; git clone https://github.com/MCJack123/craftos2-rom`
   * Ubuntu: `sudo apt install git build-essential libsdl2-dev libsdl2-mixer-dev libhpdf-dev libpng++-dev libpoco-dev libncurses5-dev; git clone https://github.com/MCJack123/craftos2-rom`
   * Arch Linux: `sudo pacman -S sdl2 sdl2_mixer png++ libharu poco ncurses`

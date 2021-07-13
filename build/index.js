@@ -30,15 +30,9 @@ function ready() {
             document.getElementById("download-platform").innerText = icons.os.name.charAt(0).toUpperCase() + icons.os.name.slice(1);
         }
     } else if (icons.platform.name.startsWith("mobile") || icons.platform.name.startsWith("tablet")) {
-        if (icons.os.name == "android" || icons.os.name == "apple") {
-            if (icons.os.name !== "android") document.getElementById("popup-inner-android").style.display = "none";
-            else document.getElementById("popup-inner-ios").style.display = "none";
-            link.href = "#";
-            link.onclick = () => {
-                document.getElementById("mobile-popup").classList = "popup";
-                document.body.style.overflow = "hidden";
-            }
-        } else {
+        if (icons.os.name == "android") link.href = "https://github.com/MCJack123/craftos2/releases/download/latest/CraftOS-PC.apk";
+        else if (icons.os.name == "apple") link.href = "https://apps.apple.com/us/app/craftos-pc/id1565893014";
+        else {
             link.href = "https://github.com/MCJack123/craftos2/";
             document.getElementsByClassName("download-text")[0].innerText = "View on GitHub";
             document.getElementById("download-source").remove();

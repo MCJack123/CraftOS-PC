@@ -539,4 +539,4 @@ This section lists the versions of the raw mode protocol that various versions o
 | v2.2.6 and below    | No raw mode support  |
 | v2.3 - v2.4         | 1.0 (without grayscale field in Type 0) |
 | v2.4.1 - v2.5.5     | 1.0                  |
-| v2.5.6 - Current    | 1.1                  |
+| v2.6 - Current      | 1.1                  |

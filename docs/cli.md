@@ -20,6 +20,11 @@ Directories can be injected as mounts into CraftOS-PC straight from the command 
 * `--mount-rw` will force the mount to be read-write.
 * `--mount-ro` will force the mount to be read-only.
 
+## Raw mode clients & WebSockets
+CraftOS-PC has the ability to not only serve [raw mode](rawmode) connections, but also be a client for them. To connect to a raw mode session over terminal I/O, use the `--raw-client` flag. This can be combined with different rendering options, but do note that only GUI renderers can be used in this mode. Be aware that a single pipe between commands is not enough to make this work; a two-way pipe will be necessary. On the Linux command line, using `mkfifo temp.fifo`, then `craftos --raw < temp.fifo | craftos --raw-client > temp.fifo` will work.
+
+In addition to terminal I/O, CraftOS-PC can connect to WebSocket servers. This includes [remote.craftos-pc.cc](remote), even though it's designed for VS Code. To connect to a WebSocket, pass the `--raw-websocket` flag with the URL of the WebSocket to connect to. This works the same way as `--raw-client`, but does not use the terminal.
+
 ## CCEmuX compatibility flags
 CraftOS-PC v2.3.4 adds a number of new flags to make it a snap-in replacement for any tools that may use CCEmuX flags. These flags include:
 * `-a|--assets-dir <dir>`:            Sets the CC:T directory that holds the ROM & BIOS (must contain an `assets/computercraft/lua` folder inside)
