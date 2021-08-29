@@ -57,21 +57,32 @@ fs.readdir("build/images").then(imageFiles => {
     process.exit(1);
 });
 
-fetch("https://api.github.com/repos/MCJack123/CraftOS-PC/contents/build/nightly").then(res => res.json()).then(data => {
-    data.sort(function(a, b) {
-        if (!a.name.endsWith(".exe")) return -1;
-        if (!b.name.endsWith(".exe")) return 1;
-        let as = new Date(a.name.match(/\d{2}-\d{2}-\d{2}/)[0].replace(/-/g, '/'));
-        let bs = new Date(b.name.match(/\d{2}-\d{2}-\d{2}/)[0].replace(/-/g, '/'));
+fs.readdir("build/nightly").then(data => {
+    let windata = [], androiddata = [];
+    data.forEach(el => {
+        if (el.endsWith(".exe")) windata.push(el);
+        else if (el.endsWith(".apk")) androiddata.push(el);
+    });
+    windata.sort(function(a, b) {
+        let as = new Date(a.match(/\d{2}-\d{2}-\d{2}/)[0].replace(/-/g, '/'));
+        let bs = new Date(b.match(/\d{2}-\d{2}-\d{2}/)[0].replace(/-/g, '/'));
         return bs.getTime() - as.getTime();
     });
-    let entries = "";
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].name === "index.html" || data[i].name === "index.js") continue;
-        let text = (new Date(data[i].name.match(/\d{2}-\d{2}-\d{2}/)[0].replace(/-/g, '/'))).toLocaleDateString(undefined, {month: "long", day: "numeric", year: "numeric"});
-        entries += `            <li><a href="${data[i].name}">${text}</a></li>\n`
+    androiddata.sort(function(a, b) {
+        let as = new Date(a.match(/\d{2}-\d{2}-\d{2}(_\d{1,2}.\d{2})?/)[0].replace(/-/g, '/').replace(/_/g, " ").replace(/\./g, ":"));
+        let bs = new Date(b.match(/\d{2}-\d{2}-\d{2}(_\d{1,2}.\d{2})?/)[0].replace(/-/g, '/').replace(/_/g, " ").replace(/\./g, ":"));
+        return bs.getTime() - as.getTime();
+    });
+    let entries = "", entriesAndroid = "";
+    for (let i = 0; i < windata.length; i++) {
+        let text = (new Date(windata[i].match(/\d{2}-\d{2}-\d{2}/)[0].replace(/-/g, '/'))).toLocaleDateString(undefined, {month: "long", day: "numeric", year: "numeric"});
+        entries += `            <li><a href="${windata[i]}">${text}</a></li>\n`
     }
-    return ejs.renderFile("src/nightly.ejs", {entries: entries});
+    for (let i = 0; i < androiddata.length; i++) {
+        let text = (new Date(androiddata[i].match(/\d{2}-\d{2}-\d{2}/)[0].replace(/-/g, '/'))).toLocaleDateString(undefined, {month: "long", day: "numeric", year: "numeric"});
+        entriesAndroid += `            <li><a href="${androiddata[i]}">${text}</a></li>\n`
+    }
+    return ejs.renderFile("src/nightly.ejs", {entries: entries, entriesAndroid: entriesAndroid});
 }).then(data => fs.writeFile("build/nightly/index.html", data, {encoding: "utf8"}))
 .catch(err => {
     console.error(err);

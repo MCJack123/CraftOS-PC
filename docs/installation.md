@@ -48,8 +48,10 @@ If you prefer to always be running the latest revision as on GitHub, you can ins
 2. Open the file and tap "Install".
 3. Once installed, the app will be available in the app drawer and on the home screen.
 
-## Windows Nightly Builds
+## Windows/Android Nightly Builds
 Nightly builds of CraftOS-PC are available [on the website](https://www.craftos-pc.cc/nightly/). These builds are provided to allow Windows users to test new features without having to build the entire solution and dependencies. New builds are posted at midnight EST, unless there were no changes since the last build. The download page lists the three latest builds, but older builds are available by direct link. Note that these files are just the raw executable; if there were changes to the ROM you must pull them in manually.
+
+Beta Android builds are also available on the same page. These are uploaded much less frequently, but are occasionally made available when some mobile-only features need testing. Simply install the APK just like the normal release. These will upgrade the original app, so make sure you don't have anything important in the app before using them.
 
 # Building from source
 If you are using an operating system without binaries available (or you want the latest development features), you can build CraftOS-PC from the source code.

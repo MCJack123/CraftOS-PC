@@ -9,11 +9,17 @@
         <link rel="stylesheet" href="/site.css" type="text/css">
     </head>
     <body style="padding: 20px; width: auto; height: auto;">
-        <h1 style="text-align: center">Nightly releases of CraftOS-PC for Windows</h1>
+        <h1 style="text-align: center">Nightly releases of CraftOS-PC for Windows/Android</h1>
+        <h3>Windows Builds</h3>
         <p>Warning: These are experimental and may not work correctly. The files are available as the raw binary; installer &amp; ROM not included. To use them, just drop the executable in the same directory as your standard CraftOS-PC installation. Nightly builds are built with console support - they're equivalent to CraftOS-PC_console.exe.</p>
         <p>The files below are listed by build date from latest to earliest. If a build is missing for a day, that means no changes were made since the last build.</p>
         <ul style="line-height: 1.5">
 <%- entries %>
+        </ul>
+        <h3>Android Builds</h3>
+        <p>These are builds of CraftOS-PC for Android that have been released as betas. These may be buggy - use at your own risk.</p>
+        <ul style="line-height: 1.5">
+<%- entriesAndroid %>
         </ul>
     </body>
 </html>
