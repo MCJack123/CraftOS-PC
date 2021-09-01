@@ -19,8 +19,7 @@ When a new update is available, a window will appear looking something like this
   * Clicking "View Release Notes" will open a window with the changelog for the new version.
 
 ## Update procedure
-* On macOS, a window will appear showing that the update is being downloaded. Once it finishes, CraftOS-PC will relaunch to the new version.
-* On Windows, the terminal will freeze while the update downloads. Once it finishes, the installer will run automatically (asking for Administrator privileges) and CraftOS-PC will relaunch once it's done.
+Once the update begins, a progress window will appear showing the download status. This window looks different on Windows and macOS, but both have a progress bar and text showing the total size, amount downloaded, and download speed. Once the download completes, the new files will be installed. On Windows, this involves running the installer in the background. On macOS, the application is copied from the disk image. After installation completes, CraftOS-PC relaunches automatically.
 
 ## On unsupported systems
 On systems that do not support automatic updates (e.g. Linux), the auto-updater dialog will still appear but it will not have any option to update. Instead, it will direct you to download the new version manually from GitHub. You can still view the release notes even if automatic updating is not available.

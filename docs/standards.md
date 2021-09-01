@@ -16,6 +16,7 @@ These are the behaviors that change when standards mode is enabled.
 * If a computer does not yield for 10 seconds (3 seconds more than the abort timeout), it is hard-stopped, and an error message is displayed as described above.
 * Mouse clicks on buttons > 3 (not left/middle/right) are ignored, and no event is sent.
 * The `load` function is now resumable (you can call `coroutine.yield` from it); however, this is experimental, and uses threads to make this possible. Expect some performance loss due to this.
+* Parameters to `os.queueEvent` are copied instead of moved, meaning functions are deleted when queueing an event.
 
 ## Vanilla mode
 CraftOS-PC provides another compatibility-related configuration option called vanilla mode (`vanilla`). Vanilla mode disables all of the extra features of CraftOS-PC inside CraftOS, making it essentially equivalent to other emulators without these features, such as CCEmuX. This is useful if you want as authentic of a CraftOS experience as possible, even if it means giving up additional functionality.

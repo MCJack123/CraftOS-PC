@@ -26,7 +26,7 @@ These are the config variables available as of CraftOS-PC v2.5.2. *Variables mar
 * `http_blacklist` [local IPs]: An array of IP addresses or hostnames to block; this takes priority over the whitelist
 * `http_enable` [true]: Whether to enable the `http` API
 * `http_max_download` [16777216]: The maximum size of an HTTP response to accept, in bytes
-* `http_max_requests` [16]: The maximum number of open HTTP request handles to allow, in bytes
+* `http_max_requests` [16]: The maximum number of HTTP requests to make at a time
 * `http_max_upload` [4194304]: The maximum size of an entire HTTP request, including POST data and headers, in bytes
 * `http_max_websocket_message` [65535]: The maximum size of one WebSocket message, in bytes
 * `http_max_websockets` [4]: The maximum number of open WebSocket connections to allow
@@ -64,6 +64,7 @@ These are the config variables available as of CraftOS-PC v2.5.2. *Variables mar
 * `startFullscreen` [false] (computer-local): Whether to start the computer in fullscreen mode
 * `useHardwareRenderer` [false]: Whether to use the GPU for hardware-accelerated rendering
 * `useVsync` [false]: Whether to enable Vsync with the hardware renderer
+* `useWebP` [false]: Whether to take screenshots and recordings in WebP format (uses less data, but recordings don't work on Discord)
 * `vanilla` [false]: Whether to disable all CraftOS-PC-specific features
 
 ## Changing variables

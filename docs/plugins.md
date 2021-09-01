@@ -361,10 +361,12 @@ When compiling plugins, you must use a compiler that is compatible with CraftOS-
 | 10          | 2                 | v2.5.3             |
 | 10          | 3                 | v2.5.4 - v2.5.5    |
 | 10          | 4                 | v2.6               |
+| 10          | 5                 | v2.6.1             |
 | 11          | 0                 | Accelerated v2.5 - v2.5.1.1 |
 | 11          | 1                 | Accelerated v2.5.2 |
 | 11          | 2                 | Accelerated v2.5.3 |
 | 11          | 3                 | Accelerated v2.5.4 - v2.5.5 |
 | 11          | 4                 | Accelerated v2.6   |
+| 11          | 5                 | Accelerated v2.6.1 |
 
 *Note: When building for debug targets on Windows, add 100000 to the plugin version.*
