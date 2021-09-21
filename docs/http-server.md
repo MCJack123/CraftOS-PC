@@ -13,3 +13,6 @@ The response will not be sent until `response.close()` is called, so make sure t
 
 ## Adding & removing listeners
 The `http.addListener(port)` function activates a listener on the specified port. Once the listener is added, a background thread will listen for HTTP requests on the port. When a request is made, the server will queue an event named `http_request` with the port number, a request handle, and a response handle. Listeners can be removed with `http.removeListener(port)`, which will stop the server thread and requests will no longer be serviced.
+
+## WebSocket servers
+In addition to normal HTTP servers, CraftOS-PC can also serve WebSocket connections. To do this, call `http.websocket` with the port you want to listen on. This will wait for a connection from a WebSocket client, and once connected a handle will be returned with the same contents as a normal WebSocket handle.
