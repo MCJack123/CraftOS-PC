@@ -4,6 +4,8 @@ CraftOS-PC Remote is an online service that allows you to connect to a ComputerC
 Even though it has CraftOS-PC in the name, it supports all ComputerCraft computers - even computers on Minecraft servers!
 
 ## Setup
+CraftOS-PC Remote requires CC: Tweaked 1.85.0 or later, but 1.91.0 or later is recommended.
+
 To set up CraftOS-PC Remote, first install the [CraftOS-PC extension](extension), version 1.1 or later. Upon installation, a new button will appear in the sidebar with the CraftOS-PC logo.
 
 In addition, if connecting to a computer in Minecraft, you will need to make sure that the computer that hosts the Minecraft world is able to use Let's Encrypt HTTPS certificates. By default, Minecraft comes with a very old version of Java that does not support these certificates. (This is not applicable for Minecraft 1.17 and later.)
