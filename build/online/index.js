@@ -671,3 +671,4 @@ window.disableTerminal = function() {
 }
 
 if (window.SharedArrayBuffer === undefined || (navigator.userAgent.indexOf("Firefox") !== -1 && parseInt(navigator.userAgent.match(/Firefox\/(\d+)/)[1]) >= 72 && !crossOriginIsolated)) disableTerminal();
+alert("CraftOS-PC Online is currently not working correctly, and as such should not be used at the moment. Please see https://github.com/MCJack123/craftos2/issues/222 for more information.");
