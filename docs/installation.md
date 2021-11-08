@@ -24,7 +24,7 @@ CraftOS-PC can be installed either through the prebuilt binaries available on th
 4. Open CraftOS-PC from Applications or Launchpad.
 
 ## Linux
-CraftOS-PC is provided in binary form as both an Ubuntu package and an Arch Linux AUR package. It is not available as a plain binary for other distributions, so non-Ubuntu/Arch users will have to build from source.
+CraftOS-PC is provided in binary form as both an Ubuntu package and an Arch Linux AUR package. It is not available as a plain binary for other distributions, so non-Ubuntu/Arch users will have to [build from source](#building-from-source).
 
 ### Ubuntu/Linux Mint (18.04, 20.04, 21.04)
 Run these commands in the shell:
@@ -40,10 +40,10 @@ Install the `craftos-pc` package using your favorite AUR package manager, such a
 
 If you prefer to always be running the latest revision as on GitHub, you can install the `craftos-pc-git` package, which builds from the latest source on the `master` branch. Running development versions may cause problems, so use it at your own risk. Support is limited for this version. To keep the files separate, `craftos-pc-git` installs into `/usr/local` (instead of `/usr`), so you can keep both versions available on your system.
 
-### iOS
+## iOS
 [Visit the App Store](https://apps.apple.com/us/app/craftos-pc/id1565893014) to download CraftOS-PC. Or you can [join the TestFlight beta](https://testflight.apple.com/join/SiuXlijR) to get access to the latest versions before they're released.
 
-### Android
+## Android
 1. Download the latest APK from the [home page](../)
 2. Open the file and tap "Install".
 3. Once installed, the app will be available in the app drawer and on the home screen.
