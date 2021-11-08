@@ -2,7 +2,7 @@
 CraftOS-PC features various command-line flags to toggle certain features or to configure the environment.
 
 ## Renderers
-Various flags are available to select different renderers for CraftOS-PC. These are listed [on their own page](renderers). You can use the `-r` argument with no options to list the available renderers.
+Various flags are available to select different renderers for CraftOS-PC. These are listed [on their own page](renderers). You can use the `-r` argument with no options to list the available renderers. In addition, the `--single` flag will tell the renderer to use a single window instead of making multiple. (This is always enabled in CLI mode.)
 
 ## Custom script
 The `--script` flag can be used to set a custom startup script to run before any other startup scripts that may be on the computer. This is mainly useful in conjunction with headless mode. You can also use the `--exec` flag to run an inline string of code from the command line instead of from a file. Arguments can be passed to the script using the `--args` option. All arguments to the script must be contained within one string on the command line, so wrap multiple arguments in quotes.

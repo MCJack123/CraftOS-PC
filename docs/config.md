@@ -22,6 +22,7 @@ These are the config variables available as of CraftOS-PC v2.5.2. *Variables mar
 * `default_computer_settings` []: A string with some default settings to set in the `settings` API
 * `defaultWidth`/`defaultHeight` [51/19]: The default size of new terminal windows
 * `disable_lua51_features` [false]: Whether to disable some Lua 5.1-only features in the BIOS
+* `dropFilePath` [false]: If set, dropping a file on the window will paste its path rather than copying it into the computer
 * `extendMargins` [false]: Whether to extend colored margins to the edges of the screen, independent of standards mode
 * `http_blacklist` [local IPs]: An array of IP addresses or hostnames to block; this takes priority over the whitelist
 * `http_enable` [true]: Whether to enable the `http` API
