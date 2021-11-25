@@ -20,11 +20,29 @@ Replace `<ver>` with the version of Java you installed. This is listed at the to
 
 Multiplayer servers do not have a bundled Java version, and use the system's Java installation instead. This should already support the certificates, so you don't need to change anything. CraftOS-PC uses the system's certificate store which should include the certificates, and CCEmuX is in the same situation as servers, so it should be fine as well.
 
-If you're using newer versions of VS Code, you may get a message saying "certificate has expired". This is due to a bug in VS Code. To fix it, press Shift+Ctrl+P (Shift+Cmd+P on Mac), type in "Preferences: Open Settings (JSON)", and add this just before the last `}` (adding a comma to the line before if necessary):
+### "Certificate has expired" error
+
+If you're using newer versions of VS Code, you may get a message saying "certificate has expired" or "A bug in VS Code is causing the connection to fail". This is due to a bug in VS Code with the certificates that allow secure communication to the Remote server. To fix it, press Shift+Ctrl+P (Shift+Cmd+P on Mac), type in "Preferences: Open Settings (JSON)", and add this just before the last `}` (adding a comma to the line before if there isn't one already):
 ```json
 "http.systemCertificates": false
 ```
 Then restart VS Code and try again.
+
+For example, if the settings file has this before:
+```json
+{
+    "git.autofetch": true,
+    "files.autoSave": "afterDelay"
+}
+```
+It should contain this after the fix:
+```json
+{
+    "git.autofetch": true,
+    "files.autoSave": "afterDelay",
+    "http.systemCertificates": false
+}
+```
 
 ## Usage
 To start a new session, click on the CraftOS-PC button in the sidebar of VS Code, and click on the "Connect to Remote" button. A new window will open up in VS Code awaiting a connection from the computer. A connection command will also be copied to the clipboard. Simply paste this into the shell of the computer you want to control and press enter. A connection will be established, and you should now be able to see the contents of the screen in VS Code.
