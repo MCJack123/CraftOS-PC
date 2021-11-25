@@ -263,6 +263,10 @@ pre {
     overflow: hidden;
 }
 
+#docs-content p {
+    line-height: 1.5;
+}
+
 #docs-content img {
     max-width: 100%;
     height: auto;
