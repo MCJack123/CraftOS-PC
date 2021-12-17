@@ -8,7 +8,7 @@
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
   Cross-Origin-Embedder-Policy: require-corp
-  Content-Security-Policy: default-src 'self' api.github.com www.google-analytics.com www.googletagmanager.com copy-cat.squiddev.workers.dev; style-src 'self' 'unsafe-inline' fonts.googleapis.com cdnjs.cloudflare.com cdn.rawgit.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' www.googletagmanager.com cdn.rawgit.com www.google-analytics.com; font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com
+  Content-Security-Policy: default-src 'self' api.github.com www.google-analytics.com www.googletagmanager.com 4eqvr0r8wh.execute-api.us-east-2.amazonaws.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com cdnjs.cloudflare.com cdn.rawgit.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' www.googletagmanager.com cdn.rawgit.com www.google-analytics.com; font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com
 
 /nightly/*.apk
   Content-Type: application/vnd.android.package-archive
