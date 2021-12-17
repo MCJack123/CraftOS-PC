@@ -5,14 +5,19 @@
         "text": "CraftOS-PC is a native ComputerCraft emulator written in C++. It uses the official Lua 5.1 source code to run CraftOS, which gets rid of many bugs that plague the Java implementation of Lua used in ComputerCraft. Using C++ also allows CraftOS-PC to run quicker than any other Java implementation of ComputerCraft, performing up to 90% faster than CCEmuX and CC: Tweaked in Minecraft."
     },
     {
+        "image": "cospc-raycaster",
+        "title": "Advanced Fantasy Terminal Platform",
+        "text": "CraftOS-PC isn't just a ComputerCraft emulator: it's also an excellent platform for writing advanced 80s/90s-style programs. <a href=\"https://github.com/ocawesome101/cospc-raycaster\">cospc-raycaster by Ocawesome101</a> is a 3D shooter game inspired by <i>Wolfenstein 3D</i> that is designed exclusively for CraftOS-PC, and showcases many of the best features of CraftOS-PC in a fun game. And it's all accomplished in under 1500 lines of code - showing the versatility of the ComputerCraft and CraftOS-PC APIs."
+    },
+    {
         "image": "peripherals",
         "title": "Full Peripheral Support with Directory Mounting",
-        "text": "CraftOS-PC supports many of the peripherals available in ComputerCraft, including monitors, speakers, disk drives, modems, and more. You can connect and disconnect peripherals using the attach and detach commands from the shell. The <pre>periphemu</pre> API can also be used to manipulate peripherals from Lua. In addition, the mount and unmount commands and the <pre>mounter</pre> API allow mounting real directories inside the CraftOS environment."
+        "text": "CraftOS-PC supports many of the peripherals available in ComputerCraft, including monitors, speakers, disk drives, modems, and more. You can connect and disconnect peripherals using the attach and detach commands from the shell. The <code>periphemu</code> API can also be used to manipulate peripherals from Lua. In addition, the mount and unmount commands and the <code>mounter</code> API allow mounting real directories inside the CraftOS environment."
     },
     {
         "image": "multicomputer",
         "title": "Support for Multiple Computers",
-        "text": "CraftOS-PC can run multiple emulated computers that are completely separated from each other. Each computer gets its own filesystem and local configuration using an ID number, just like ComputerCraft. Computers can be created and attached just like any other peripheral, using either the attach command or the <pre>periphemu</pre> API."
+        "text": "CraftOS-PC can run multiple emulated computers that are completely separated from each other. Each computer gets its own filesystem and local configuration using an ID number, just like ComputerCraft. Computers can be created and attached just like any other peripheral, using either the attach command or the <code>periphemu</code> API."
     },
     {
         "image": "gfx",
@@ -32,7 +37,7 @@
     {
         "image": "extension",
         "title": "Extensible",
-        "text": "CraftOS-PC features a plugin API, allowing extending the functionality of CraftOS through the use of C++ code. One example of a plugin available is a compatibility layer for CCEmuX: it emulates the <pre>ccemux</pre> API, allowing programs designed for it to work with CraftOS-PC. It may also be possible for some C Lua libraries to work with CraftOS-PC. See the documentation for more details."
+        "text": "CraftOS-PC features a plugin API, allowing extending the functionality of CraftOS through the use of C++ code. One example of a plugin available is a compatibility layer for CCEmuX: it emulates the <code>ccemux</code> API, allowing programs designed for it to work with CraftOS-PC. It may also be possible for some C Lua libraries to work with CraftOS-PC. See the documentation for more details."
     },
     {
         "image": "debugger_demo",
