@@ -9,6 +9,7 @@ These are the behaviors that change when standards mode is enabled.
 
 * The abort timeout (`abortTimeout`) is locked at 7 seconds, and cannot be changed. However, it does not mutate the actual config option.
 * Extended margins (`extendMargins`) are enabled, and cannot be disabled. However, it does not mutate the actual config option.
+* DFPWM audio (`useDFPWM`) is enabled, and cannot be disabled. However, it does not mutate the actual config option.
 * Timers and alarms are rounded to the nearest 50ms (1 "tick"), and always take at least 50ms to fire (a length of 0 does not fire immediately).
 * `os.epoch("ingame")` returns a value rounded to 50ms (1 "tick").
 * `fs.getFreeSpace` and `fs.getCapacity` will calculate the actual free space/capacity based on the value of `computerSpaceLimit`. However, this limit is not enforced, and if the space used exceeds `computerSpaceLimit`, `fs.getFreeSpace` returns a negative number.
@@ -17,6 +18,7 @@ These are the behaviors that change when standards mode is enabled.
 * Mouse clicks on buttons > 3 (not left/middle/right) are ignored, and no event is sent.
 * The `load` function is now resumable (you can call `coroutine.yield` from it); however, this is experimental, and uses threads to make this possible. Expect some performance loss due to this.
 * Parameters to `os.queueEvent` are copied instead of moved, meaning functions are deleted when queueing an event.
+* The `playAudio` method of speakers works much more like it does in-game.
 
 ## Vanilla mode
 CraftOS-PC provides another compatibility-related configuration option called vanilla mode (`vanilla`). Vanilla mode disables all of the extra features of CraftOS-PC inside CraftOS, making it essentially equivalent to other emulators without these features, such as CCEmuX. This is useful if you want as authentic of a CraftOS experience as possible, even if it means giving up additional functionality.

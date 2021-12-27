@@ -63,6 +63,7 @@ These are the config variables available as of CraftOS-PC v2.5.2. *Variables mar
 * `snooperEnabled` [false]: Whether to send crash reports to the developer's server (see the [privacy policy](privacy) on how this data is handled)
 * `standardsMode` [false]: Enables a few extra compatibility options, such as 50ms timing and colored margins (see [Standards Mode](standards))
 * `startFullscreen` [false] (computer-local): Whether to start the computer in fullscreen mode
+* `useDFPWM` [false]: Whether to convert audio played through `playAudio` to DFPWM first
 * `useHardwareRenderer` [false]: Whether to use the GPU for hardware-accelerated rendering
 * `useVsync` [false]: Whether to enable Vsync with the hardware renderer
 * `useWebP` [false]: Whether to take screenshots and recordings in WebP format (uses less data, but recordings don't work on Discord)
