@@ -3,6 +3,8 @@ CraftOS-PC Remote is an online service that allows you to connect to a ComputerC
 
 Even though it has CraftOS-PC in the name, it supports all ComputerCraft computers - even computers on Minecraft servers!
 
+If you prefer video tutorials, [I've put one on YouTube covering the content of this page](https://youtu.be/HtafiCaT6CI).
+
 ## Setup
 CraftOS-PC Remote requires CC: Tweaked 1.85.0 or later, but 1.91.0 or later is recommended.
 
