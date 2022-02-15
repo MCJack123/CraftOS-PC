@@ -31,7 +31,7 @@ The signature for `plugin_deinit` is:
 void plugin_deinit(PluginInfo * info);
 ```
 
-All of these functions should be declared as exported C functions. This means they should be inside an `extern "C"` block, and on Windows have the `__declspec(dllexport)` qualifier. Examples of plugins, as well as some starter files, are contained inside the [`examples` directory](https://github.com/MCJack123/craftos2/tree/master/examples) of the CraftOS-PC repository.
+All of these functions should be declared as exported C functions. This means they should be inside an `extern "C"` block, and on Windows have the `__declspec(dllexport)` qualifier. The CraftOS-PC header defines the `DLLEXPORT` macro to take care of `__declspec` for you. Examples of plugins, as well as some starter files, are contained inside the [`examples` directory](https://github.com/MCJack123/craftos2/tree/master/examples) of the CraftOS-PC repository.
 
 The main plugin structures are documented below. However, note that this information is not always up-to-date. It is recommended that you [read through the header directly](https://github.com/MCJack123/craftos2/blob/master/api/CraftOS-PC.hpp) for the latest information.
 
@@ -365,7 +365,8 @@ When compiling plugins, you must use a compiler that is compatible with CraftOS-
 | 10          | 4                 | v2.6               |
 | 10          | 5                 | v2.6.1             |
 | 10          | 6                 | v2.6.2             |
-| 10          | 7                 | v2.6.3             |
+| 10          | 7                 | v2.6.3 - v2.6.4    |
+| 10          | 8                 | v2.6.5             |
 | 11          | 0                 | Accelerated v2.5 - v2.5.1.1 |
 | 11          | 1                 | Accelerated v2.5.2 |
 | 11          | 2                 | Accelerated v2.5.3 |
@@ -373,6 +374,7 @@ When compiling plugins, you must use a compiler that is compatible with CraftOS-
 | 11          | 4                 | Accelerated v2.6   |
 | 11          | 5                 | Accelerated v2.6.1 |
 | 11          | 6                 | Accelerated v2.6.2 |
-| 11          | 7                 | Accelerated v2.6.3 |
+| 11          | 7                 | Accelerated v2.6.3 - v2.6.4 |
+| 11          | 8                 | Accelerated v2.6.5 |
 
 *Note: When building for debug targets on Windows, add 100000 to the plugin version.*
