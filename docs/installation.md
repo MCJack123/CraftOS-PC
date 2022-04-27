@@ -4,7 +4,8 @@ CraftOS-PC can be installed either through the prebuilt binaries available on th
 ## Requirements
 * Windows Vista or later, 64-bit only
 * macOS Mavericks 10.9.5 or later
-* Ubuntu 18.04 LTS Bionic, 20.04 LTS Focal, or 21.04 Hirsute
+* Ubuntu 18.04 LTS Bionic, 20.04 LTS Focal, or 21.10 Impish
+* Fedora 33+
 * Arch Linux or derivative
 * iOS 11.0 or later
 * Android 7.0 Nougat or later

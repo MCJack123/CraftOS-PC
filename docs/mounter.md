@@ -17,6 +17,15 @@ Directories can be injected as mounts into CraftOS-PC straight from the command 
 * `--mount-rw` will force the mount to be read-write.
 * `--mount-ro` will force the mount to be read-only.
 
+## Mount mode configuration
+By default, CraftOS-PC forces all mounts to be read-only for security reasons. If mounting in read-write mode is desired, the `mount_mode` configuration option has to be changed to allow this. There are four mount mode options available:
+* `rw` (3): Mount in read-write mode by default
+* `ro` (2): Mount in read-only mode by default, but allow read-write mounting
+* `ro strict` (1) [default]: Always mount read-only, even if read-write is specified
+* `none` (0): Disable mounting altogether
+
+The option can be changed [just like other config options](configuration), but note that `mount_mode` is special in that it uses a string on the Lua side, but is stored as a number in the actual config file. If editing the file directly, use the numbers listed beside the name above instead of the name itself.
+
 ## Merge mounts
 CraftOS-PC v2.3 adds support for *merge mounts* which allow mounting multiple real directories to a single CraftOS-PC mount. All that's required to create a merge mount is to mount two directories to the same path using the "mount" command or `mounter.mount`. When a merge mount is created, files and folders from all directories are available inside the mounted path. The order that the directories are mounted *does matter*, as the first mounted directory will take priority over later mounts if duplicates are detected.
 
@@ -31,6 +40,7 @@ Real paths are resolved using the following method: (examples assume `a` and `b`
     * If neither exists and if using a function that creates the subdirectories, it will create `a/dir` and writes to `a/dir/file.txt`.
     * Otherwise, an error will occur.
 
+<!--
 ## Mounter black/whitelists
 CraftOS-PC v2.5 introduces a blacklist/whitelist system to block mounting for certain directories, and allowing others. These are available through the `mounter_blacklist` and `mounter_whitelist` configuration options. These are stored as JSON lists of strings indicating the path to allow or block. The rules are processes so that each rule applies to that directory and all subdirectories, unless another rule is specified for a specific subdirectory, in which case that will take effect for it and its subdirectories. For example, this rule set will block access to the root and the shared users directory, while allowing access to the users directory itself and all other subdirectories:
 ```json
@@ -49,3 +59,4 @@ The `/` and `\` characters are equivalent, so Windows users don't have to use sp
 
 ### No-ask whitelist
 There is also a list called `mounter_no_ask` that will disable mount confirmation for the specified paths. These entries only apply to the specific folder indicated, and not any subdirectories. Be careful when using this, as any script will be able to silently mount the directories specified here.
+-->
