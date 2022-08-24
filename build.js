@@ -15,7 +15,7 @@ highlight.registerLanguage('json', require("highlight.js/lib/languages/json"));
 highlight.registerLanguage('sh', require("highlight.js/lib/languages/bash"));
 marked.setOptions({
     highlight: function(code, lang) {
-        return highlight.highlight(lang, code).value;
+        if (lang !== "") return highlight.highlight(lang, code).value;
     }
 });
 
