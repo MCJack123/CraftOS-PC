@@ -5,5 +5,5 @@ build/online/wasm/src
 build/index.html
 build/docs/*.html
 build/nightly/index.html
-raspi/conf
-raspi/db
+build/raspi/conf
+build/raspi/db

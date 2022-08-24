@@ -44,6 +44,7 @@ deb https://www.craftos-pc.cc/raspi bullseye main
 ```
 Then run the following commands:
 ```sh
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 1D99413F734AA894
 sudo apt update
 sudo apt install craftos-pc
 ```
