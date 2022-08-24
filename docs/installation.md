@@ -4,7 +4,8 @@ CraftOS-PC can be installed either through the prebuilt binaries available on th
 ## Requirements
 * Windows Vista or later, 64-bit only
 * macOS Mavericks 10.9.5 or later
-* Ubuntu 18.04 LTS Bionic, 20.04 LTS Focal, or 21.10 Impish
+* Ubuntu 18.04 LTS Bionic, 20.04 LTS Focal, or 22.04 LTS Jammy
+* Raspberry Pi OS 11 (Bullseye)
 * Fedora 33+
 * Arch Linux or derivative
 * iOS 11.0 or later
@@ -35,6 +36,18 @@ sudo apt update
 sudo apt install craftos-pc
 ```
 Once installed, CraftOS-PC can be run either from the launcher or with the `craftos` command.
+
+### Raspberry Pi OS (11, 32/64-bit supported)
+Edit `/etc/apt/sources.list` using your editor of choice, and add this line to the bottom:
+```
+deb https://www.craftos-pc.cc/raspi bullseye main
+```
+Then run the following commands:
+```sh
+sudo apt update
+sudo apt install craftos-pc
+```
+Once installed, CraftOS-PC can be run either from the app menu (if the desktop is installed) or with the `craftos` command.
 
 ### Arch Linux/Manjaro
 Install the `craftos-pc` package using your favorite AUR package manager, such as `yay`. (If you're using Arch I assume you either know what this means or know how to figure out what this means.) Once installed, CraftOS-PC can be run using the `craftos` command or from your desktop environment's launcher.

@@ -1,0 +1,6 @@
+Archive: extras
+Component: main
+Origin: CraftOS-PC 2
+Label: CraftOS-PC 2
+Architecture: armhf
+Description: Provides packages for CraftOS-PC 2 on Raspberry Pi OS (Raspbian).

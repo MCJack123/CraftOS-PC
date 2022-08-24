@@ -1,0 +1,48 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Origin: CraftOS-PC 2
+Label: CraftOS-PC 2
+Suite: extras
+Codename: bullseye
+Date: Wed, 24 Aug 2022 12:42:35 UTC
+Architectures: armhf arm64
+Components: main
+Description: Provides packages for CraftOS-PC 2 on Raspberry Pi OS (Raspbian).
+MD5Sum:
+ b99cd5dd48b907e20773d7de924157bf 3302 main/binary-armhf/Packages
+ 95f692968e620dc4264dcd62bb81fc96 1313 main/binary-armhf/Packages.gz
+ 51e080051f4985b23685e0756d06824b 172 main/binary-armhf/Release
+ b7c1a3a8eaa1f8f88250e05f1871dcbc 3303 main/binary-arm64/Packages
+ b23576ed56093a0ffcbf635416655812 1313 main/binary-arm64/Packages.gz
+ ec4423da67bc237812d1531d4a2b746b 172 main/binary-arm64/Release
+SHA1:
+ 249b9d76d963c4434d6bba4b8accb1e8714103db 3302 main/binary-armhf/Packages
+ 49fc30dc119b010a852fa34db49ecf54ed07bd5e 1313 main/binary-armhf/Packages.gz
+ b122465f2fbf6214adfdd8a80ec56d9286a51d7b 172 main/binary-armhf/Release
+ 40ac39f3c4ff22f720c08093f2679b5e59c29043 3303 main/binary-arm64/Packages
+ e5d10aa62eaac014d8edceb04cfa1f0e44e04ca5 1313 main/binary-arm64/Packages.gz
+ bdeb9e2259c30c3934326bf9f6b857e93264388c 172 main/binary-arm64/Release
+SHA256:
+ dcd63d7383bbd9755fcc64152048cde8d9cc770100f3e93ba762fccc6d537bfb 3302 main/binary-armhf/Packages
+ 3d3e6d467942910fbe80d23105a35683d0838aff5c6ece9f9273ac766799e988 1313 main/binary-armhf/Packages.gz
+ 4ad0884982d08c663879962a095135b01c605b66aae22e7c0313f26822178b6a 172 main/binary-armhf/Release
+ 655fda28da528fc2c00358372cea0b967bf6f8fae8e5362c78cad4e65d3594c8 3303 main/binary-arm64/Packages
+ 9b7e2c3325b12aaa9b94ec90f3909929537d5ec60b1f5a9dd0302f6876c58ea9 1313 main/binary-arm64/Packages.gz
+ 3d76fb3ef5048f27e83507f6f831e7646974abf861de14f0ef84d8e8741c6866 172 main/binary-arm64/Release
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEE4yaC4tWfMVFg/Z4yHZlBP3NKqJQFAmMGHMIACgkQHZlBP3NK
+qJR6VQ/+LIFAvoHCyrMFttl0D6OLhqZp5MwvOEN4aQz9wpA1bcK4llShbRHYtChr
+Go0kWMJKlSus1sXbXeXEQ9ad2sgxgygcIuaK/rdGVYMktdjSdC537uhE7AFmxXTk
+0YM6yxgbVociwgYum2XDtMMUyJs18OhvFFID1AC3gzCx5YB872TKdfrfYxsIoS5C
+BL6uXFX8QN047ssrvPy7GGugaspjB3r7uqa/7fJIsVvWMyGesn2xdGAQfP9ptMDG
+6U5nW+0jcFVFw2nwgQwnSaJYttb4iFTiqLfPkIyyClamzuFFIvlLmge/wTAlKgua
+/JUl4/K43CnzqIsk32eeTEGvCIFIl+7FjH13UDxK7d2xJnnBl17Hpfri/IGdyhv+
+ypaEJxgd4bYFESB14VDyE2fRxCxZpnKGDDahR9EgCEf4U+9lRyxAZnW2B7DIYlPA
+HZUrQdLim4XEn43TG1DlHg8mtAoPGuH44nmhM5Sh0WCO9t8rVbrBGukHvpxJxzr6
+YdeQ4RDiRhHp+e0M/v0H6Te+1DNsRzTJaUt7cSpDOwPvbjuSGqrQ1aB848p3ANOQ
+HOnCcMnUMuRN2haB/plTHl42bZGgHDwpbxJWiBKYuclZTkHu3acAL3pq2QgBNDO2
+hYS669uGG6HfNVCmoZ61BeK5LlJEKx3mntlQ/G2CljmL0dCJm4Y=
+=UXlv
+-----END PGP SIGNATURE-----

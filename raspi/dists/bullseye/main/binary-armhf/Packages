@@ -1,0 +1,78 @@
+Package: craftos-pc
+Version: 2.6.6-2
+Architecture: armhf
+Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
+Installed-Size: 2014
+Depends: libc6 (>= 2.30), libgcc-s1 (>= 3.5), libhpdf-2.3.0 (>= 2.3.0), libncursesw6 (>= 6), libpng16-16 (>= 1.6.2-1), libpocofoundation70 (>= 1.10.0), libpocojson70 (>= 1.10.0), libpoconet70 (>= 1.10.0), libpoconetssl70 (>= 1.10.0), libsdl2-2.0-0 (>= 2.0.12), libsdl2-mixer-2.0-0 (>= 2.0.2), libstdc++6 (>= 6), libtinfo6 (>= 6), libpoco-dev, libwebp-dev, libwebpmux3, libncurses5, craftos-pc-data (>= 2.5)
+Breaks: craftos-pc-ccemux (<< 2.5)
+Homepage: https://www.craftos-pc.cc
+Priority: optional
+Section: interpreters
+Filename: pool/main/c/craftos-pc/craftos-pc_2.6.6-2_armhf.deb
+Size: 885896
+SHA256: 814f3c9836b5f48b7e2ae47ef784d2a13c2f351929fafc5533aa75c827177135
+SHA1: 82a341e8483564decab56616123ff494a84e73a4
+MD5sum: 7961464eec1f9f38a469001583d81438
+Description: Advanced ComputerCraft emulator
+ CraftOS-PC is the fastest emulator for the ComputerCraft mod for Minecraft.
+ It implements the CraftOS API in C++, with >99% compatibility.
+ In addition, it features various additional features, such as a debugger,
+ file mounting, and an exclusive graphics mode.
+
+Package: craftos-pc-ccemux
+Source: craftos-pc
+Version: 2.6.6-2
+Architecture: armhf
+Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
+Installed-Size: 139
+Depends: libc6 (>= 2.4), libgcc-s1 (>= 3.5), libsdl2-2.0-0 (>= 2.0.12), libstdc++6 (>= 5.2), craftos-pc (>= 2.6)
+Enhances: craftos-pc
+Breaks: craftos-pc (<< 2.6)
+Homepage: https://www.craftos-pc.cc
+Priority: optional
+Section: interpreters
+Filename: pool/main/c/craftos-pc/craftos-pc-ccemux_2.6.6-2_armhf.deb
+Size: 48288
+SHA256: 95bc17737a0919ea0e0893e6b1bc18d713376a3f8c59e02ecf5597aae6a17982
+SHA1: f7e44bbfa84075d7bf724d4f059dbd080234a9e5
+MD5sum: 99fcc2f5b58f7cf2dd49ef9290fd7f88
+Description: CCEmuX plugin for CraftOS-PC
+ Compatibility plugin for CraftOS-PC that allows using the CCEmuX API in CraftOS-PC.
+
+Package: craftos-pc-data
+Version: 2.6.6-1
+Architecture: all
+Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
+Installed-Size: 2014
+Conflicts: craftos-pc-cct-data
+Breaks: craftos-pc (<< 2.6.3)
+Replaces: craftos-pc-cct-data
+Homepage: https://github.com/MCJack123/craftos2-rom
+Priority: optional
+Section: interpreters
+Filename: pool/main/c/craftos-pc-data/craftos-pc-data_2.6.6-1_all.deb
+Size: 179376
+SHA256: 94713571161179afd3846610d8c816d4fbf47c58eaf2c916de163271a408c954
+SHA1: 003e114b3371ec7b8c730be73c7327522a681080
+MD5sum: 87a6644368fe17ea6cfeb092aaf048b2
+Description: ROM package for CraftOS-PC
+ Supplies CraftOS operating system files for CraftOS-PC.
+
+Package: craftos-pc-dev
+Source: craftos-pc
+Version: 2.6.6-2
+Architecture: armhf
+Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
+Installed-Size: 86
+Depends: libsdl2-dev (>= 2.0.5), craftos-pc (>= 2.6)
+Homepage: https://www.craftos-pc.cc
+Priority: optional
+Section: interpreters
+Filename: pool/main/c/craftos-pc/craftos-pc-dev_2.6.6-2_armhf.deb
+Size: 45204
+SHA256: 456168fb6f38e78f8fece004db7746dbd3bb7d2fc08a327e9ac5853e167f7585
+SHA1: b6acbf90f9803c964c27d3a6dcb15fee2e5be569
+MD5sum: 5bd49003c1c1f14f755e8b08a92bdc0e
+Description: Development files for CraftOS-PC plugins
+ Installs the headers and libraries necessary to develop plugins for CraftOS-PC.
+
