@@ -1,3 +1,4 @@
 build/nightly/*.exe filter=lfs diff=lfs merge=lfs -text
 build/nightly/*.apk filter=lfs diff=lfs merge=lfs -text
+raspi/pool/main/c/*/*.deb filter=lfs diff=lfs merge=lfs -text
 . !text !filter !merge !diff
