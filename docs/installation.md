@@ -3,8 +3,8 @@ CraftOS-PC can be installed either through the prebuilt binaries available on th
 
 ## Requirements
 * Windows Vista or later, 64-bit only
-* macOS Mavericks 10.9.5 or later
-* Ubuntu 18.04 LTS Bionic, 20.04 LTS Focal, or 22.04 LTS Jammy
+* macOS Catalina 10.15 or later
+* Ubuntu 20.04 LTS Focal, or 22.04 LTS Jammy
 * Raspberry Pi OS 11 (Bullseye)
 * Fedora 33+
 * Arch Linux or derivative
@@ -28,7 +28,7 @@ CraftOS-PC can be installed either through the prebuilt binaries available on th
 ## Linux
 CraftOS-PC is provided in binary form for Ubuntu and Fedora, and in source form for Arch Linux on the AUR. It is not available as a plain binary for other distributions, so non-Ubuntu/Fedora/Arch users will have to [build from source](#building-from-source).
 
-### Ubuntu/Linux Mint (18.04, 20.04, 21.10)
+### Ubuntu/Linux Mint (20.04, 22.04)
 Run these commands in the shell:
 ```sh
 sudo add-apt-repository ppa:jackmacwindows/ppa
@@ -84,10 +84,10 @@ Note: You should clone the repository using `git`. Downloading an archive from G
 
 ## Requirements
 * [CraftOS ROM package](https://github.com/MCJack123/craftos2-rom)
-* Compiler supporting C++14
-  * Linux: G++ 4.9+, make
-  * Mac: Xcode CLI tools (xcode-select --install)
-  * Windows: Visual Studio 2019
+* Compiler supporting C++17
+  * Linux: G++ 8.0+, make
+  * Mac: Xcode 10.2+ CLI tools (xcode-select --install)
+  * Windows: Visual Studio 2022
 * SDL 2.0.8+ (may work on older versions on non-Linux)
 * OpenSSL 1.1 (for POCO)
 * POCO 1.5.0+: NetSSL & JSON libraries + dependencies

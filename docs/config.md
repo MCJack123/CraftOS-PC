@@ -48,9 +48,9 @@ These are the config variables available as of CraftOS-PC v2.5.2. *Variables mar
   * `ro strict` or `ro_strict` (1): Force all mounts to be read-only
   * `ro` (2): Mounts default to read-only if not explicitly specified
   * `rw` (3): Mounts default to read-write unless marked read-only (v2.1.2 and below behavior)
-* ~~`mounter_blacklist` ["/"] (`global.json` only): Paths to disallow mounting from, overriding the whitelist if deeper than its entry~~
-* ~~`mounter_no_ask` [] (`global.json` only): A list of paths to allow mounting without prompting, regardless of `showMountPrompt`~~
-* ~~`mounter_whitelist` [Users directories] (`global.json` only): Paths to allow mounting from, overriding the blacklist if deeper than its entry~~
+* `mounter_blacklist` ["/"] (`global.json` only): Paths to disallow mounting from, overriding the whitelist if deeper than its entry
+* `mounter_no_ask` [] (`global.json` only): A list of paths to allow mounting without prompting, regardless of `showMountPrompt`
+* `mounter_whitelist` [User directories] (`global.json` only): Paths to allow mounting from, overriding the blacklist if deeper than its entry
 * `mouse_move_throttle` [-1]: The amount of throttling placed on the `mouse_move` event
   * Values \>0 will only send `mouse_move` events no less than that number of milliseconds apart
   * 0 will disable throttling; `mouse_move` events will always be sent (could cause lag)

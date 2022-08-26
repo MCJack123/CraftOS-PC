@@ -9,6 +9,10 @@ Here are the peripherals currently available in CraftOS-PC:
 * speaker
 * [computer](multicomp)
 * [debugger](debugger)
+* [debug_adapter](debugger#debug-adapter-vs-code)
+* chest/minecraft:chest
+* energy
+* tank
 
 ## From the shell
 To attach a peripheral from the shell, you can use the "attach" command. It takes two arguments: the side or ID of the peripheral (`left`, `1`, `monitor_4`), and the type of peripheral to attach. (Some peripherals, such as drive, support a third argument; these are described later.) The peripheral will then be attached to the computer. It can then be used with any program that uses peripherals, such as the "monitor" command.  
@@ -28,6 +32,9 @@ Some peripherals have special options that can be specified as the third argumen
   * There is a new method on the drive called `insertDisk` that allows you to change the mount without reattaching the peripheral. This method is also exported through the `disk` API.
 * printer peripherals require a third argument specifying where the printed output will be stored. This should be the full (real) path to the target PDF file, or a directory if using a custom build without PDF support.
 * modem peripherals accept a third argument that sets the network ID for the modem. This allows having multiple modem networks running parallel to each other without being able to communicate with each other.
+* chest peripherals accept a third argument specifying whether they emulate a double (`true`) or single (`false`) chest.
+* energy peripherals can take a third argument specifying the maximum energy count, and a fourth argument with a list of additional types to add to the peripheral.
+* tank peripherals can take a third argument specifying the number of tanks, a fourth argument specifying the size of each tank, and a fifth argument with a list of additional types to add to the peripheral.
 
 ### Speaker sounds
 The speaker peripheral comes with some open-source sounds for use with the `playNote` function. It does not have any sounds that are available from the `playSound` function, but these can easily be added in from a resource pack or your own copy of Minecraft. Sound packs can be placed in the `sounds/` directory in the installation directory, next to `rom` and `bios.lua`. These use the same format as Minecraft resource packs, and must contain [a sounds.json file](https://minecraft.gamepedia.com/Sounds.json), and a folder named `sounds` that contains the actual sound files.

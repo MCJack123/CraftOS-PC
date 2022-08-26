@@ -47,3 +47,21 @@ The Profiler window is a basic profiler that shows run time and call counts for 
 
 ### Console
 The Console window shows any output that's been sent to the console via the `print(text)` method of the debugger peripheral.
+
+## Debug Adapter (VS Code)
+CraftOS-PC v2.7 introduces a new debug adapter peripheral to be able to use debuggers like Visual Studio Code to debug.
+
+To use it, [install the CraftOS-PC extension for VS Code](https://marketplace.visualstudio.com/items?itemName=jackmacwindows.craftos-pc), and in the debugger tab in the sidebar, click the "create a launch.json file" link. This will prompt you to select a debugger type - click "CraftOS-PC Debugger".
+
+A new `launch.json` file will appear with a basic configuration for the debugger. This configuration will launch a new instance of CraftOS-PC with the debugger connected. Launch path and arguments are controlled by the global extension settings.
+
+If you wish to connect to an already running instance, you can change the `request` to `"attach"`, which will instead look for a computer with a `debug_adapter` peripheral attached. By default, it tries to connect to computer ID 0, but if you're using another ID, add a `"port"` option with the ID of the computer + 12100. For example, to connect to computer 25:
+
+```json
+{
+    "type": "craftos-pc",
+    "request": "attach",
+    "name": "Debug CraftOS-PC",
+    "port": 12125
+}
+```
