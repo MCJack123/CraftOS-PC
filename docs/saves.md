@@ -6,6 +6,9 @@ The actual path to the data varies by platform. Here are the locations of the Cr
 * Windows: `C:\Users\<username>\AppData\Roaming\CraftOS-PC` (or `%appdata%\CraftOS-PC`)
 * Mac: `/Users/<username>/Library/Application Support/CraftOS-PC`
 * Linux: `$XDG_DATA_HOME/craftos-pc` or `/home/<username>/.local/share/craftos-pc`
+* Android: `/sdcard/Android/data/cc.craftospc.CraftOSPC/files`
+  * On Android 10 and later, you may need a third-party app such as [Total Commander](https://play.google.com/store/apps/details?id=com.ghisler.android.TotalCommander) to access these files
+* iOS: In the Files app, On My Device -> CraftOS-PC
 
 ## Save Directory Structure
 These are the files & folders you can expect to see inside the CraftOS-PC save directory:
