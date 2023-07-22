@@ -26,9 +26,9 @@ CraftOS-PC can be installed either through the prebuilt binaries available on th
 4. Open CraftOS-PC from Applications or Launchpad.
 
 ## Linux
-CraftOS-PC is provided in binary form for Ubuntu and Fedora, and in source form for Arch Linux on the AUR. It is not available as a plain binary for other distributions, so non-Ubuntu/Fedora/Arch users will have to [build from source](#building-from-source).
+CraftOS-PC is provided in binary form for Ubuntu and Fedora, and in source form for Arch Linux on the AUR. For users of other distributions, CraftOS-PC is provided as an AppImage, which includes all required dependencies in a single executable file.
 
-### Ubuntu/Linux Mint (20.04, 22.04)
+### Ubuntu/Linux Mint (20.04, 22.04, 22.10, 23.04)
 Run these commands in the shell:
 ```sh
 sudo add-apt-repository ppa:jackmacwindows/ppa
@@ -63,6 +63,18 @@ sudo dnf install craftos-pc
 ```
 
 Fedora support is maintained by [LeMoonStar](https://github.com/LeMoonStar). For any issues with the Fedora package itself, please contact them [on their GitHub repo](https://github.com/LeMoonStar/craftos2-rpm).
+
+### NixOS
+Install the `craftos-pc` package from the nixpkgs unstable repository. You can then use it with `nix-shell -p craftos-pc --run "craftos"`.
+
+NixOS support is maintained by [tomodachi94](https://github.com/tomodachi94). For any issues with the Nix package itself, please create an issue [on the nixpkgs repository](https://github.com/NixOS/nixpkgs).
+
+### Other Linux (x86_64/amd64)
+Download CraftOS-PC.x86_64.AppImage from the latest release. Then simply double-click the file to run it.
+
+On some distros without AppImage support built-in, double-clicking may fail. To fix this, run `chmod a+x CraftOS-PC.x86-64.AppImage` on the file in the terminal. On KDE-based distros with Dolphin, you can right-click the file and open Properties, and then check "Is executable" in the Permissions tab.
+
+Note that the AppImage requires a distro with glibc 2.31+ and libstdc++ 10+. This means the app will likely only work on distros since 2020. If running the AppImage in a terminal gives errors about `GLIBC`, you'll need to update your system.
 
 ## iOS
 [Visit the App Store](https://apps.apple.com/us/app/craftos-pc/id1565893014) to download CraftOS-PC. Or you can [join the TestFlight beta](https://testflight.apple.com/join/SiuXlijR) to get access to the latest versions before they're released.
