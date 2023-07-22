@@ -1,18 +1,18 @@
 Package: craftos-pc
-Version: 2.7-3
+Version: 2.7.4-1
 Architecture: arm64
 Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
-Installed-Size: 2342
+Installed-Size: 2090
 Depends: libc6 (>= 2.30), libgcc-s1 (>= 3.0), libhpdf-2.3.0 (>= 2.3.0), libncursesw6 (>= 6), libpng16-16 (>= 1.6.2-1), libpocofoundation70 (>= 1.10.0), libpocojson70 (>= 1.10.0), libpoconet70 (>= 1.10.0), libpoconetssl70 (>= 1.10.0), libsdl2-2.0-0 (>= 2.0.12), libsdl2-mixer-2.0-0 (>= 2.0.2), libstdc++6 (>= 9), libtinfo6 (>= 6), libwebp6 (>= 0.5.1), libwebpmux3 (>= 0.6.1-2.1), libpoco-dev, libwebp-dev, libncurses5, craftos-pc-data (>= 2.5)
 Breaks: craftos-pc-ccemux (<< 2.5)
 Homepage: https://www.craftos-pc.cc
 Priority: optional
 Section: interpreters
-Filename: pool/main/c/craftos-pc/craftos-pc_2.7-3_arm64.deb
-Size: 982344
-SHA256: de6871cfe794f8088e56f5f2f87c7af370e9aa306e8152e6c1d1849223595266
-SHA1: f024e046700284162d4a7ec218967b0200c177ef
-MD5sum: 32339f51f9c2df1f14650e619f2e6c9a
+Filename: pool/main/c/craftos-pc/craftos-pc_2.7.4-1_arm64.deb
+Size: 786092
+SHA256: d872fe68ab836200b85fdf63bd2e9a5fb9c80aaf57633207c6cc2b1d11132953
+SHA1: 92e7abcab688df2bb886764e43f3fb57dd9b57d4
+MD5sum: 4de551fa9f277b8965792510f29b59ce
 Description: Advanced ComputerCraft emulator
  CraftOS-PC is the fastest emulator for the ComputerCraft mod for Minecraft.
  It implements the CraftOS API in C++, with >99% compatibility.
@@ -21,94 +21,94 @@ Description: Advanced ComputerCraft emulator
 
 Package: craftos-pc-ccemux
 Source: craftos-pc
-Version: 2.7-3
+Version: 2.7.4-1
 Architecture: arm64
 Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
-Installed-Size: 202
+Installed-Size: 161
 Depends: libc6 (>= 2.17), libgcc-s1 (>= 3.0), libsdl2-2.0-0 (>= 2.0.12), libstdc++6 (>= 5.2), craftos-pc (>= 2.6)
 Enhances: craftos-pc
 Breaks: craftos-pc (<< 2.6)
 Homepage: https://www.craftos-pc.cc
 Priority: optional
 Section: interpreters
-Filename: pool/main/c/craftos-pc/craftos-pc-ccemux_2.7-3_arm64.deb
-Size: 52668
-SHA256: d478f82df5e441c6f59590a83d1f912e16f2804074612c87aa0aafc3eb85b6d4
-SHA1: e9929d01f38ef650f98a06132565acd24ca4afda
-MD5sum: 9dff46cf66aa2347bcd4deb07f5b3afc
+Filename: pool/main/c/craftos-pc/craftos-pc-ccemux_2.7.4-1_arm64.deb
+Size: 55108
+SHA256: 0f19e87d795f4b05aef64a07ea5bfb4137831a18bcb62ed96148b4c1fb4fbf48
+SHA1: f703fd495947be67e4a618f246a799c97901380f
+MD5sum: ab0ee3dacc2786096c703cfce406d688
 Description: CCEmuX plugin for CraftOS-PC
  Compatibility plugin for CraftOS-PC that allows using the CCEmuX API in CraftOS-PC.
 
 Package: craftos-pc-ccemux-dbgsym
 Source: craftos-pc
-Version: 2.7-3
+Version: 2.7.4-1
 Auto-Built-Package: debug-symbols
 Architecture: arm64
 Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
-Installed-Size: 151
-Depends: craftos-pc-ccemux (= 2.7-3)
+Installed-Size: 91
+Depends: craftos-pc-ccemux (= 2.7.4-1)
 Priority: optional
 Section: debug
-Filename: pool/main/c/craftos-pc/craftos-pc-ccemux-dbgsym_2.7-3_arm64.deb
-Size: 8240
-SHA256: 976fc85fe3a8f0c42d1877b12041f4b9013d8ebb142d0871bafd358f2dba5ef6
-SHA1: 63003473c306405d6969b93b284789d60b378632
-MD5sum: 84362a19faa99a4cc8c3957bd6890b27
+Filename: pool/main/c/craftos-pc/craftos-pc-ccemux-dbgsym_2.7.4-1_arm64.deb
+Size: 8176
+SHA256: f6b61cd5addf86a6b5e3c8c66bd6571e312bfb8ab62470c29a52a86134e5b4d0
+SHA1: c422b008c7500718c63aae7f7e0365ad49c3c68a
+MD5sum: 73b546f2644ffcbf9adb9048a7fa0e4b
 Description: debug symbols for craftos-pc-ccemux
-Build-Ids: 9c10bb10adc284c84a1f1d1c8f7a72b3b5b5aff0
+Build-Ids: bc0d8045052afb8bf66ea7e657e8dd955571c6fd
 
 Package: craftos-pc-data
-Version: 2.7-3
+Version: 2.7.4-1
 Architecture: all
 Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
-Installed-Size: 2054
+Installed-Size: 2204
 Conflicts: craftos-pc-cct-data
-Breaks: craftos-pc (<< 2.6.3)
+Breaks: craftos-pc (<< 2.7.2)
 Replaces: craftos-pc-cct-data
 Homepage: https://github.com/MCJack123/craftos2-rom
 Priority: optional
 Section: interpreters
-Filename: pool/main/c/craftos-pc-data/craftos-pc-data_2.7-3_all.deb
-Size: 185640
-SHA256: 7a95ea6562a6667e24fe6b7f94a6ab9ae70ba93336ce55c7d11888aaebb8803a
-SHA1: a623d3a14b106f94d89e1a2eb445261685326659
-MD5sum: 87bdd4fb266d594bc584329e775e5a74
+Filename: pool/main/c/craftos-pc-data/craftos-pc-data_2.7.4-1_all.deb
+Size: 210636
+SHA256: 92c288ecf48616ba420e429281528f67aa6a9f75c7138bd5b216148c4d68377b
+SHA1: 32615fa02fbdae525f67861a2982147898dc8d94
+MD5sum: e84c402b9182f0a2eb9812ed8073986c
 Description: ROM package for CraftOS-PC
  Supplies CraftOS operating system files for CraftOS-PC.
 
 Package: craftos-pc-dbgsym
 Source: craftos-pc
-Version: 2.7-3
+Version: 2.7.4-1
 Auto-Built-Package: debug-symbols
 Architecture: arm64
 Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
-Installed-Size: 13982
-Depends: craftos-pc (= 2.7-3)
+Installed-Size: 14042
+Depends: craftos-pc (= 2.7.4-1)
 Priority: optional
 Section: debug
-Filename: pool/main/c/craftos-pc/craftos-pc-dbgsym_2.7-3_arm64.deb
-Size: 13801560
-SHA256: 5b2081f27235aedda005d5baa4713a9600b3c36fce5e435cfa92e155824ac8f8
-SHA1: 2f3930ba97e79a209d8c3822d52b85a7aa833eb0
-MD5sum: 042a2fdd191e0be6188f0ff2b1f214e7
+Filename: pool/main/c/craftos-pc/craftos-pc-dbgsym_2.7.4-1_arm64.deb
+Size: 13929508
+SHA256: 67ff228e16d291b9e56e74f8dc90b352ce198b09875e285cd13d00a91950bec0
+SHA1: 6320989fd2ccb3db9f7f99cfcf5b949e451548c8
+MD5sum: 413189e985638291b593dc3aa2947fbb
 Description: debug symbols for craftos-pc
-Build-Ids: 4ac8d30717378789aab407126cab552f16d80d73 a012adb968ec62bcaad0b3f558266e6f79d3a465
+Build-Ids: 05bc359ec0ee4b5e6f7272cdd929e35f3652d3b7 23dc060d9a5d4e3d4e7443cf3aa59d0de93fbec4
 
 Package: craftos-pc-dev
 Source: craftos-pc
-Version: 2.7-3
+Version: 2.7.4-1
 Architecture: arm64
 Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
-Installed-Size: 87
+Installed-Size: 91
 Depends: libsdl2-dev (>= 2.0.5), craftos-pc (>= 2.6)
 Homepage: https://www.craftos-pc.cc
 Priority: optional
 Section: interpreters
-Filename: pool/main/c/craftos-pc/craftos-pc-dev_2.7-3_arm64.deb
-Size: 46260
-SHA256: 7d858af232a8923d10e8eab4dc4082032e8dc3a03a76d6f4950a5093544798e0
-SHA1: da8b5b868abf58819402baa4693308a442a0b615
-MD5sum: 903fc55dcefdbeb2f75cc1b83c6983c4
+Filename: pool/main/c/craftos-pc/craftos-pc-dev_2.7.4-1_arm64.deb
+Size: 48984
+SHA256: 05abb7fb7b91e8480c7cd2bc46017b2278db28334332152d10c0d73574da749e
+SHA1: 8b0a0a96826e25a6bea5c7ad0641aee24cfbe3d2
+MD5sum: 9854e8be1f530fa279d7383539d27389
 Description: Development files for CraftOS-PC plugins
  Installs the headers and libraries necessary to develop plugins for CraftOS-PC.
 
