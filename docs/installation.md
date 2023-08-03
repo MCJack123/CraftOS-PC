@@ -64,10 +64,10 @@ sudo dnf install craftos-pc
 
 Fedora support is maintained by [LeMoonStar](https://github.com/LeMoonStar). For any issues with the Fedora package itself, please contact them [on their GitHub repo](https://github.com/LeMoonStar/craftos2-rpm).
 
-### NixOS
-Install the `craftos-pc` package from the nixpkgs unstable repository. You can then use it with `nix-shell -p craftos-pc --run "craftos"`.
+### Nix/NixOS
+Use the `craftos-pc` package from the nixpkgs unstable repository. For example, run `nix-shell -p craftos-pc --run "craftos"` to execute it.
 
-NixOS support is maintained by [tomodachi94](https://github.com/tomodachi94). For any issues with the Nix package itself, please create an issue [on the nixpkgs repository](https://github.com/NixOS/nixpkgs).
+Nix and NixOS support is maintained by [tomodachi94](https://github.com/tomodachi94). For any issues with the Nix package itself, please create an issue [on the nixpkgs repository](https://github.com/NixOS/nixpkgs).
 
 ### Other Linux (x86_64/amd64)
 Download CraftOS-PC.x86_64.AppImage from the latest release. Then simply double-click the file to run it.
