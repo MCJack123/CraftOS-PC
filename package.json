@@ -26,6 +26,6 @@
     "highlight.js": "^10.6.0",
     "image-size": "^0.9.4",
     "marked": "^4.0.10",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.7"
   }
 }
