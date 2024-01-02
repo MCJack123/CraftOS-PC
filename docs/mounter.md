@@ -58,3 +58,17 @@ The `/` and `\` characters are equivalent, so Windows users don't have to use sp
 
 ### No-ask whitelist
 There is also a list called `mounter_no_ask` that will disable mount confirmation for the specified paths. These entries only apply to the specific folder indicated, and not any subdirectories. Be careful when using this, as any script will be able to silently mount the directories specified here.
+
+## Functions
+* *boolean* `mounter.mount`(*string* name, *string* path\[, *boolean* readOnly\]): Mounts a real directory to a ComputerCraft directory.
+  * name: The local directory to mount to
+  * path: The absolute directory to mount from
+  * readOnly: Whether the mount should be read-only. The default value and whether this argument is available depend on the value of the `mount_mode` config option.
+  * Returns: Whether the mount operation succeeded
+* *boolean* `mounter.unmount`(*string* name): Unmounts a previously mounted directory.
+  * name: The local directory to unmount
+  * Returns: Whether the unmount operation succeeded
+* *table* `mounter.list`(): Returns a key-value table of all current mounts on the system. Each value is a list of directories in a multi-mount (if not using multi-mounts, then only one value is in that list).
+* *boolean* `mounter.isReadOnly`(*string* name): Returns whether a mount was mounted read-only.
+  * name: The local directory of the mount
+  * Returns: Whether the mount is read-only

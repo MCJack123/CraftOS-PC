@@ -75,7 +75,7 @@
         "image": "gfx"
     },
     "http-server": {
-        "title": "HTTP Server",
+        "title": "HTTP & WebSocket Server",
         "description": "CraftOS-PC includes the ability to host an HTTP or WebSocket server.",
         "image": "image1"
     },
@@ -87,6 +87,11 @@
     "installation": {
         "title": "Installation",
         "description": "How to install CraftOS-PC.",
+        "image": "image1"
+    },
+    "mobile": {
+        "title": "CraftOS-PC for Mobile Devices",
+        "description": "CraftOS-PC is available on iOS and Android as a native app.",
         "image": "image1"
     },
     "mounter": {

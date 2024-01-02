@@ -6,8 +6,13 @@ The `--raw` command-line flag tells CraftOS-PC to output in raw mode. This data 
 
 # Official CraftOS-PC Raw Mode Protocol Specification
 
-**CraftOS-PC Raw Mode Protocol, version 1.1**  
-**June 1, 2021**
+**CraftOS-PC Raw Mode Protocol, version 1.2**  
+
+## 0. History
+
+* February 29, 2020: Original implementation
+* June 1, 2021: Version 1.1
+* December 27, 2021: Version 1.2
 
 ## 1. Introduction
 
@@ -382,7 +387,8 @@ Before the server sends back a response, both parties MUST communicate using no 
 * 0: Binary data CRC-32 checksum support (as opposed to checksumming the Base64 data)
 * 1: Filesystem support extension
 * 2: Server should send window information about all open windows (see below)
-* 3-14: Currently reserved, leave unset
+* 3: Speaker sound extension
+* 4-14: Currently reserved, leave unset
 * 15: Set if the extended flags are present (SHOULD be unset for now)
 
 Extended flags:
@@ -400,13 +406,33 @@ To maintain compatibility with version 1.0, implementors that are compatible wit
 
 Once a client and server have exchanged compatibility flags, they SHOULD assume that both ends are compatible with version 1.1, since Type 6 packets are a version 1.1 extension. After then, these will be available for both clients and servers to use.
 
-## 4. Filesystem support extension
+## 4. Typical client <-> server interaction
+
+This example assumes a server that has one window that opens before/on startup.
+
+Once the connection between the client and server is established, the server sends a Type 4 packet to notify the client of the creation of window 0. At the same time, the client sends a Type 6 packet with a set of its supported features.
+
+Once the server receives the Type 6 packet, it sends a Type 6 packet with the capabilities it supports. If the client set bit 2, it then sends a Type 4 packet for window 0.
+
+Now that the capabilities have been exchanged and the client is aware of the windows, it can start accepting updates. The server sends Type 0 packets with the contents of each rendered frame, and the client parses them and renders to its representation of the window.
+
+Occasionally, the client receives keystrokes from the user and sends Type 1 packets with the contents of the key stroke. For example, when the 'a' key is pressed, the following packets are sent:
+
+* Character = 30, flags = 1 (`key 30 false`)
+* Character = 97, flags = 9 (`char a`)
+* On release: character = 30, flags = 0 (`key_up 30`)
+
+Mouse events may also be sent in Type 2 packets. If the client receives a paste event, it sends a Type 3 packet with a `paste` event name, and one parameter with type 3 and the contents of the pasteboard.
+
+Once the client's window receives a close event from the user, it sends a Type 4 packet with the closing field set to 1 to the server. The server then sends a Type 4 packet back indicating the window's closure, and the client can close the window. If the window was the last window open, the server then sends a Type 4 packet with closing set to 2, indicating that the server is closing and that the connection will be ended. The server and client then disconnect from each other, and communication ends.
+
+## 5. Filesystem support extension
 
 The filesystem extension adds support for accessing a computer's files from the remote client. It uses the same function set as ComputerCraft's FS API, but uses three different request/reply packets to communicate data efficiently.
 
 To indicate support for the filesystem extension, set bit 1 of the standard capability flags in a Type 6 packet.
 
-### 4.1. Type 7: File request
+### 5.1. Type 7: File request
 
 This packet type is used to send a request for file information or modification. This type MUST only be sent from the client to the server.
 
@@ -417,7 +443,7 @@ This packet type is used to send a request for file information or modification.
 | 0x04       | *x*        | Path to the file to check (NUL-terminated)
 | 0x04+x     | *y*        | For types 12 and 13, the second path (NUL-terminated)
 
-#### 4.1.1. Request types
+#### 5.1.1. Request types
 
 Request types are based on the functions in the [FS API](https://tweaked.cc/module/fs.html) of the same name. The following request types are available:
 
@@ -442,7 +468,7 @@ Request types 16-23 are used for file reading and writing. The low 3 bits indica
 * Bit 1: append? (ignored on read)
 * Bit 2: binary?
 
-#### 4.1.2. Notes
+#### 5.1.2. Notes
 
 The request ID MAY be set to any value, and it SHOULD be unique from all other requests sent (at least from ones that haven't been received yet).
 
@@ -450,7 +476,7 @@ If the packet is a write request, this packet type MUST be followed by a Type 9 
 
 If the request is a read operation, the next packet will be a Type 9 packet - no Type 8 packet will be sent.
 
-### 4.2. Type 8: File response
+### 5.2. Type 8: File response
 
 This packet type notifies the client of a file operation's success or failure, and if the operation returns data back, it contains the result of the operation. This type MUST only be sent from the server to the client.
 
@@ -483,7 +509,7 @@ The contents of the response differ depending on the request type. Before readin
 
 The request ID field MUST have the same value as the ID sent in the request for this operation. If the request type was any open type (16-23), the request type MAY be any valid open value, and does not have to correspond to the exact open flags passed. For example, a client may send a request with `OPEN | WRITE | BINARY`, but the server could send a response with only `OPEN | WRITE`.
 
-### 4.3. Type 9: File data
+### 5.3. Type 9: File data
 
 This packet is used to transfer file data for a file read/write operation. This type MAY be sent from either the client or the server.
 
@@ -498,7 +524,7 @@ The request ID MUST have the same value as the ID sent in the request for this o
 
 It is recommended that this packet be sent in the large-format style (see section 2.2) to avoid the possibility of sending files that are too big for the packet. (The maximum size of a standard encoded payload is 65535 bytes, and accounting for Base64's size expansion, the decoded payload can only be about 49151 bytes in size.)
 
-### 4.4. Details on file read/write operations
+### 5.4. Details on file read/write operations
 
 Read and write operations (file request types 16-23) do not follow the same pattern as other operations, which simply return a Type 8 packet on operation completion. They use Type 9 packets to transfer file data, and on write operations a Type 8 packet is sent to indicate completion.
 
@@ -510,25 +536,72 @@ The server MAY choose to send a Type 8 packet after a timeout if no Type 9 packe
 
 All file data sent is binary data (specifically, in CC's 8-bit character set). When the binary flag is unset, data is encoded to UTF-8 on disk; otherwise data is read/written as-is.
 
-## 5. Typical client <-> server interaction
+## 6. Speaker sound extension
 
-This example assumes a server that has one window that opens before/on startup.
+The speaker sound extension adds support for transferring sound information from the server to a client. It supports sending notes, Minecraft sounds, and DFPWM data over the network, depending on what the data type is.
 
-Once the connection between the client and server is established, the server sends a Type 4 packet to notify the client of the creation of window 0. At the same time, the client sends a Type 6 packet with a set of its supported features.
+To indicate support for the speaker extension, set bit 3 of the standard capability flags in a Type 6 packet.
 
-Once the server receives the Type 6 packet, it sends a Type 6 packet with the capabilities it supports. If the client set bit 2, it then sends a Type 4 packet for window 0.
+### 6.1. Type 10: Speaker sound information
 
-Now that the capabilities have been exchanged and the client is aware of the windows, it can start accepting updates. The server sends Type 0 packets with the contents of each rendered frame, and the client parses them and renders to its representation of the window.
+This packet contains information about an audio playback event to be played on the client.
 
-Occasionally, the client receives keystrokes from the user and sends Type 1 packets with the contents of the key stroke. For example, when the 'a' key is pressed, the following packets are sent:
+| Offset     | Bytes      | Purpose
+|------------|------------|------------
+| 0x02       | 1          | Sound type (see below)
+| 0x03       | 1          | Speaker ID (if present; use 0 if not available)
+| 0x04       | 1          | Volume
+| 0x05       | 1          | Speed encoded as a signed exponent
+| 0x06       | 2          | Payload size
+| 0x08       | *n*        | Payload
 
-* Character = 30, flags = 1 (`key 30 false`)
-* Character = 97, flags = 9 (`char a`)
-* On release: character = 30, flags = 0 (`key_up 30`)
+#### 6.1.1. Sound types
 
-Mouse events may also be sent in Type 2 packets. If the client receives a paste event, it sends a Type 3 packet with a `paste` event name, and one parameter with type 3 and the contents of the pasteboard.
+| Type ID | Meaning
+|---------|------------
+| 0       | Note block `banjo`
+| 1       | Note block `basedrum`
+| 2       | Note block `bass`
+| 3       | Note block `bell`
+| 4       | Note block `bit`
+| 5       | Note block `chime`
+| 6       | Note block `cow_bell`
+| 7       | Note block `didgeridoo`
+| 8       | Note block `flute`
+| 9       | Note block `guitar`
+| 10      | Note block `harp`
+| 11      | Note block `hat`
+| 12      | Note block `iron_xylophone`
+| 13      | Note block `pling`
+| 14      | Note block `snare`
+| 15      | Note block `xylophone`
+| 254     | Minecraft sound: sound name is the payload
+| 255     | DFPWM audio
 
-Once the client's window receives a close event from the user, it sends a Type 4 packet with the closing field set to 1 to the server. The server then sends a Type 4 packet back indicating the window's closure, and the client can close the window. If the window was the last window open, the server then sends a Type 4 packet with closing set to 2, indicating that the server is closing and that the connection will be ended. The server and client then disconnect from each other, and communication ends.
+Clients SHOULD ignore any sound type that is not recognized.
+
+#### 6.1.2. Notes
+
+The speaker ID field is a unique value to identify the speaker; it MAY be any value but it SHOULD be different for each speaker peripheral playing audio.
+
+The volume parameter of CC's speaker methods are floating point values from 0.0 to 3.0; these map to 0 to 255 in this packet type.
+
+The speed parameter encodes an exponent with base 2. To convert a speed from `playSound` in the range [0.5, 2.0] to this parameter, use this formula:
+```lua
+parameter = math.log(speed, 2) * (speed < 1 and 128 or 127)
+```
+To convert it back to a speed multiplier, use this:
+```lua
+speed = 2^(parameter / (parameter < 0 and 128 or 127))
+```
+Note pitches can be converted with these formulae:
+```lua
+parameter = (pitch - 12) / 12 * (pitch < 12 and 128 or 127)
+pitch = parameter / (parameter < 0 and 128 or 127)) * 12 + 12
+```
+The speed parameter is ignored when playing DFPWM audio.
+
+Notes do not have any payload data, and the payload size MUST be set to 0. Sounds store the name of the sound (e.g. `minecraft:block.stone.break`) in the payload. DFPWM audio chunks store the audio data in the payload.
 
 ## Appendix A: CraftOS-PC version support
 

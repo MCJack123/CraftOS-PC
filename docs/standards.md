@@ -19,6 +19,7 @@ These are the behaviors that change when standards mode is enabled.
 * The `load` function is now resumable (you can call `coroutine.yield` from it); however, this is experimental, and uses threads to make this possible. Expect some performance loss due to this.
 * Parameters to `os.queueEvent` are copied instead of moved, meaning functions are deleted when queueing an event.
 * The `playAudio` method of speakers works much more like it does in-game.
+* Loading and dumping bytecode chunks is disabled as expected.
 
 ## Vanilla mode
 CraftOS-PC provides another compatibility-related configuration option called vanilla mode (`vanilla`). Vanilla mode disables all of the extra features of CraftOS-PC inside CraftOS, making it essentially equivalent to other emulators without these features, such as CCEmuX. This is useful if you want as authentic of a CraftOS experience as possible, even if it means giving up additional functionality.

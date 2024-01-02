@@ -10,7 +10,7 @@ Plugins can be installed in these locations depending on your platform:
 The plugin file should have the name that the library's `luaopen_` function uses. For example, the CCEmuX plugin should be named `ccemux` because the loader function is named `luaopen_ccemux`. For some plugins (such as Lua libraries), this is required, but most plugins designed for CraftOS-PC (like the CCEmuX plugin) will tell CraftOS-PC what name to use automatically. Once a plugin is installed it will be available as a global API with the same name as the plugin.
 
 ## Using Lua libraries
-CraftOS-PC can automatically import Lua libraries as they would be used with standard Lua. Even though CraftOS-PC uses its own version of Lua, you can still use libraries that were built for standard Lua 5.1.
+CraftOS-PC can automatically import Lua libraries as they would be used with standard Lua. Even though CraftOS-PC uses its own version of Lua, you can still use libraries that were built for standard Lua 5.2.
 
 To use a Lua library with CraftOS-PC, simply drop the DLL/dylib/so file into the `plugins` folder as listed above, and rename it so it starts with `lua_` (e.g. `lua_zlib.dll`). This will tell CraftOS-PC not to search for plugin metadata, and instead treats it like a standard library. Make sure to keep the rest of the file name the same, as this is what CraftOS-PC uses to determine the library's name.
 
@@ -366,7 +366,8 @@ When compiling plugins, you must use a compiler that is compatible with CraftOS-
 | 10          | 5                 | v2.6.1             |
 | 10          | 6                 | v2.6.2             |
 | 10          | 7                 | v2.6.3 - v2.6.4    |
-| 10          | 8                 | v2.6.5 - v2.7      |
+| 10          | 8                 | v2.6.5 - v2.7.5    |
+| 12          | 0                 | v2.8               |
 | 11          | 0                 | Accelerated v2.5 - v2.5.1.1 |
 | 11          | 1                 | Accelerated v2.5.2 |
 | 11          | 2                 | Accelerated v2.5.3 |
@@ -375,6 +376,6 @@ When compiling plugins, you must use a compiler that is compatible with CraftOS-
 | 11          | 5                 | Accelerated v2.6.1 |
 | 11          | 6                 | Accelerated v2.6.2 |
 | 11          | 7                 | Accelerated v2.6.3 - v2.6.4 |
-| 11          | 8                 | Accelerated v2.6.5 - v2.7 |
+| 11          | 8                 | Accelerated v2.6.5 - v2.7.5 |
 
 *Note: When building for debug targets on Windows, add 100000 to the plugin version.*

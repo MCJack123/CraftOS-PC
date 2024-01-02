@@ -1,11 +1,11 @@
 ### Introduction
 * [What is CraftOS-PC?](about)
 * [Downloading & Installing](installation)
-* [Standalone Executables](standalone)
 * [Getting Started](getting-started)
 * [Save Data Location](saves)
 * [Standards Mode](standards)
 * [Migrating from CCEmuX](ccemux)
+* [CraftOS-PC Mobile](mobile)
 
 ### New Features in CraftOS-PC
 * [Peripheral Emulation](periphemu)
@@ -14,7 +14,7 @@
 * [Multiple Computers](multicomp)
 * [ComputerCraft Configuration](config)
 * [Graphics Mode](gfxmode)
-* [HTTP Server](http-server)
+* [HTTP & WebSocket Server](http-server)
 * [CC: Tweaked Features](cctweaked)
 * [Auto-Updater](autoupdate)
 * [Debugger](debugger)
@@ -28,16 +28,14 @@
 ### Other Information
 * [CraftOS-PC Online](online)
 * [CraftOS-PC Remote](remote)
+* [Latest Development Build](../artifact)
 * [Error Messages](error-messages)
-* [Known Issues](https://github.com/MCJack123/craftos2/discussions/174)
-* [Program Compatibility](https://docs.google.com/spreadsheets/d/1PtZZA4Vcsk733gSlSGH3VpecaGSp9U9AJmDKkWRssa0/edit?usp=sharing)
-  * [Submit a Program](https://forms.gle/5WhU7K52VAgr5DR68)
 * [Report a Bug](../bugreport)
 * [Privacy Policy](privacy)
 * [Contact](contact)
 * [Changelog](changelog)
 
 ### API Reference
-* [CraftOS APIs (Official Wiki)](http://www.computercraft.info/wiki/Category:APIs)
 * [CC: Tweaked Documentation](https://tweaked.cc)
-* [CraftOS-PC APIs](api-reference)
+* [Lua Reference](https://lua.org/manual/5.2/manual.html)
+* [CraftOS APIs (Old Wiki)](http://www.computercraft.info/wiki/Category:APIs)

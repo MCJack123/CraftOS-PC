@@ -23,6 +23,15 @@ Currently, all graphics modes have the same dimensions, but this behavior may ch
 
 For compatibility reasons, `term.getSize()` (with no arguments) always returns the size of text mode, not the current mode. This behavior is not likely to change.
 
+### Functions
+* *number*, *number* `term.getSize`([*number/boolean* mode]): Returns the size of the specified mode. (Override)
+  * mode: `0` or `false` for text mode. `true` or a positive number for graphics mode.
+  * Returns: The text dimensions of the screen by default, or the pixel dimensions of the specified graphics mode otherwise.
+  * Note: You can use this function regardless of which graphics mode you are currently in. As of v2.5.1, all pixel graphics modes are guaranteed to be 6 times the width and 9 times the height of text mode, but this may change in the future and may even change now if the terminal is redirected.
+* *nil* `term.setGraphicsMode`(*number/boolean* mode): Sets whether the terminal is in pixel-graphics mode
+  * mode: `2` for 256-color graphics mode, `true` or `1` for 16-color graphics mode, `false` or `0` for text mode
+* *boolean* `term.getGraphicsMode`(): Returns the current graphics mode setting (false for text mode, number for graphics mode).
+
 ## Setting pixels
 In graphics mode, the `term.setPixel(x, y, color)` function can be used to set a pixel to a color. **Unlike the rest of the `term` API, the coordinates of the pixels start at position (0, 0), not (1, 1).** For example, to set the top-leftmost pixel to white, use `term.setPixel(0, 0, colors.white)`. The color argument has different meanings depending on the mode. In mode 1, the color argument must be a color from the `colors` API. In mode 2, the color argument must be a number between 0-255. Switching to mode 2 also changes the color argument for `term.setPaletteColor` and `term.getPaletteColor`.
 
@@ -35,6 +44,32 @@ To retrieve pixels from the screen after drawing, you can use `term.getPixel(x, 
 In 256-color mode, the first 16 colors are set to the default ComputerCraft palette, but the rest are unset. To take advantage of all of the colors available, the `term.setPaletteColor` function is used to set the remaining colors as needed.
 
 The `paintutils` API supports graphics mode in the same way as usual. All `paintutils` functions can be used in graphics mode, drawing pixels instead of color characters.
+
+### Functions
+* *nil* `term.setPixel`(*number* x, *number* y, *color* color): Sets a pixel at a location.
+  * x: The X coordinate of the pixel
+  * y: The Y coordinate of the pixel
+  * color: The color of the pixel
+    * In mode 1, this should be a color in `colors`
+    * In mode 2, this should be an index from 0-255
+* *color* `term.getPixel`(*number* x, *number* y): Returns the color of a pixel at a location.
+  * x: The X coordinate of the pixel
+  * y: The Y coordinate of the pixel
+  * Returns: The color of the pixel
+* *nil* `term.clear`(): Clears the text or graphics screen, depending on the mode. (Override)
+  * Note: If graphics mode is enabled, the text screen will not be cleared, and vice versa. This is also true for the window API - the text buffers will not be cleared in graphics mode.
+* *nil* `term.setPaletteColor`(*number* color, *number* r[, *number* g, *number* b]): Sets the RGB values for a color. (Override)
+  * color: The color to change
+    * In mode 1, this should be a color in `colors`
+    * In mode 2, this should be an index from 0-255
+  * r: Either the red value from 0.0 to 1.0, or an RGB hex value
+  * g: The green value from 0.0 to 1.0
+  * b: The blue value from 0.0 to 1.0
+* *number*, *number*, *number* `term.getPaletteColor`(*number* color): Returns the RGB values for a color. (Override)
+  * color: The color to change
+    * In mode 1, this should be a color in `colors`
+    * In mode 2, this should be an index from 0-255
+  * Returns: The RGB values for the color, each from 0.0 to 1.0
 
 ## Working with large amounts of pixels
 As of CraftOS-PC v2.5, more batch operations have been implemented to allow reading and writing large amounts of pixels faster than ever before. On the C side, these operations use optimized `memset` and `memcpy` routines, rather than setting one pixel at a time.
@@ -50,3 +85,28 @@ However, in order to allow those optimizations, you must work with data in the c
 * While performing batch operations can be much faster than the alternative, you can still get flickering caused by the drawing not being completed by the end of the frame. v2.5.1 introduced a pair of functions that allow you to *freeze* the screen, which is a way to prevent the new frame from being displayed until you are done drawing it.
 
   The two freezing functions are `term.setFrozen(boolean)` and `term.getFrozen()`. While the terminal is frozen, updates will not be drawn on-screen. You can freeze the terminal (`term.setFrozen(true)`) before you draw, and then unfreeze (`term.setFrozen(false)`) it once you are completely done drawing.
+
+### Functions
+* *table* `term.getPixels`(*number* x, *number* y, *number* w, *number* h[, *boolean* strings]): Returns the colors of every pixel in a region. Off-screen pixels will be `-1`.
+  * x: The X coordinate of the region
+  * y: The Y coordinate of the region
+  * w: The width of the region
+  * h: The height of the region
+  * strings: `false` by default. If `true`, returns a table of strings rather than a table of tables.
+* *nil* `term.drawPixels`(*number* startX, *number* startY, *table/number* fill[, *number* width, *number* height]): Draws multiple pixels to the screen at once.
+  * startX: The starting X coordinate of the bitmap
+  * startY: The starting Y coordinate of the bitmap
+  * fill: Either a list of lines to draw on the screen (where each line may be a table with color values to draw (as in `setPixel`), or a string where each byte is one pixel (the colors will be 0-255 even in 16-color mode)), or a single color to fill a region with. If a color is specified, `width` and `height` become required.
+  * width: The width of the table (missing columns will not be drawn), defaults to the width of each row
+  * height: The height of the table (missing rows will not be drawn), defaults to the length of `pixels`
+* *nil* `term.setFrozen`(*boolean* frozen): Sets whether the terminal is currently frozen.
+  * Note: While the terminal is frozen, updates will not be displayed until it is unfrozen.
+* *boolean* `term.getFrozen`(): Gets whether the terminal is currently frozen.
+
+## Additional features
+Some extra functions are added to allow for rich application features. These functions are intended for apps made for CraftOS-PC only, and will not work in-game.
+
+### Functions
+* *nil* `term.screenshot`(): Takes a screenshot. This function is rate-limited to prevent spam.
+* *nil* `term.showMouse`(*boolean* mouse): Toggles whether to show the mouse cursor over the window.
+* *nil* `term.relativeMouse`(*boolean* relative): Toggles whether `mouse_move` events report relative motion. This will hide and lock the mouse to the window.

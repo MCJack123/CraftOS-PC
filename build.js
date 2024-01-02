@@ -8,6 +8,13 @@ const process = require("process");
 const details = require("./src/homepage-details.json");
 const docsInfo = require("./src/docs-info.json");
 
+function renderDocs(md) {
+    let html = marked(md);
+    return html.replace(/<img src="([^"]+\.png)" alt="([^"]*)">/g, (img, src, alt) => {
+        return `<picture><source srcset="${src.replace(/([^/]+)\.png$/, "webp/$1.webp")}" type="image/webp"><source srcset="${src}" type="image/png">${img}</picture>`
+    });
+}
+
 highlight.registerLanguage('c', require("highlight.js/lib/languages/c"));
 highlight.registerLanguage('c++', require("highlight.js/lib/languages/cpp"));
 highlight.registerLanguage('lua', require("highlight.js/lib/languages/lua"));
@@ -44,7 +51,7 @@ Promise.all([
     for (let file of res[1]) {
         if (file !== "sidebar.md") {
             fs.readFile("docs/" + file, {encoding: "utf8"})
-                .then(data => ejs.renderFile("src/docs.ejs", {info: docsInfo[file.match(/[^%.]+/)], sidebar: sidebar, content: marked(data)}))
+                .then(data => ejs.renderFile("src/docs.ejs", {info: docsInfo[file.match(/[^%.]+/)], sidebar: sidebar, content: renderDocs(data)}))
                 .then(data => fs.writeFile("build/docs/" + file.replace(".md", ".html"), data, {encoding: "utf8"}))
                 .catch(err => {
                     console.error(err);

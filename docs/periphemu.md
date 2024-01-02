@@ -22,6 +22,17 @@ Peripherals can be detached using the "detach" command. This takes just one argu
 ## From Lua
 The `periphemu` API provides low-level access to the peripheral emulation layer. The `periphemu.create(side, type[, path])` function attaches a peripheral to the computer. It returns a boolean telling whether the peripheral was successfully attached. Peripherals can be detached with `periphemu.remove(side)`, which also returns a boolean saying whether the peripheral was able to be removed.
 
+### Functions
+* *boolean* `periphemu.create`(*string* side, *string* type\[, *string* path\]): Creates a new peripheral.
+  * side: The side of the new peripheral
+  * type: One of the supported peripheral types
+  * path: If creating a printer, the local path to the output file
+  * Returns: `true` on success, `false` on failure (already exists)
+* *boolean* `periphemu.remove`(*string* side): Removes a peripheral.
+  * side: The side to remove
+  * Returns: `true` on success, `false` on failure (already removed)
+* *table* `periphemu.names`(): Returns a list of available peripheral types.
+
 ## Special peripherals
 Some peripherals have special options that can be specified as the third argument to "attach" or `periphemu.create`.
 * drive peripherals accept a third argument that sets the initial mounted path in the drive. This can be either a global path to a folder or audio file, a number specifying a disk ID, or a namespaced ID in the form `<type>:<path>`.
@@ -43,3 +54,20 @@ To add in Minecraft sounds from an assets directory, you must deobfuscate the ob
 
 ### Speaker `playAudio` emulation differences
 CraftOS-PC implements the `playAudio` method on speakers a bit differently from CC:T. In CraftOS-PC, all audio is stored in a queue, and queueing audio never fails. This audio is played back immediately, and the `speaker_audio_empty` event is queued as soon as playback finishes. Because of this, some programs that expect `playAudio` to fail when full may run faster than expected. The behavior of CC:T can be restored by enabling [standards mode](standards).
+
+### Special speaker functions
+* *table* `speaker.listSounds`(): Returns a hierarchical list of all sounds available to `playSound`.
+* *nil* `speaker.playLocalMusic`(*string* path[, *number* volume]): Plays a local music file.
+  * path: The path to the music file
+  * volume: The volume of the music, from 0.0 to 3.0.
+* *nil* `speaker.setSoundFont`(*string* path): Sets the path to the active soundfont, if supported. (Experimental)
+  * path: The path to the SF2 file
+
+### Special drive functions
+* *nil* `drive.insertDisk`(*string/number* path): Replaces the loaded disk with the specified resource.
+  * path: Either a disk ID or path to load
+	* If number: Mounts the floppy disk (`<save dir>/computer/disk/<id>`) to /disk[n]
+	* If path to directory: Mounts the real path specified to /disk[n]
+	* If path to file: Loads the file as an audio disc (use `disk.playAudio` or the "dj" command)
+  * `record:<name>`: Mounts the specified music disk from the speaker sounds
+  * `treasure:<author>/<name>`: Mounts a treasure disk. Treasure disks can be placed in `treasure` in the CraftOS-PC ROM directory.

@@ -48,6 +48,17 @@ The Profiler window is a basic profiler that shows run time and call counts for 
 ### Console
 The Console window shows any output that's been sent to the console via the `print(text)` method of the debugger peripheral.
 
+## Peripheral Methods
+These methods can be called on the debugger peripheral in Lua.
+
+* *nil* `debugger.stop`(): Stops the computer and opens the debugger prompt.
+* *number* `debugger.setBreakpoint`(*string* file, *number* line): Sets a breakpoint in a file at a line number.
+  * file: The full file path to the script to stop on
+  * line: The line number to set the breakpoint at
+  * Returns: The ID of the new breakpoint
+* *nil* `debugger.print`(*any* value): Prints a value on the debugger's console window.
+  * value: The value to print
+
 ## Debug Adapter (VS Code)
 CraftOS-PC v2.7 introduces a new debug adapter peripheral to be able to use debuggers like Visual Studio Code to debug.
 

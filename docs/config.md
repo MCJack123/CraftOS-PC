@@ -78,5 +78,23 @@ The "config" program allows you to change configuration variables from the shell
 ### From Lua
 The `config` API is the Lua interface to the configuration. `config.get(name)` will return the value of a variable, and `config.set(name, value)` will set the value of a variable. To list the variables available, `config.list()` returns a table with the names of each configuration variable available, and `config.getType(name)` returns the type a variable expects as a string.
 
+* *any* `get`(*string* name): Returns the value of a configuration variable.
+  * name: The name of the variable
+  * Returns: The value of the variable
+* *string|nil* `set`(*string* name, *any* value): Sets the value of a configuration variable.
+  * name: The name of the variable
+  * value: The new value of the variable
+  * Returns: A message indicating whether CraftOS-PC needs to restart to apply the changes, or `nil`.
+* *void* `add`(*string* name, *string* value): Adds an entry to a table config variable.
+  * name: The name of the config option
+  * value: The entry to add
+* *void* `remove`(*string* name, *string* value): Removes an entry from a table config variable.
+  * name: The name of the config option
+  * value: The entry to remove
+* *table* `list`(): Returns a list of all configuration variable names.
+* *number* `getType`(*string* name): Returns the type of a variable.
+  * name: The name of the variable
+  * Returns: 0 for boolean, 1 for string, 2 for number, 3 for table
+
 ### Manually
 The configuration is stored at `config` in the [CraftOS-PC data directory](saves). This folder contains a file named `global.json` that stores the configuration global to all computers; as well as one JSON file for each computer ID that stores local configuration variables. These JSON files can be edited manually to set the variables, but note that the config will not be reloaded until CraftOS-PC is fully quit (all computers closed) and relaunched. In addition, be aware that CraftOS-PC saves the configuration files when it quits, so you should only edit the files when all instances of CraftOS-PC are closed.
