@@ -2,28 +2,28 @@ Origin: CraftOS-PC 2
 Label: CraftOS-PC 2
 Suite: extras
 Codename: bullseye
-Date: Sat, 22 Jul 2023 01:48:09 UTC
+Date: Mon, 22 Jan 2024 05:30:23 UTC
 Architectures: armhf arm64
 Components: main
 Description: Provides packages for CraftOS-PC 2 on Raspberry Pi OS (Raspbian).
 MD5Sum:
- 01c575b1a8474c2f97d9ff45512ab7aa 4608 main/binary-armhf/Packages
- ab0c0e47de4bc43e75431d38bb8ada3b 1707 main/binary-armhf/Packages.gz
+ e35e7b855710489904b8d05bfac99389 4608 main/binary-armhf/Packages
+ 41f6fc7fb7e390ef0813d31793a58e7e 1709 main/binary-armhf/Packages.gz
  51e080051f4985b23685e0756d06824b 172 main/binary-armhf/Release
- b923a2b57e0eb5edafd091f448893313 4609 main/binary-arm64/Packages
- 92b1d8c49cc973741dd4bbea9558c792 1700 main/binary-arm64/Packages.gz
+ 737eefb9b926e7ab3b871938a1cc08d6 4617 main/binary-arm64/Packages
+ d0fb0dc5eaadd22b0fcaca1bec46b7e8 1709 main/binary-arm64/Packages.gz
  ec4423da67bc237812d1531d4a2b746b 172 main/binary-arm64/Release
 SHA1:
- 4f981e0bd0c996cf40614a1c25a62de90401cca8 4608 main/binary-armhf/Packages
- b3648b11316701d17843fd1c6120fea97551b64a 1707 main/binary-armhf/Packages.gz
+ b84def66f3ae778680cfc68f11902c9c469859d2 4608 main/binary-armhf/Packages
+ 3b9d09db832ed3f7dc853ea24d021223f0b87d20 1709 main/binary-armhf/Packages.gz
  b122465f2fbf6214adfdd8a80ec56d9286a51d7b 172 main/binary-armhf/Release
- 94205f921c68e0b564710cf4d37d27e69a68e1b8 4609 main/binary-arm64/Packages
- 6174311c98b16a0843bfd3ec3c382ef8b40f1e50 1700 main/binary-arm64/Packages.gz
+ 179767b89e6252a877ee9b4017f66a4e6a800734 4617 main/binary-arm64/Packages
+ b1ee509d7d1f94a8f74018139478303bec943a9a 1709 main/binary-arm64/Packages.gz
  bdeb9e2259c30c3934326bf9f6b857e93264388c 172 main/binary-arm64/Release
 SHA256:
- 4d1818569a9125b496004ecd3d04e4311e51b60fec1b47ebc0c94389d566d930 4608 main/binary-armhf/Packages
- 2422deaf671db9b7d0c712d5e8d46d1599c15ecb6d5aee406526b072f6747af3 1707 main/binary-armhf/Packages.gz
+ eb4142861ec88f3e0c23264d0eb3256ceae7044b80bc5aa510d0af50fab6ca71 4608 main/binary-armhf/Packages
+ 2f00eb7dbd9556ac9d35d30a1fd7db82c0bfb21c7a2abd46fb480969754c5b8d 1709 main/binary-armhf/Packages.gz
  4ad0884982d08c663879962a095135b01c605b66aae22e7c0313f26822178b6a 172 main/binary-armhf/Release
- 2686369c5b3e7016d28bf40d171d26033cea5a843fd029637fc2679bf557a3e4 4609 main/binary-arm64/Packages
- 75a4f1a14488c300bd69b5d7304ae0a89e080ebcecfb5b3d9fe3792ecd5e4c87 1700 main/binary-arm64/Packages.gz
+ 3c2fbbc690278568b7c2659cddaf06bfdc0e31505cb7e2d964309a2bb78665a4 4617 main/binary-arm64/Packages
+ c390dc4bd83248bdf639e1254d73c3df6127414c62b2bc85f74b5a51517186a9 1709 main/binary-arm64/Packages.gz
  3d76fb3ef5048f27e83507f6f831e7646974abf861de14f0ef84d8e8741c6866 172 main/binary-arm64/Release
