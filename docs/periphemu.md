@@ -2,17 +2,17 @@
 CraftOS-PC features a robust peripheral emulation system. It can emulate many peripherals available in ComputerCraft, making them available through the `peripheral` API. Peripherals can be attached to a computer either from the shell or in Lua.
 
 Here are the peripherals currently available in CraftOS-PC:
-* drive
-* modem
-* monitor
-* printer
-* speaker
+* [drive](https://tweaked.cc/peripheral/drive.html)
+* [modem](https://tweaked.cc/peripheral/modem.html)
+* [monitor](https://tweaked.cc/peripheral/monitor.html)
+* [printer](https://tweaked.cc/peripheral/printer.html)
+* [speaker](https://tweaked.cc/peripheral/speaker.html)
 * [computer](multicomp)
 * [debugger](debugger)
 * [debug_adapter](debugger#debug-adapter-vs-code)
-* chest/minecraft:chest
-* energy
-* tank
+* chest/minecraft:chest (implements [inventory](https://tweaked.cc/generic_peripheral/inventory.html) peripherals)
+* energy (implements [energy_storage](https://tweaked.cc/generic_peripheral/energy_storage.html) peripherals)
+* tank (implements [fluid_storage](https://tweaked.cc/generic_peripheral/fluid_storage.html) peripherals)
 
 ## From the shell
 To attach a peripheral from the shell, you can use the "attach" command. It takes two arguments: the side or ID of the peripheral (`left`, `1`, `monitor_4`), and the type of peripheral to attach. (Some peripherals, such as drive, support a third argument; these are described later.) The peripheral will then be attached to the computer. It can then be used with any program that uses peripherals, such as the "monitor" command.  
@@ -55,7 +55,9 @@ To add in Minecraft sounds from an assets directory, you must deobfuscate the ob
 ### Speaker `playAudio` emulation differences
 CraftOS-PC implements the `playAudio` method on speakers a bit differently from CC:T. In CraftOS-PC, all audio is stored in a queue, and queueing audio never fails. This audio is played back immediately, and the `speaker_audio_empty` event is queued as soon as playback finishes. Because of this, some programs that expect `playAudio` to fail when full may run faster than expected. The behavior of CC:T can be restored by enabling [standards mode](standards).
 
-### Special speaker functions
+### Additional functions for certain peripherals
+
+#### `speaker`
 * *table* `speaker.listSounds`(): Returns a hierarchical list of all sounds available to `playSound`.
 * *nil* `speaker.playLocalMusic`(*string* path[, *number* volume]): Plays a local music file.
   * path: The path to the music file
@@ -63,7 +65,7 @@ CraftOS-PC implements the `playAudio` method on speakers a bit differently from 
 * *nil* `speaker.setSoundFont`(*string* path): Sets the path to the active soundfont, if supported. (Experimental)
   * path: The path to the SF2 file
 
-### Special drive functions
+#### `drive`
 * *nil* `drive.insertDisk`(*string/number* path): Replaces the loaded disk with the specified resource.
   * path: Either a disk ID or path to load
 	* If number: Mounts the floppy disk (`<save dir>/computer/disk/<id>`) to /disk[n]
@@ -71,3 +73,23 @@ CraftOS-PC implements the `playAudio` method on speakers a bit differently from 
 	* If path to file: Loads the file as an audio disc (use `disk.playAudio` or the "dj" command)
   * `record:<name>`: Mounts the specified music disk from the speaker sounds
   * `treasure:<author>/<name>`: Mounts a treasure disk. Treasure disks can be placed in `treasure` in the CraftOS-PC ROM directory.
+
+#### `chest`
+* *number* `chest.setItem`(*number* slot, *table* item): Assigns an item to the specified slot.
+  * slot: The slot to modify
+  * item: A table with an `item` field (string) and a `count` field (number), specifying the item name and count
+  * Returns: The number of items actually added
+
+#### `energy`
+* *nil* `energy.setEnergy`(*number* energy): Sets the amount of energy in the peripheral.
+  * energy: The energy level, between 0 and `energy.getMaxEnergy()`
+
+#### `tank`
+* *number* `tank.addFluid`(*string* name, *number* amount): Adds an amount of fluid to the tank.
+  * name: The name of the fluid to add
+  * amount: The amount of fluid to add
+  * Returns: The amount of fluid actually added
+* *table* `tank.removeFluid`([*string* name[, *number* amount]]): Removes the specified fluid from the tank.
+  * name: The name of the fluid to remove, or `nil`/`""` to remove all fluids
+  * amount: The amount of fluid to remove, defaults to the maximum possible
+  * Returns: A list of fluids actually removed, with each entry being a table with `name` and `amount` fields
