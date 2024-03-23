@@ -8,6 +8,8 @@ On Windows, you will need to install the console version of CraftOS-PC. This com
 
 If you installed CraftOS-PC in a non-standard location (such as if you installed for the current user only), you'll have to set the path to the CraftOS-PC executable. Open the VS Code settings, disclose the Extensions menu on the side, and click CraftOS-PC. Then type in the path to the executable in the "Executable Path: All" text box.
 
+If you are using NixOS, the `vscode-extensions.jackmacwindows.craftos-pc` package is available in Nixpkgs. The primary advantage of using the Nixpkgs package is that it automatically handles the installation of CraftOS-PC. Please see [the Home-Manager documentation](https://nix-community.github.io/home-manager/options.xhtml#opt-programs.vscode.extensions) for more information about installing the extension declaratively.
+
 ## Usage
 To open CraftOS-PC in VS Code, just click on the CraftOS-PC icon in the sidebar, and click Open CraftOS-PC. A new tab will open with the computer's window, and an entry will be added to the sidebar for the window.
 
