@@ -1,5 +1,5 @@
 # Standards Mode
-CraftOS-PC attempts to retain as much compatibility as possible with standard ComputerCraft as possible to keep the experience consistent. However, some tweaks are put in place to allow more things to be possible (such as <50ms timers) at the expense of possible compatibility. Standards mode reverses these tweaks, allowing more compatibility if desired.
+CraftOS-PC attempts to retain as much compatibility as possible with standard ComputerCraft to keep the experience consistent. However, some tweaks are put in place to allow certain capabilities (such as <50ms timers) at the expense of possible compatibility. Standards mode reverses these tweaks, allowing more compatibility if desired.
 
 ## Enabling
 Standards mode is exposed through the `standardsMode` config option. From the shell, running `config set standardsMode true` will enable standards mode. `config set standardsMode false` will turn it back off. It can also be accessed from the `config` API or `global.json` as usual.
@@ -20,6 +20,7 @@ These are the behaviors that change when standards mode is enabled.
 * Parameters to `os.queueEvent` are copied instead of moved, meaning functions are deleted when queueing an event.
 * The `playAudio` method of speakers works much more like it does in-game.
 * Loading and dumping bytecode chunks is disabled as expected.
+* Seeking on HTTP handles now works properly.
 
 ## Vanilla mode
 CraftOS-PC provides another compatibility-related configuration option called vanilla mode (`vanilla`). Vanilla mode disables all of the extra features of CraftOS-PC inside CraftOS, making it essentially equivalent to other emulators without these features, such as CCEmuX. This is useful if you want as authentic of a CraftOS experience as possible, even if it means giving up additional functionality.
@@ -50,7 +51,7 @@ If you are experiencing compatibility issues with programs, these configuration 
 * `http_max_requests` = 16
 * `http_max_upload` = 4194304
 * `http_max_websockets` = 4
-* `http_max_websocket_message` = 65536
+* `http_max_websocket_message` = 131072
 * `http_timeout` = 30000
 * `http_websocket_enabled` = true
 * `maximumFilesOpen` = 128
