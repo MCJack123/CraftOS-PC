@@ -161,7 +161,7 @@ This packet type sends a key event in an efficient format. This type MUST only b
 | Offset     | Bytes      | Purpose
 |------------|------------|---------------
 | 0x02       | 1          | Key ID (as in keys API) or character (depending on bit 3 of flags)
-| 0x03       | 1          | Bit 0 = key (1) or key_up (0), bit 1 = is_held, bit 2 = control held, bit 3 = character (1) or key (0)
+| 0x03       | 1          | Bit 0 = key (0) or key_up (1), bit 1 = is_held, bit 2 = control held, bit 3 = character (1) or key (0)
 
 Key IDs use the original ComputerCraft mappings, which are nearly equivalent to PS/2 Scan Code Set 1.
 
